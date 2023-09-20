@@ -1,0 +1,28 @@
+{
+  "include": ["src/**/*"],
+  "compilerOptions": {
+    "target": "ES2016",
+    "lib": ["ESNext", "DOM"],
+    "jsx": "react-jsx",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "declaration": true,
+    "declarationMap": true,
+    "outDir": "./dist",
+    "noEmit": true,
+    "noEmitHelpers": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "rootDir": "./src",
+    "baseUrl": "./src",
+    "paths": {
+      "#/*": ["*"]
+    },
+  }
+}
