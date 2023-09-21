@@ -20,4 +20,6 @@ export const colors = {
   ring: tailwindColors.slate[900],
   input: tailwindColors.slate[200],
   border: tailwindColors.slate[200],
+  card: tailwindColors.white,
+  'card-foreground': tailwindColors.slate[900],
 };
