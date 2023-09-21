@@ -1,3 +1,4 @@
+export * from './alert/src';
 export * from './avatar/src';
 export * from './button/src';
 export * from './card/src';
