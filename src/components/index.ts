@@ -4,6 +4,7 @@ export * from './card/src';
 export * from './focus-lock/src';
 export * from './form-control/src';
 export * from './input/src';
+export * from './popover/src';
 export * from './popper/src';
 export * from './portal/src';
 export * from './property/src';
