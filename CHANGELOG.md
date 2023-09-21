@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.0.2](https://github.com/velcure/velcure-ui/compare/v1.0.1...v1.0.2) (2023-09-21)
+
+
+### Bug Fixes
+
+* access public ci ([8dcd7a7](https://github.com/velcure/velcure-ui/commit/8dcd7a779a9cbd37a2a7b1888f2a365866c848b5))
+* add peers ([7f412dc](https://github.com/velcure/velcure-ui/commit/7f412dc239457e3373887b611d6db159e9fd8cd0))
+* publish config ([b8953b7](https://github.com/velcure/velcure-ui/commit/b8953b7d4056cbec4d2ccda3f2733d500bfd10e9))
+* sync ([3360aa9](https://github.com/velcure/velcure-ui/commit/3360aa9f8ae7b6a3a41111ad13434bd84e883139))
+
 ## [1.0.1](https://github.com/velcure/velcure-ui/compare/v1.0.0...v1.0.1) (2023-09-21)
 
 
