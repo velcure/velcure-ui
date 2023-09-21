@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.3.0](https://github.com/velcure/velcure-ui/compare/v1.2.0...v1.3.0) (2023-09-21)
+
+
+### Features
+
+* alert ([b4287bd](https://github.com/velcure/velcure-ui/commit/b4287bd8900f968ece0f8c93708a72ce4b0bafb8))
+
+
+### Bug Fixes
+
+* missing popover export ([0ad97b9](https://github.com/velcure/velcure-ui/commit/0ad97b924bb065aa5afe68c624d09d12be35e5c0))
+
 ## [1.2.0](https://github.com/velcure/velcure-ui/compare/v1.1.0...v1.2.0) (2023-09-21)
 
 
