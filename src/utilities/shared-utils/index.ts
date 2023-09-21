@@ -28,6 +28,8 @@ export const ariaAttr = (condition: boolean | undefined) =>
 
 type Args<T extends Function> = T extends (...args: infer R) => any ? R : never;
 
+type AnyFunction<T = any> = (...args: T[]) => any;
+
 export function callAllHandlers<T extends (event: any) => void>(
   ...fns: (T | undefined)[]
 ) {
@@ -35,6 +37,14 @@ export function callAllHandlers<T extends (event: any) => void>(
     fns.some((fn) => {
       fn?.(event);
       return event?.defaultPrevented;
+    });
+  };
+}
+
+export function callAll<T extends AnyFunction>(...fns: (T | undefined)[]) {
+  return function mergedFn(arg: Args<T>[0]) {
+    fns.forEach((fn) => {
+      fn?.(arg);
     });
   };
 }
@@ -50,3 +60,13 @@ export const warn = (options: MessageOptions) => {
     console.warn(message);
   }
 };
+
+export function runIfFn<T, U>(
+  valueOrFn: T | ((...fnArgs: U[]) => T),
+  ...args: U[]
+): T {
+  return isFunction(valueOrFn) ? valueOrFn(...args) : valueOrFn;
+}
+
+const isFunction = <T extends Function = Function>(value: any): value is T =>
+  typeof value === 'function';

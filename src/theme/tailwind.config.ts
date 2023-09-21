@@ -44,6 +44,9 @@ export const config: Config = {
         3: '0.75rem',
         8: '2rem',
       },
+      zIndex: {
+        inherit: 'inherit',
+      },
     },
   },
   plugins: [],

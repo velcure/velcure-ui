@@ -22,4 +22,6 @@ export const colors = {
   border: tailwindColors.slate[200],
   card: tailwindColors.white,
   'card-foreground': tailwindColors.slate[900],
+  popover: tailwindColors.white,
+  'popover-foreground': tailwindColors.slate[900],
 };
