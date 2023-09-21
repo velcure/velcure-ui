@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.1.0](https://github.com/velcure/velcure-ui/compare/v1.0.2...v1.1.0) (2023-09-21)
+
+
+### Features
+
+* new hook useBoolean ([2d3336f](https://github.com/velcure/velcure-ui/commit/2d3336f769a2461ab9acb9dea9a84990e2af6667))
+* popper ([03bc3a0](https://github.com/velcure/velcure-ui/commit/03bc3a0007f8980c1d9bc2b58526dbd22af3dd25))
+* transitions ([5ed85b0](https://github.com/velcure/velcure-ui/commit/5ed85b01db1cd0745bf61ef504c7e80bd6750b92))
+* warn dev util ([e92492b](https://github.com/velcure/velcure-ui/commit/e92492bd3af07b6a5242d124b3cf8a8e58b556aa))
+
 ## [1.0.2](https://github.com/velcure/velcure-ui/compare/v1.0.1...v1.0.2) (2023-09-21)
 
 
