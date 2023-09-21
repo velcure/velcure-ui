@@ -1,6 +1,10 @@
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
+function isDev() {
+  return process.env.NODE_ENV !== 'production';
+}
+
 export function isObject(value: any): value is Record<string, any> {
   const type = typeof value;
   return (
@@ -34,3 +38,15 @@ export function callAllHandlers<T extends (event: any) => void>(
     });
   };
 }
+
+type MessageOptions = {
+  condition: boolean;
+  message: string;
+};
+
+export const warn = (options: MessageOptions) => {
+  const { condition, message } = options;
+  if (condition && isDev()) {
+    console.warn(message);
+  }
+};
