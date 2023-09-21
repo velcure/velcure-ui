@@ -30,4 +30,6 @@ export const colors = {
   'card-foreground': tailwindColors.slate[900],
   popover: tailwindColors.white,
   'popover-foreground': tailwindColors.slate[900],
+  tooltip: tailwindColors.slate[900],
+  'tooltip-foreground': tailwindColors.slate[50],
 };
