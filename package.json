@@ -74,6 +74,10 @@
     "react-focus-lock": "^2.9.5",
     "tailwind-merge": "^1.14.0"
   },
+  "peerDependencies": {
+    "framer-motion": ">=4.0.0",
+    "react": ">=18"
+  },
   "readme": "ERROR: No README data found!",
   "_id": "velcure-ui@1.0.0"
 }
