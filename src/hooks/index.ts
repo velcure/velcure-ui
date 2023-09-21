@@ -5,6 +5,7 @@ export * from './use-callback-ref';
 export * from './use-disclosure';
 export * from './use-event-listener';
 export * from './use-focus-on-pointer-down';
+export * from './use-update-effect';
 export * from './useDebounce';
 export * from './useImage';
 export * from './useMergeRefs';
