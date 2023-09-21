@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.2.0](https://github.com/velcure/velcure-ui/compare/v1.1.0...v1.2.0) (2023-09-21)
+
+
+### Features
+
+* callbackref and disclosure hook ([7dc2087](https://github.com/velcure/velcure-ui/commit/7dc2087e9ec30bf5f6e67e50ac43fa3bc3360e9b))
+* lazy utils ([1aae871](https://github.com/velcure/velcure-ui/commit/1aae871ba2c1a3422d0d46c13dd42913148917b3))
+* popover ([c9c7d2a](https://github.com/velcure/velcure-ui/commit/c9c7d2a45a19a3e0d097035ebe43541bb69817d0))
+* useEventListener / useAnimationState ([4d1f035](https://github.com/velcure/velcure-ui/commit/4d1f0350e4ca9817d2550b4c98bb2065cf16e7de))
+* useFocusEffect ([128cf73](https://github.com/velcure/velcure-ui/commit/128cf736ba65f3d1058e3811bb75de35bd6b94ce))
+* useFocusOnPointerDown ([f1c0f8e](https://github.com/velcure/velcure-ui/commit/f1c0f8e47e4c1b9c80d096500e872b32195ff6b5))
+* useUpdateEffect ([e3d0a49](https://github.com/velcure/velcure-ui/commit/e3d0a49ce683d10afbd33f838772883f428bc218))
+
 ## [1.1.0](https://github.com/velcure/velcure-ui/compare/v1.0.2...v1.1.0) (2023-09-21)
 
 
