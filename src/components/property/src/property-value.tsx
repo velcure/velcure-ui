@@ -11,7 +11,7 @@ export const PropertyValue = forwardRef<HTMLDListElement, PropertyValueProps>(
       <dd
         ref={ref}
         className={cn(
-          'text-sm leading-6',
+          'text-sm leading-6 text-accent-foreground',
           'flex flex-row items-center flex-1',
           'sm:col-span-2 mt-1 sm:mt-0',
           className

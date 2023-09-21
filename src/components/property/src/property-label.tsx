@@ -12,7 +12,7 @@ export const PropertyLabel = forwardRef<HTMLDListElement, PropertyLabelProps>(
         ref={ref}
         className={cn(
           'text-sm font-medium leading-6',
-          'flex flex-row text-muted-foreground',
+          'flex flex-row text-accent-foreground',
           className
         )}
         {...restProps}
