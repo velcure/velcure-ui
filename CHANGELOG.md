@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.1](https://github.com/velcure/velcure-ui/compare/v1.0.0...v1.0.1) (2023-09-21)
+
+
+### Bug Fixes
+
+* ci related ([f0006d6](https://github.com/velcure/velcure-ui/commit/f0006d60353ad476e03a74382275fecf5a41d408))
+* npm ([884c398](https://github.com/velcure/velcure-ui/commit/884c3986f932126edbfaf349a1e108bc6452649f))
+
 ## 1.0.0 (2023-09-21)
 
 
