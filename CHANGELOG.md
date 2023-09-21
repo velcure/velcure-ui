@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/velcure/velcure-ui/compare/v1.3.0...v1.4.0) (2023-09-21)
+
+
+### Features
+
+* tooltip ([6827796](https://github.com/velcure/velcure-ui/commit/6827796b5941b28d5f277c162a9b350e52554910))
+
 ## [1.3.0](https://github.com/velcure/velcure-ui/compare/v1.2.0...v1.3.0) (2023-09-21)
 
 
