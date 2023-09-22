@@ -2,6 +2,7 @@ export * from './alert/src';
 export * from './avatar/src';
 export * from './button/src';
 export * from './card/src';
+export * from './datepicker/src';
 export * from './focus-lock/src';
 export * from './form-control/src';
 export * from './input/src';

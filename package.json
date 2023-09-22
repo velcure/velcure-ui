@@ -75,6 +75,7 @@
     "@zag-js/focus-visible": "^0.21.0",
     "class-variance-authority": "^0.7.0",
     "cx": "^23.9.0",
+    "dayjs": "^1.11.10",
     "react-focus-lock": "^2.9.5",
     "tailwind-merge": "^1.14.0"
   },
