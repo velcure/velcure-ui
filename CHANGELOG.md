@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.7.0](https://github.com/velcure/velcure-ui/compare/v1.6.1...v1.7.0) (2023-09-22)
+
+
+### Features
+
+* menu ([01d5789](https://github.com/velcure/velcure-ui/commit/01d5789881a8537916202a5d107ef7d4099212af))
+* toast ([22ee9c8](https://github.com/velcure/velcure-ui/commit/22ee9c8f7d6d1cf97fb6c134d8ba66c906d3c024))
+
+
+### Bug Fixes
+
+* save some lifes lol ([2041557](https://github.com/velcure/velcure-ui/commit/2041557af6ac411c77148cb54a47f181571e63dc))
+
 ## [1.6.1](https://github.com/velcure/velcure-ui/compare/v1.6.0...v1.6.1) (2023-09-22)
 
 
