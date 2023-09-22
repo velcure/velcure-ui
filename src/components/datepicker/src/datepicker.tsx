@@ -160,7 +160,6 @@ export const Datepicker = forwardRef<HTMLInputElement, DatepickerProps>(
             </PopoverTrigger>
           </InputGroup>
         </PopoverAnchor>
-        <div>{value?.toISOString()}</div>
         <PopoverContent className="w-full">
           <PopoverBody>
             <Calendar
