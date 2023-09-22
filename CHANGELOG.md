@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.5.0](https://github.com/velcure/velcure-ui/compare/v1.4.0...v1.5.0) (2023-09-22)
+
+
+### Features
+
+* datepicker ([2a39ce7](https://github.com/velcure/velcure-ui/commit/2a39ce77fa6d951b1abcb8633ecd3578bf5cf6ae))
+* logo ([f7ae9c0](https://github.com/velcure/velcure-ui/commit/f7ae9c02630fa94c08f86694762e40d4aa655242))
+
+
+### Bug Fixes
+
+* debug value ([a18a31f](https://github.com/velcure/velcure-ui/commit/a18a31fe371cc4885b76e2281c37f8a03d4f0b42))
+
 ## [1.4.0](https://github.com/velcure/velcure-ui/compare/v1.3.0...v1.4.0) (2023-09-21)
 
 
