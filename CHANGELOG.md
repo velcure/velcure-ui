@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.6.1](https://github.com/velcure/velcure-ui/compare/v1.6.0...v1.6.1) (2023-09-22)
+
+
+### Bug Fixes
+
+* dp within portal, input type ([42eaa7a](https://github.com/velcure/velcure-ui/commit/42eaa7a96a0b387104462dddeb7c9cf20e22ab59))
+* storybook theme ([a88373b](https://github.com/velcure/velcure-ui/commit/a88373bed1941f9ad9fe5450639a235245d5d9d3))
+
 ## [1.6.0](https://github.com/velcure/velcure-ui/compare/v1.5.0...v1.6.0) (2023-09-22)
 
 
