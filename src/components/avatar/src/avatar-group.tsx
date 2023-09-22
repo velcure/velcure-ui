@@ -1,12 +1,6 @@
-import { cn, compact } from '#/utilities';
+import { cn, compact, getValidChildren } from '#/utilities';
 import { cva } from 'class-variance-authority';
-import {
-  Children,
-  ComponentPropsWithoutRef,
-  cloneElement,
-  forwardRef,
-  isValidElement,
-} from 'react';
+import { ComponentPropsWithoutRef, cloneElement, forwardRef } from 'react';
 import { AvatarProps, avatarClasses } from './avatar';
 
 interface AvatarGroupOptions {
@@ -20,12 +14,6 @@ interface AvatarGroupOptions {
    * The maximum number of visible avatars
    */
   max?: number;
-}
-
-function getValidChildren(children: React.ReactNode) {
-  return Children.toArray(children).filter((child) =>
-    isValidElement(child)
-  ) as React.ReactElement[];
 }
 
 export interface AvatarGroupProps

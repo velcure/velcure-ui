@@ -3,6 +3,12 @@ import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+  features: {
+    buildStoriesJson: true,
+  },
+  core: {
+    disableTelemetry: true,
+  },
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
@@ -17,6 +23,7 @@ const config: StorybookConfig = {
         },
       },
     },
+    '@storybook/addon-a11y',
   ],
   framework: {
     name: '@storybook/react-webpack5',

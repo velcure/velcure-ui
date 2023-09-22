@@ -1,4 +1,5 @@
 import { clsx, type ClassValue } from 'clsx';
+import { Children, isValidElement } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 function isDev() {
@@ -70,3 +71,15 @@ export function runIfFn<T, U>(
 
 const isFunction = <T extends Function = Function>(value: any): value is T =>
   typeof value === 'function';
+
+/**
+ * Gets only the valid children of a component,
+ * and ignores any nullish or falsy child.
+ *
+ * @param children the children
+ */
+export function getValidChildren(children: React.ReactNode) {
+  return Children.toArray(children).filter((child) =>
+    isValidElement(child)
+  ) as React.ReactElement[];
+}

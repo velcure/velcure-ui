@@ -1,18 +1,6 @@
-import { cn, compact } from '#/utilities';
-import {
-    Children,
-    ComponentPropsWithoutRef,
-    cloneElement,
-    forwardRef,
-    isValidElement,
-} from 'react';
+import { cn, compact, getValidChildren } from '#/utilities';
+import { ComponentPropsWithoutRef, cloneElement, forwardRef } from 'react';
 import type { InputProps } from './input';
-
-function getValidChildren(children: React.ReactNode) {
-  return Children.toArray(children).filter((child) =>
-    isValidElement(child)
-  ) as React.ReactElement[];
-}
 
 export interface InputGroupProps
   extends ComponentPropsWithoutRef<'div'>,

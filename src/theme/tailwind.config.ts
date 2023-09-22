@@ -38,6 +38,9 @@ export const config: Config = {
         8: '2rem',
         10: '2.5rem',
         12: '3rem',
+        '3xs': '14rem',
+        '2xs': '16rem',
+        xs: '20rem',
       },
       minHeight: {
         2: '0.5rem',
