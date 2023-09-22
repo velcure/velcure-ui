@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.0](https://github.com/velcure/velcure-ui/compare/v1.5.0...v1.6.0) (2023-09-22)
+
+
+### Features
+
+* datepicker more formats ([959c95c](https://github.com/velcure/velcure-ui/commit/959c95caae089f1a92f939193a32174a5bb52cc0))
+
 ## [1.5.0](https://github.com/velcure/velcure-ui/compare/v1.4.0...v1.5.0) (2023-09-22)
 
 
