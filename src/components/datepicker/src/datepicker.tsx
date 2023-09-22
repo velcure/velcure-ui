@@ -8,6 +8,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '#/components/popover/src';
+import { Portal } from '#/components/portal/src';
 import { useControllableState, useDisclosure } from '#/hooks';
 import { forwardRef, useState } from 'react';
 import { Calendar, CalendarOptions } from './calendar';
@@ -133,6 +134,7 @@ export const Datepicker = forwardRef<HTMLInputElement, DatepickerProps>(
           <InputGroup>
             <Input
               ref={ref}
+              type="text"
               value={inputValue}
               autoComplete="off"
               placeholder={placeholder}
@@ -160,16 +162,18 @@ export const Datepicker = forwardRef<HTMLInputElement, DatepickerProps>(
             </PopoverTrigger>
           </InputGroup>
         </PopoverAnchor>
-        <PopoverContent className="w-full">
-          <PopoverBody>
-            <Calendar
-              value={value}
-              onClick={onCalendarClick}
-              {...calendarProps}
-              activeStartDate={value}
-            />
-          </PopoverBody>
-        </PopoverContent>
+        <Portal>
+          <PopoverContent className="w-full">
+            <PopoverBody>
+              <Calendar
+                value={value}
+                onClick={onCalendarClick}
+                {...calendarProps}
+                activeStartDate={value}
+              />
+            </PopoverBody>
+          </PopoverContent>
+        </Portal>
       </Popover>
     );
   }
