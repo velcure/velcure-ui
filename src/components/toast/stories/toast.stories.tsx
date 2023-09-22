@@ -5,7 +5,7 @@ import { ToastId } from '../src';
 import { ToastProvider } from '../src/toast.provider';
 import useToast from '../src/use-toast';
 
-const meta = {
+const meta: Meta = {
   title: 'Components / Feedback / Toast',
   parameters: {
     layout: 'centered',

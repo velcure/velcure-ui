@@ -63,6 +63,8 @@ export function useFocusOnHide(
         cancelAnimationFrame(rafId);
       };
     }
+
+    return;
   }, [shouldFocus, containerRef, focusRef]);
 }
 
