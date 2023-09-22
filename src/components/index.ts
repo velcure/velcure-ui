@@ -15,6 +15,7 @@ export * from './radio/src';
 export * from './spinner/src';
 export * from './textarea/src';
 export * from './timeline/src';
+export * from './toast/src';
 export * from './tooltip/src';
 export * from './transition/src';
 export * from './typography/src';
