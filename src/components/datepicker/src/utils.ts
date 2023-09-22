@@ -185,7 +185,7 @@ export const getFormattedDate = (
 ): string => {
   let defaultOptions: Intl.DateTimeFormatOptions = {
     day: 'numeric',
-    month: 'long',
+    month: 'numeric',
     year: 'numeric',
   };
 
@@ -285,7 +285,7 @@ export const formatInputValue = ({
   }
 
   let defaultOptions: Intl.DateTimeFormatOptions = {
-    month: 'long',
+    month: 'numeric',
     day: 'numeric',
     year: 'numeric',
   };
@@ -330,6 +330,8 @@ interface ParseInputValueProps {
   format?: string;
 }
 
+const FORMATS = ['DD/MM/YYYY', 'DD-MM-YYYY', 'DD.MM.YYYY', 'D.M.YYYY'];
+
 export const parseInputValue = ({
   inputValue,
   locale,
@@ -337,10 +339,14 @@ export const parseInputValue = ({
 }: ParseInputValueProps) => {
   const MINIMUM_DATE = new Date(1001, 0, 0);
 
-  const date = dayjs(inputValue, format, locale);
+  const formats = format ? [format, ...FORMATS] : FORMATS;
 
-  if (date.isValid() && !date.isBefore(MINIMUM_DATE)) {
-    return date.toDate();
+  for (const f of formats) {
+    const date = dayjs(inputValue, f, locale);
+
+    if (date.isValid() && !date.isBefore(MINIMUM_DATE)) {
+      return date.toDate();
+    }
   }
 
   return;

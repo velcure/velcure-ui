@@ -31,7 +31,12 @@ export const WithFormatDate = () => (
 export const Controlled = () => {
   const [value, setValue] = React.useState<Date | undefined>(undefined);
 
-  return <Datepicker value={value} onChange={(date) => setValue(date)} />;
+  return (
+    <>
+      <Datepicker value={value} onChange={(date) => setValue(date)} />
+      <div>value: {value?.toISOString()}</div>
+    </>
+  );
 };
 
 export const DateInPast = () => {
