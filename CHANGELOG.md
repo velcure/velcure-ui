@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.8.0](https://github.com/velcure/velcure-ui/compare/v1.7.0...v1.8.0) (2023-09-23)
+
+
+### Features
+
+* **menu:** added group ([e897451](https://github.com/velcure/velcure-ui/commit/e897451de37cdf53de956ac48195f111e34f419d))
+* **modal:** migrated modal ([81264fb](https://github.com/velcure/velcure-ui/commit/81264fbe23be10a5755b9607e917d2cbebecc29f))
+
+
+### Bug Fixes
+
+* small issue ([3ca9e88](https://github.com/velcure/velcure-ui/commit/3ca9e8818076f95f2454403ec1455ba7da8eaa76))
+* storybook issues ([22acea9](https://github.com/velcure/velcure-ui/commit/22acea9820be6b3274b8e0233c8d3befcb40bec0))
+
 ## [1.7.0](https://github.com/velcure/velcure-ui/compare/v1.6.1...v1.7.0) (2023-09-22)
 
 
