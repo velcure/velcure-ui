@@ -2,6 +2,8 @@ export { Menu } from './menu';
 export type { MenuProps } from './menu';
 export { MenuCommand } from './menu-command';
 export type { MenuCommandProps } from './menu-command';
+export { MenuGroup } from './menu-group';
+export type { MenuGroupProps } from './menu-group';
 export { MenuItem } from './menu-item';
 export type { MenuItemProps } from './menu-item';
 export { MenuList } from './menu-list';

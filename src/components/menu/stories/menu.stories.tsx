@@ -1,7 +1,7 @@
 import { Button } from '#/components/button/src';
 import { Meta } from '@storybook/react';
 import { FaSearch, FaTruck, FaUndoAlt, FaUnlink } from 'react-icons/fa';
-import { Menu, MenuItem, MenuList, MenuTrigger } from '../src';
+import { Menu, MenuGroup, MenuItem, MenuList, MenuTrigger } from '../src';
 
 const meta = {
   title: 'Components / Overlay / Menu',
@@ -84,4 +84,22 @@ export const WithDisabledItem = () => (
       </MenuList>
     </Menu>
   </>
+);
+
+export const withGroupedItems = () => (
+  <Menu>
+    <MenuTrigger>
+      <Button size="sm">Open menu</Button>
+    </MenuTrigger>
+    <MenuList>
+      <MenuGroup title="Group 1">
+        <MenuItem>Share...</MenuItem>
+        <MenuItem>Move...</MenuItem>
+      </MenuGroup>
+      <MenuGroup title="Group 2">
+        <MenuItem isDisabled>Rename...</MenuItem>
+        <MenuItem>Delete...</MenuItem>
+      </MenuGroup>
+    </MenuList>
+  </Menu>
 );
