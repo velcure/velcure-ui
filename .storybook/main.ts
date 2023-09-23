@@ -12,18 +12,36 @@ const config: StorybookConfig = {
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
-    '@storybook/addon-onboarding',
     '@storybook/addon-interactions',
-    // '@storybook/addon-postcss',
+    //'@storybook/addon-a11y',
+    '@storybook/addon-styling-webpack',
     {
-      name: '@storybook/addon-styling',
+      name: '@storybook/addon-styling-webpack',
+
       options: {
-        postCss: {
-          implementation: require.resolve('postcss'),
-        },
+        rules: [
+          {
+            test: /\.css$/,
+            sideEffects: true,
+            use: [
+              require.resolve('style-loader'),
+              {
+                loader: require.resolve('css-loader'),
+                options: {
+                  importLoaders: 1,
+                },
+              },
+              {
+                loader: require.resolve('postcss-loader'),
+                options: {
+                  implementation: require.resolve('postcss'),
+                },
+              },
+            ],
+          },
+        ],
       },
     },
-    '@storybook/addon-a11y',
   ],
   framework: {
     name: '@storybook/react-webpack5',
