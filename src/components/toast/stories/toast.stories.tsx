@@ -14,7 +14,7 @@ const meta: Meta = {
     (Story) => (
       <div className="space-y-4">
         <ToastProvider />
-        <Story />
+        {Story()}
       </div>
     ),
   ],
