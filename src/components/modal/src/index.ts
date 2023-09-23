@@ -1,3 +1,15 @@
+export {
+  Drawer,
+  DrawerBody,
+  DrawerFooter,
+  DrawerOverlay,
+  useDrawerContext,
+} from './drawer';
+export type { DrawerPlacement, DrawerProps } from './drawer';
+export { DrawerContent } from './drawer-content';
+export type { DrawerContentProps } from './drawer-content';
+export { DrawerHeader } from './drawer-header';
+export type { DrawerHeaderProps } from './drawer-header';
 export { Modal, ModalContextProvider, useModalContext } from './modal';
 export type { ModalProps } from './modal';
 export { ModalBody } from './modal-body';

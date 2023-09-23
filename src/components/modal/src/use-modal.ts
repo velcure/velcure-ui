@@ -109,9 +109,9 @@ export function useModal(props: UseModalProps) {
 
   const [dialogId, headerId, bodyId] = useIds(
     id,
-    `chakra-modal`,
-    `chakra-modal--header`,
-    `chakra-modal--body`
+    `velcure-modal`,
+    `velcure-modal--header`,
+    `velcure-modal--body`
   );
 
   /**
