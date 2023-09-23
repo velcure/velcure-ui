@@ -8,6 +8,7 @@ export * from './form-control/src';
 export * from './input/src';
 export * from './logo/src';
 export * from './menu/src';
+export * from './modal/src';
 export * from './popover/src';
 export * from './popper/src';
 export * from './portal/src';

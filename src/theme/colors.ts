@@ -32,4 +32,5 @@ export const colors = {
   'popover-foreground': tailwindColors.slate[900],
   tooltip: tailwindColors.slate[900],
   'tooltip-foreground': tailwindColors.slate[50],
+  'modal-overlay': tailwindColors.slate[500],
 };

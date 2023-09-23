@@ -66,6 +66,7 @@
     "react-dom": "^18.2.0",
     "react-frame-component": "^5.2.6",
     "react-icons": "^4.11.0",
+    "react-lorem-ipsum": "^1.4.10",
     "size-limit": "^9.0.0",
     "storybook": "^7.4.4",
     "style-loader": "^3.3.3",
@@ -77,10 +78,12 @@
   "dependencies": {
     "@popperjs/core": "^2.11.8",
     "@zag-js/focus-visible": "^0.21.0",
+    "aria-hidden": "^1.2.3",
     "class-variance-authority": "^0.7.0",
     "cx": "^23.9.0",
     "dayjs": "^1.11.10",
     "react-focus-lock": "^2.9.5",
+    "react-remove-scroll": "^2.5.6",
     "tailwind-merge": "^1.14.0"
   },
   "peerDependencies": {
