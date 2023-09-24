@@ -5,9 +5,10 @@ export const colors = {
   inherit: 'inherit',
   current: 'currentColor',
   transparent: 'transparent',
-  background: tailwindColors.white,
+  //background: tailwindColors.white,
+  background: tailwindColors.slate[50],
   foreground: tailwindColors.slate[900],
-  primary: tailwindColors.slate[900],
+  primary: '#111827', //tailwindColors.slate[900],
   'primary-foreground': tailwindColors.slate[50],
   secondary: tailwindColors.slate[100],
   'secondary-foreground': tailwindColors.slate[900],
@@ -33,4 +34,11 @@ export const colors = {
   tooltip: tailwindColors.slate[900],
   'tooltip-foreground': tailwindColors.slate[50],
   'modal-overlay': tailwindColors.slate[500],
+  navbar: {
+    DEFAULT: tailwindColors.gray[900], //'#161b22',
+    foreground: {
+      DEFAULT: tailwindColors.gray[300],
+      hover: tailwindColors.white,
+    },
+  },
 };

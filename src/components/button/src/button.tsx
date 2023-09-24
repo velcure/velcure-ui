@@ -41,6 +41,7 @@ const buttonClasses = cva(
         ]),
         ghost: cn(['hover:bg-accent hover:text-accent-foreground']),
         link: cn(['text-primary underline-offset-4 hover:underline']),
+        unstyled: '',
       },
       size: {
         xs: 'h-6 min-w-6 text-xs px-2',

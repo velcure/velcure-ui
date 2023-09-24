@@ -1,6 +1,7 @@
 import { clsx, type ClassValue } from 'clsx';
-import { Children, isValidElement } from 'react';
+import { Children, forwardRef as forwardReactRef, isValidElement } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { As, ComponentWithAs, PropsOf, RightJoinProps } from '../react-types';
 
 function isDev() {
   return process.env.NODE_ENV !== 'production';
@@ -82,4 +83,18 @@ export function getValidChildren(children: React.ReactNode) {
   return Children.toArray(children).filter((child) =>
     isValidElement(child)
   ) as React.ReactElement[];
+}
+
+export function forwardRef<Props extends object, Component extends As>(
+  component: React.ForwardRefRenderFunction<
+    any,
+    RightJoinProps<PropsOf<Component>, Props> & {
+      as?: As;
+    }
+  >
+) {
+  return forwardReactRef(component) as unknown as ComponentWithAs<
+    Component,
+    Props
+  >;
 }

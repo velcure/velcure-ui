@@ -59,7 +59,6 @@ export const MenuList = forwardRef<HTMLDivElement, MenuListProps>(
           {...listProps}
           className={cn(
             'bg-popover text-popover-foreground p-3',
-
             'outline-none focus:outline-none shadow-md rounded-md border z-inherit min-w-3xs',
             listProps.className
           )}

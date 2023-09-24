@@ -1,11 +1,6 @@
-import { cn } from '#/utilities';
+import { As, cn, forwardRef } from '#/utilities';
 import { cva } from 'class-variance-authority';
-import {
-  Children,
-  ComponentPropsWithoutRef,
-  cloneElement,
-  forwardRef,
-} from 'react';
+import { Children, ComponentPropsWithoutRef, cloneElement } from 'react';
 import { MenuCommand } from './menu-command';
 import { MenuIcon } from './menu-icon';
 import { UseMenuItemProps, useMenuItem } from './use-menu';
@@ -39,7 +34,9 @@ type HTMLAttributes = React.HTMLAttributes<HTMLElement>;
 
 export interface MenuItemProps
   extends Omit<ComponentPropsWithoutRef<'button'>, IsDisabledProps>,
-    MenuItemOptions {}
+    MenuItemOptions {
+  as?: As;
+}
 
 const classes = cva(
   [
@@ -56,56 +53,50 @@ const classes = cva(
   }
 );
 
-export const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>(
-  (props, ref) => {
-    const {
-      icon,
-      //iconSpacing = '0.75rem',
-      command,
-      className,
-      children,
-      asChild,
-      ...rest
-    } = props;
+export const MenuItem = forwardRef<MenuItemProps, 'button'>((props, ref) => {
+  const {
+    icon,
+    command,
+    className,
+    children,
+    asChild,
+    as: As = 'button',
+    ...rest
+  } = props;
 
-    const menuitemProps = useMenuItem(rest, ref) as HTMLAttributes;
+  const menuitemProps = useMenuItem(rest, ref) as HTMLAttributes;
 
-    const shouldWrap = icon || command;
+  const shouldWrap = icon || command;
 
-    const _children = shouldWrap ? (
-      <span className="flex-1 pointer-events-none">{children}</span>
-    ) : (
-      children
-    );
+  const _children = shouldWrap ? (
+    <span className="flex-1 pointer-events-none">{children}</span>
+  ) : (
+    children
+  );
 
-    if (asChild) {
-      const child: any = Children.only(children);
-      return cloneElement(
-        child,
-        {
-          ...menuitemProps,
-          className: cn(classes(), child.props.className),
-        },
-        <>
-          {icon && <MenuIcon className="text-sm me-3">{icon}</MenuIcon>}
-          {_children}
-          {command && <MenuCommand className="ms-3">{command}</MenuCommand>}
-        </>
-      );
-    }
-
-    return (
-      <button
-        {...menuitemProps}
-        className={cn(classes(), className)}
-        type="button"
-      >
+  if (asChild) {
+    const child: any = Children.only(children);
+    return cloneElement(
+      child,
+      {
+        ...menuitemProps,
+        className: cn(classes(), child.props.className),
+      },
+      <>
         {icon && <MenuIcon className="text-sm me-3">{icon}</MenuIcon>}
         {_children}
         {command && <MenuCommand className="ms-3">{command}</MenuCommand>}
-      </button>
+      </>
     );
   }
-);
+
+  return (
+    <As {...menuitemProps} className={cn(classes(), className)} type="button">
+      {icon && <MenuIcon className="text-sm me-3">{icon}</MenuIcon>}
+      {_children}
+      {command && <MenuCommand className="ms-3">{command}</MenuCommand>}
+    </As>
+  );
+});
 
 MenuItem.displayName = 'MenuItem';
