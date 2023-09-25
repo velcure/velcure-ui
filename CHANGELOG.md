@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.9.0](https://github.com/velcure/velcure-ui/compare/v1.8.0...v1.9.0) (2023-09-25)
+
+
+### Features
+
+* **blocks:** build blocks ([b83a102](https://github.com/velcure/velcure-ui/commit/b83a1022559638bffddef7e46c9927658b282640))
+* **blocks:** shell and nav ([b9508d0](https://github.com/velcure/velcure-ui/commit/b9508d0eb1aa9a88f861610f8c364f59212e8613))
+* **drawer:** added the drawer component ([8a9df4d](https://github.com/velcure/velcure-ui/commit/8a9df4d8840456c49f9440aaf38d8ec31f7402b3))
+* empty state ([b5a5e25](https://github.com/velcure/velcure-ui/commit/b5a5e25487f208ce85dfa68227f4516706381324))
+* error boundary ([e04c69a](https://github.com/velcure/velcure-ui/commit/e04c69a0d7e3beaf183b104f235357ee197e2a95))
+* nav switcher + improved tw ([2940c06](https://github.com/velcure/velcure-ui/commit/2940c068d7b273a7eddef436f44b2637a90a427e))
+* **page:** variants ([896cdd2](https://github.com/velcure/velcure-ui/commit/896cdd2ab073e575e77260daddae39699c606ae0))
+
+
+### Bug Fixes
+
+* **page:** export ([2e46556](https://github.com/velcure/velcure-ui/commit/2e465566274b2045fd36771e8ccce72890775c00))
+
 ## [1.8.0](https://github.com/velcure/velcure-ui/compare/v1.7.0...v1.8.0) (2023-09-23)
 
 
