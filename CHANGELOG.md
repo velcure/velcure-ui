@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.0](https://github.com/velcure/velcure-ui/compare/v1.9.3...v1.10.0) (2023-09-25)
+
+
+### Features
+
+* **button:** as prop ([4bc85e6](https://github.com/velcure/velcure-ui/commit/4bc85e629eb2061b427cf725dc0169f81082e1e0))
+
 ## [1.9.3](https://github.com/velcure/velcure-ui/compare/v1.9.2...v1.9.3) (2023-09-25)
 
 
