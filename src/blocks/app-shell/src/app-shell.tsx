@@ -28,7 +28,7 @@ export const AppShell = forwardRef<HTMLDivElement, AppShellProps>(
       >
         {navbar}
         {children && (
-          <main className="flex flex-1 min-h-0 min-w-0">
+          <div className="flex flex-1 min-h-0 min-w-0">
             <Suspense
               fallback={
                 <div className="flex-1 flex items-center justify-center">
@@ -38,7 +38,7 @@ export const AppShell = forwardRef<HTMLDivElement, AppShellProps>(
             >
               {children}
             </Suspense>
-          </main>
+          </div>
         )}
       </div>
     );

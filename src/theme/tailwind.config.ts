@@ -17,6 +17,9 @@ export const config: Config = {
         'focus-visible': 'focus-visible',
       },
       colors,
+      borderColor: {
+        DEFAULT: colors.border,
+      },
       animation: {
         ripple: 'ripple 600ms linear',
       },
@@ -50,6 +53,7 @@ export const config: Config = {
         6: '1.5rem',
         8: '2rem',
         10: '2.5rem',
+        14: '3.5rem',
       },
       zIndex: {
         inherit: 'inherit',

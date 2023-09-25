@@ -32,8 +32,8 @@ export const AppNav = forwardRef<HTMLDivElement, AppNavProps>((props, ref) => {
             <div className="flex gap-2 items-center">{account}</div>
           </div>
         </nav>
-        <div className="flex md:justify-center bg-navbar min-h-10">
-          <div className="hidden md:flex justify-between w-full max-w-full overflow-auto p-0 sm:px-1 py-1">
+        <div className="flex md:justify-center bg-navbar min-h-10 py-1 px-4">
+          <div className="hidden md:flex justify-between w-full max-w-full overflow-auto">
             <nav
               className="flex items-stretch space-x-1"
               aria-label="Main Navigation"
@@ -42,7 +42,7 @@ export const AppNav = forwardRef<HTMLDivElement, AppNavProps>((props, ref) => {
             </nav>
             {secondary && <div className="flex">{secondary}</div>}
           </div>
-          <div className="flex md:hidden items-center justify-start p-2">
+          <div className="flex md:hidden items-center justify-start">
             <div className="text-white">
               <AppNavToggleButton
                 isOpen={isOpen}
