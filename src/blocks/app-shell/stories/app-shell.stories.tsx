@@ -202,3 +202,28 @@ export const WithError = () => {
     </AppShell>
   );
 };
+
+export const WithText = () => {
+  const [isLoading, { toggle }] = useBoolean(false);
+
+  return (
+    <AppShell navbar={<Navi />}>
+      <Page onBack="#" isLoading={isLoading} variant="text">
+        <PageHeader
+          title="Dashboard"
+          description="Here you can manage your daily tours and assign them to your vehicles and drivers."
+          actions={
+            <Button size="sm" onClick={toggle}>
+              {isLoading ? 'Loading...' : 'Save'}
+            </Button>
+          }
+        />
+        <PageBody>
+          <div className="p-4">
+            <LoremIpsum p={40} />
+          </div>
+        </PageBody>
+      </Page>
+    </AppShell>
+  );
+};

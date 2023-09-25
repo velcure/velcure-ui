@@ -16,6 +16,7 @@ export interface UsePageOptions {
    * We recommend logging error messages to an error reporting service.
    */
   onError?: (error: Error, errorInfo: React.ErrorInfo) => void;
+  variant?: 'default' | 'full' | 'text';
 }
 
 export const [PageProvider, usePageContext] = createContext<
@@ -31,6 +32,7 @@ export const usePage = (options: UsePageOptions = {}) => {
     isLoading: options.isLoading ?? false,
     onErrorReset: options.onErrorReset,
     onError: options.onError,
+    variant: options.variant ?? 'default',
   };
 };
 

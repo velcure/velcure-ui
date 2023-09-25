@@ -1,11 +1,15 @@
 import { Spinner } from '#/components';
 import { ErrorBoundary } from '#/components/error-boundary/src';
 import { cn } from '#/utilities';
+import { cva } from 'class-variance-authority';
 import { AnimatePresence, HTMLMotionProps, motion } from 'framer-motion';
 import { Suspense, forwardRef } from 'react';
 import { usePageContext } from './use-page';
 
-export interface PageBodyProps extends HTMLMotionProps<'div'> {}
+export interface PageBodyProps
+  extends Omit<HTMLMotionProps<'div'>, 'children'> {
+  children?: React.ReactNode;
+}
 
 const Loading = () => (
   <motion.div
@@ -17,6 +21,16 @@ const Loading = () => (
     <Spinner className="h-8 w-8" />
   </motion.div>
 );
+
+const classes = cva(['flex flex-1 flex-col'], {
+  variants: {
+    variant: {
+      default: 'p-4',
+      full: 'flex h-full flex-1',
+      text: 'mx-auto max-w-6xl p-4 flex-1',
+    },
+  },
+});
 
 /**
  * PageBody is the main content area of the page.
@@ -30,7 +44,7 @@ export const PageBody = forwardRef<HTMLDivElement, PageBodyProps>(
   (props, ref) => {
     const { className, children, ...rest } = props;
 
-    const { isLoading, onErrorReset, onError } = usePageContext();
+    const { isLoading, onErrorReset, onError, variant } = usePageContext();
 
     return (
       <ErrorBoundary onReset={onErrorReset} onError={onError}>
@@ -50,7 +64,7 @@ export const PageBody = forwardRef<HTMLDivElement, PageBodyProps>(
                 exit={{ opacity: 0 }}
                 {...rest}
               >
-                {children}
+                <div className={classes({ variant })}>{children}</div>
               </motion.div>
             </Suspense>
           )}

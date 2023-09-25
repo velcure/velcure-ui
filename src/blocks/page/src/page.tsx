@@ -7,14 +7,22 @@ export interface PageProps
     UsePageOptions {}
 
 export const Page = forwardRef<HTMLDivElement, PageProps>((props, ref) => {
-  const { className, onBack, isLoading, onError, onErrorReset, ...rest } =
-    props;
+  const {
+    className,
+    onBack,
+    isLoading,
+    onError,
+    onErrorReset,
+    variant,
+    ...rest
+  } = props;
 
   const ctx = usePage({
     onBack,
     isLoading,
     onError,
     onErrorReset,
+    variant,
   });
 
   return (
