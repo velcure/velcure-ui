@@ -99,7 +99,7 @@ export const AppNavItem = forwardRef<AppNavItemProps, 'button'>(
         className={cn(classes({ isActive }), className)}
         {...restProps}
       >
-        {icon && <div className="h-4 w-4 me-1">{icon}</div>}
+        {icon && <div className="h-4 w-4 me-1 flex items-center">{icon}</div>}
         <span>{title}</span>
         {isNavbarItemMenu && (
           <motion.div

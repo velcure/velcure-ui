@@ -1,6 +1,13 @@
-import { AppNav, AppNavAccount, AppNavItem } from '#/blocks/app-nav/src';
+import {
+  AppNav,
+  AppNavAccount,
+  AppNavItem,
+  AppNavSwitcher,
+  AppNavSwitcherItem,
+} from '#/blocks/app-nav/src';
 import { Page, PageBody, PageHeader } from '#/blocks/page/src';
 import { Button, EmptyState } from '#/components';
+import { initials } from '#/components/avatar/src/avatar-name';
 import { useBoolean } from '#/hooks';
 import { Meta } from '@storybook/react';
 import { LuCog, LuHome, LuLogOut, LuUser, LuUserPlus } from 'react-icons/lu';
@@ -21,7 +28,12 @@ export default meta;
 
 const Navi = () => (
   <AppNav
-    switcher={<div>Switch</div>}
+    switcher={
+      <AppNavSwitcher>
+        <AppNavSwitcherItem isCircle>{initials('Velcure')}</AppNavSwitcherItem>
+        <AppNavSwitcherItem>Velcure</AppNavSwitcherItem>
+      </AppNavSwitcher>
+    }
     account={
       <AppNavAccount
         name="John Doe"

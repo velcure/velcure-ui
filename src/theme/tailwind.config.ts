@@ -1,8 +1,8 @@
 import type { Config } from 'tailwindcss';
 import { colors } from './colors';
 
-export const config: Config = {
-  content: ['./src/**/*.{js,jsx,ts,tsx}'],
+export const config: Partial<Config> = {
+  //content: ['./src/**/*.{js,jsx,ts,tsx}'],
   darkMode: ['class', '[data-mode="dark"]'],
   theme: {
     extend: {

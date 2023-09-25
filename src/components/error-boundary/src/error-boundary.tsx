@@ -58,7 +58,8 @@ const initialState: ErrorBoundaryState = {
 
 export class ErrorBoundary extends React.Component<
   ErrorBoundaryProps,
-  ErrorBoundaryState
+  ErrorBoundaryState,
+  typeof Context
 > {
   constructor(props: ErrorBoundaryProps) {
     super(props);
@@ -67,7 +68,7 @@ export class ErrorBoundary extends React.Component<
   }
 
   static contextType = Context;
-  context!: React.ContextType<typeof Context>;
+  declare context: React.ContextType<typeof Context>;
 
   static getDerivedStateFromError(error: Error) {
     return { didCatch: true, error };
