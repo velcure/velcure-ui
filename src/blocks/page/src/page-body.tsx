@@ -40,7 +40,7 @@ export const PageBody = forwardRef<HTMLDivElement, PageBodyProps>(
             <motion.div
               ref={ref}
               className={cn(
-                'flex-1 min-h-0 min-w-0 overflow-y-auto',
+                'flex-1 min-h-0 min-w-0 overflow-y-auto flex flex-col',
                 className
               )}
               initial={{ opacity: 0 }}

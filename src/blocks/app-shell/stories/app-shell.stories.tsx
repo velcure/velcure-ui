@@ -1,9 +1,9 @@
 import { AppNav, AppNavAccount, AppNavItem } from '#/blocks/app-nav/src';
 import { Page, PageBody, PageHeader } from '#/blocks/page/src';
-import { Button } from '#/components';
+import { Button, EmptyState } from '#/components';
 import { useBoolean } from '#/hooks';
 import { Meta } from '@storybook/react';
-import { LuCog, LuHome, LuLogOut, LuUser } from 'react-icons/lu';
+import { LuCog, LuHome, LuLogOut, LuUser, LuUserPlus } from 'react-icons/lu';
 import { LoremIpsum } from 'react-lorem-ipsum';
 import { AppShell } from '../src';
 
@@ -102,6 +102,39 @@ export const WithHero = () => {
           <div className="p-4">
             <LoremIpsum p={10} />
           </div>
+        </PageBody>
+      </Page>
+    </AppShell>
+  );
+};
+
+export const Empty = () => {
+  const [isLoading, { toggle }] = useBoolean(false);
+
+  return (
+    <AppShell navbar={<Navi />}>
+      <Page onBack="#" isLoading={isLoading}>
+        <PageHeader
+          title="Dashboard"
+          description="Here you can manage your daily tours and assign them to your vehicles and drivers."
+          actions={
+            <Button size="sm" onClick={toggle}>
+              {isLoading ? 'Loading...' : 'Save'}
+            </Button>
+          }
+        />
+        <PageBody>
+          <EmptyState
+            icon={<LuUserPlus />}
+            title="No Data"
+            description="No data to display."
+            actions={
+              <>
+                <Button variant="primary">Import customers</Button>
+                <Button variant="secondary">Create customer</Button>
+              </>
+            }
+          />
         </PageBody>
       </Page>
     </AppShell>
