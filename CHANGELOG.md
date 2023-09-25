@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.12.0](https://github.com/velcure/velcure-ui/compare/v1.11.0...v1.12.0) (2023-09-25)
+
+
+### Features
+
+* **navbar:** pulse ([f5891ba](https://github.com/velcure/velcure-ui/commit/f5891baf833f848dcb579c2f81bb14ac8e4f5a2c))
+
+
+### Bug Fixes
+
+* **navbar:** disable user-select ([6d27aaa](https://github.com/velcure/velcure-ui/commit/6d27aaa90b63fe4c096c2471bb1cbf81b17773ce))
+
 ## [1.11.0](https://github.com/velcure/velcure-ui/compare/v1.10.0...v1.11.0) (2023-09-25)
 
 
