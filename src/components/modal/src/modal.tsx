@@ -114,7 +114,6 @@ const [ModalContextProvider, useModalContext] = createContext<ModalContext>({
  * @see WAI-ARIA https://www.w3.org/WAI/ARIA/apg/patterns/dialogmodal/
  */
 export const Modal: React.FC<ModalProps> = (props) => {
-  const { isOpen } = props;
   const modalProps: ModalProps = {
     scrollBehavior: 'outside',
     autoFocus: true,
@@ -162,7 +161,7 @@ export const Modal: React.FC<ModalProps> = (props) => {
   return (
     <ModalContextProvider value={context}>
       <AnimatePresence onExitComplete={onCloseComplete}>
-        {isOpen && <Portal {...portalProps}>{children}</Portal>}
+        {context.isOpen && <Portal {...portalProps}>{children}</Portal>}
       </AnimatePresence>
     </ModalContextProvider>
   );
