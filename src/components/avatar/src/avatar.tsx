@@ -1,8 +1,7 @@
-import { callAllHandlers, cn, dataAttr } from '#/utilities';
+import { callAllHandlers, cn, dataAttr, initials } from '#/utilities';
 import { VariantProps, cva } from 'class-variance-authority';
 import { ComponentPropsWithoutRef, forwardRef, useState } from 'react';
 import { AvatarImage } from './avatar-image';
-import { initials } from './avatar-name';
 import { AvatarOptions } from './avatar-types';
 import { GenericAvatarIcon } from './generic-avatar-icon';
 

@@ -7,8 +7,8 @@ import {
 } from '#/blocks/app-nav/src';
 import { Page, PageBody, PageHeader } from '#/blocks/page/src';
 import { Button, EmptyState } from '#/components';
-import { initials } from '#/components/avatar/src/avatar-name';
 import { useBoolean } from '#/hooks';
+import { initials } from '#/utilities';
 import { Meta } from '@storybook/react';
 import { LuCog, LuHome, LuLogOut, LuUser, LuUserPlus } from 'react-icons/lu';
 import { LoremIpsum } from 'react-lorem-ipsum';
