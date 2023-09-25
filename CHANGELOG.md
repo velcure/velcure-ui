@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.3](https://github.com/velcure/velcure-ui/compare/v1.9.2...v1.9.3) (2023-09-25)
+
+
+### Bug Fixes
+
+* **page:** onBack ([e68b4f3](https://github.com/velcure/velcure-ui/commit/e68b4f30ca10abfeb3228f33d81856b62e30190c))
+
 ## [1.9.2](https://github.com/velcure/velcure-ui/compare/v1.9.1...v1.9.2) (2023-09-25)
 
 
