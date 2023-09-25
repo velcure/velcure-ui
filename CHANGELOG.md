@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.13.0](https://github.com/velcure/velcure-ui/compare/v1.12.0...v1.13.0) (2023-09-25)
+
+
+### Features
+
+* hooks ([6df58a9](https://github.com/velcure/velcure-ui/commit/6df58a94f0034e242f7c83ccec0f7e6401bd8a3f))
+
 ## [1.12.0](https://github.com/velcure/velcure-ui/compare/v1.11.0...v1.12.0) (2023-09-25)
 
 
