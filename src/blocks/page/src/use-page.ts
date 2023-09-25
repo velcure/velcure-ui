@@ -1,7 +1,7 @@
 import { createContext } from '#/hooks';
 
 export interface UsePageOptions {
-  onBack?: string | boolean | (() => void);
+  onBack?: () => void;
   /**
    * Use the `isLoading` prop to render a spinner in the middle of the page body.
    * @default false

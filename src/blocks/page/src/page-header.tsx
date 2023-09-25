@@ -31,6 +31,7 @@ export const PageHeader = forwardRef<HTMLDivElement, PageHeaderProps>(
                 className="me-2"
                 size="sm"
                 aria-label="Back"
+                onClick={() => onBack?.()}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
