@@ -22,7 +22,7 @@ const Loading = () => (
   </motion.div>
 );
 
-const classes = cva(['flex flex-1 flex-col'], {
+const classes = cva(['flex flex-1 flex-col w-full'], {
   variants: {
     variant: {
       default: 'p-4',

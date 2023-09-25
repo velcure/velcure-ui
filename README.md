@@ -17,7 +17,7 @@ const velcurePlugin = require("@velcure/ui/theme");
 
 module.exports = {
   content: [
-    "./node_modules/velcure/ui/**/*.{js,jsx,ts,tsx}"
+    "./node_modules/@velcure/ui/**/*.{js,jsx,ts,tsx}"
   ],
   theme: {
     extend: {},
