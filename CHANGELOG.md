@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.11.0](https://github.com/velcure/velcure-ui/compare/v1.10.0...v1.11.0) (2023-09-25)
+
+
+### Features
+
+* **utility:** export initials ([5a6e32d](https://github.com/velcure/velcure-ui/commit/5a6e32d6cfd83a165f956f2679b7b30f39481ca2))
+
+
+### Bug Fixes
+
+* **navbar:** react-router support ([ac9fd44](https://github.com/velcure/velcure-ui/commit/ac9fd44214c6d0e635f77875d438dcdc4a9be995))
+
 ## [1.10.0](https://github.com/velcure/velcure-ui/compare/v1.9.3...v1.10.0) (2023-09-25)
 
 
