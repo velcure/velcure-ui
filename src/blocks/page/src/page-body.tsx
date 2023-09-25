@@ -1,4 +1,5 @@
 import { Spinner } from '#/components';
+import { ErrorBoundary } from '#/components/error-boundary/src';
 import { cn } from '#/utilities';
 import { AnimatePresence, HTMLMotionProps, motion } from 'framer-motion';
 import { Suspense, forwardRef } from 'react';
@@ -29,30 +30,32 @@ export const PageBody = forwardRef<HTMLDivElement, PageBodyProps>(
   (props, ref) => {
     const { className, children, ...rest } = props;
 
-    const { isLoading } = usePageContext();
+    const { isLoading, onErrorReset, onError } = usePageContext();
 
     return (
-      <AnimatePresence initial={false}>
-        {isLoading ? (
-          <Loading />
-        ) : (
-          <Suspense fallback={<Loading />}>
-            <motion.div
-              ref={ref}
-              className={cn(
-                'flex-1 min-h-0 min-w-0 overflow-y-auto flex flex-col',
-                className
-              )}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              {...rest}
-            >
-              {children}
-            </motion.div>
-          </Suspense>
-        )}
-      </AnimatePresence>
+      <ErrorBoundary onReset={onErrorReset} onError={onError}>
+        <AnimatePresence initial={false}>
+          {isLoading ? (
+            <Loading />
+          ) : (
+            <Suspense fallback={<Loading />}>
+              <motion.div
+                ref={ref}
+                className={cn(
+                  'flex-1 min-h-0 min-w-0 overflow-y-auto flex flex-col',
+                  className
+                )}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                {...rest}
+              >
+                {children}
+              </motion.div>
+            </Suspense>
+          )}
+        </AnimatePresence>
+      </ErrorBoundary>
     );
   }
 );

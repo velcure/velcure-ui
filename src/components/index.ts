@@ -4,6 +4,7 @@ export * from './button/src';
 export * from './card/src';
 export * from './datepicker/src';
 export * from './empty-state/src';
+export * from './error-boundary/src';
 export * from './focus-lock/src';
 export * from './form-control/src';
 export * from './input/src';

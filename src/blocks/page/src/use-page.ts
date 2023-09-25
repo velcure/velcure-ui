@@ -7,6 +7,15 @@ export interface UsePageOptions {
    * @default false
    */
   isLoading?: boolean;
+  /**
+   * Page has a built-in error boundary, but you can use this callback to reset the error state.
+   */
+  onErrorReset?: () => void;
+  /**
+   * onError gets called when an error is thrown in a descendant component.
+   * We recommend logging error messages to an error reporting service.
+   */
+  onError?: (error: Error, errorInfo: React.ErrorInfo) => void;
 }
 
 export const [PageProvider, usePageContext] = createContext<
@@ -20,6 +29,8 @@ export const usePage = (options: UsePageOptions = {}) => {
   return {
     onBack: options.onBack,
     isLoading: options.isLoading ?? false,
+    onErrorReset: options.onErrorReset,
+    onError: options.onError,
   };
 };
 

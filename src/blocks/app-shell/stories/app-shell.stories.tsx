@@ -140,3 +140,53 @@ export const Empty = () => {
     </AppShell>
   );
 };
+
+const Err = () => {
+  throw new Error('Test error');
+
+  return null;
+};
+
+export const WithError = () => {
+  const [err, { toggle, off }] = useBoolean(false);
+
+  return (
+    <AppShell navbar={<Navi />}>
+      <Page
+        onBack="#"
+        onErrorReset={off}
+        onError={(err, info) => {
+          console.log(err);
+          console.log(info);
+        }}
+      >
+        <PageHeader
+          title="Dashboard"
+          description="Here you can manage your daily tours and assign them to your vehicles and drivers."
+          actions={
+            <Button size="sm" onClick={toggle}>
+              Toggle Error
+            </Button>
+          }
+        />
+        <PageBody>
+          {err ? (
+            <Err />
+          ) : (
+            <EmptyState
+              icon={<LuUserPlus />}
+              title="No Data"
+              description="No data to display."
+              actions={
+                <>
+                  <Button variant="primary">Import customers</Button>
+                  <Button variant="secondary">Create customer</Button>
+                </>
+              }
+            />
+          )}
+        </PageBody>
+      </Page>
+    </AppShell>
+  );
+};

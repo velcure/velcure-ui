@@ -3,15 +3,18 @@ import { ComponentPropsWithoutRef, forwardRef } from 'react';
 import { PageProvider, UsePageOptions, usePage } from './use-page';
 
 export interface PageProps
-  extends ComponentPropsWithoutRef<'main'>,
+  extends Omit<ComponentPropsWithoutRef<'main'>, 'onError'>,
     UsePageOptions {}
 
 export const Page = forwardRef<HTMLDivElement, PageProps>((props, ref) => {
-  const { className, onBack, isLoading, ...rest } = props;
+  const { className, onBack, isLoading, onError, onErrorReset, ...rest } =
+    props;
 
   const ctx = usePage({
     onBack,
     isLoading,
+    onError,
+    onErrorReset,
   });
 
   return (
