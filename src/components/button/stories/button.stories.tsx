@@ -152,3 +152,9 @@ export const iconButton = () => (
     </IconButton>
   </div>
 );
+
+export const AsLink = () => (
+  <Button as="a" href="https://www.google.com" target="_blank">
+    Google
+  </Button>
+);

@@ -1,4 +1,7 @@
+import { As } from '#/utilities';
+
 export interface ButtonOptions {
+  as?: As;
   /**
    * If `true`, the button will show a spinner.
    * @default false

@@ -1,11 +1,12 @@
-import { useRipple } from '#/hooks';
-import { cn, dataAttr } from '#/utilities/shared-utils';
+import { useMergeRefs, useRipple } from '#/hooks';
+import { cn, dataAttr, forwardRef } from '#/utilities/shared-utils';
 import { VariantProps, cva } from 'class-variance-authority';
-import { ComponentPropsWithoutRef, forwardRef } from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 import { useButtonGroup } from './button-context';
 import { ButtonIcon } from './button-icon';
 import { ButtonSpinner } from './button-spinner';
 import { ButtonOptions } from './button-types';
+import { useButtonType } from './use-button-type';
 
 export interface ButtonProps
   extends ComponentPropsWithoutRef<'button'>,
@@ -58,70 +59,71 @@ const buttonClasses = cva(
   }
 );
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  (props, ref) => {
-    const group = useButtonGroup();
+export const Button = forwardRef<ButtonProps, 'button'>((props, ref) => {
+  const group = useButtonGroup();
 
-    const {
-      isDisabled = group?.isDisabled,
-      isLoading,
-      type = 'button',
-      className,
-      spinnerPlacement = 'start',
-      loadingText,
-      rightIcon,
-      leftIcon,
-      children,
-      spinner,
-      variant,
-      size = group?.size,
-      ...restProps
-    } = props;
+  const {
+    isDisabled = group?.isDisabled,
+    isLoading,
+    type,
+    className,
+    spinnerPlacement = 'start',
+    loadingText,
+    rightIcon,
+    leftIcon,
+    children,
+    spinner,
+    variant,
+    size = group?.size,
+    as: As = 'button',
+    ...restProps
+  } = props;
 
-    const { getButtonProps, ripples } = useRipple();
+  const { getButtonProps, ripples } = useRipple();
 
-    const contentProps = { rightIcon, leftIcon, children };
+  const contentProps = { rightIcon, leftIcon, children };
 
-    return (
-      <button
-        type={type}
-        data-loading={dataAttr(isLoading)}
-        className={cn(
-          buttonClasses({
-            variant,
-            size,
-          }),
-          !!group && 'focus:z-[1]',
-          className
-        )}
-        {...getButtonProps(restProps, ref)}
-        disabled={isDisabled || isLoading}
-      >
-        {ripples}
-        {isLoading && spinnerPlacement === 'start' && (
-          <ButtonSpinner placement="start" label={loadingText}>
-            {spinner}
-          </ButtonSpinner>
-        )}
-        {isLoading ? (
-          loadingText || (
-            <span className="opacity-0">
-              <ButtonContent {...contentProps} />
-            </span>
-          )
-        ) : (
-          <ButtonContent {...contentProps} />
-        )}
+  const { ref: _ref, type: defaultType } = useButtonType(As);
 
-        {isLoading && spinnerPlacement === 'end' && (
-          <ButtonSpinner placement="end" label={loadingText}>
-            {spinner}
-          </ButtonSpinner>
-        )}
-      </button>
-    );
-  }
-);
+  return (
+    <As
+      type={type ?? defaultType}
+      data-loading={dataAttr(isLoading)}
+      className={cn(
+        buttonClasses({
+          variant,
+          size,
+        }),
+        !!group && 'focus:z-[1]',
+        className
+      )}
+      {...getButtonProps(restProps, useMergeRefs(ref, _ref))}
+      disabled={isDisabled || isLoading}
+    >
+      {ripples}
+      {isLoading && spinnerPlacement === 'start' && (
+        <ButtonSpinner placement="start" label={loadingText}>
+          {spinner}
+        </ButtonSpinner>
+      )}
+      {isLoading ? (
+        loadingText || (
+          <span className="opacity-0">
+            <ButtonContent {...contentProps} />
+          </span>
+        )
+      ) : (
+        <ButtonContent {...contentProps} />
+      )}
+
+      {isLoading && spinnerPlacement === 'end' && (
+        <ButtonSpinner placement="end" label={loadingText}>
+          {spinner}
+        </ButtonSpinner>
+      )}
+    </As>
+  );
+});
 
 type ButtonContentProps = Pick<
   ButtonProps,

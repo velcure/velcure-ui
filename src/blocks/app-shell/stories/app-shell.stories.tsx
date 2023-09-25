@@ -75,7 +75,7 @@ export const Basic = () => {
 
   return (
     <AppShell navbar={<Navi />}>
-      <Page onBack="#" isLoading={isLoading}>
+      <Page onBack={() => {}} isLoading={isLoading}>
         <PageHeader
           title="Dashboard"
           description="Here you can manage your daily tours and assign them to your vehicles and drivers."
@@ -100,7 +100,7 @@ export const WithHero = () => {
 
   return (
     <AppShell navbar={<Navi />}>
-      <Page onBack="#" isLoading={isLoading}>
+      <Page onBack={() => {}} isLoading={isLoading}>
         <PageHeader
           title="Dashboard"
           description="Here you can manage your daily tours and assign them to your vehicles and drivers."
@@ -125,7 +125,7 @@ export const Empty = () => {
 
   return (
     <AppShell navbar={<Navi />}>
-      <Page onBack="#" isLoading={isLoading}>
+      <Page onBack={() => {}} isLoading={isLoading}>
         <PageHeader
           title="Dashboard"
           description="Here you can manage your daily tours and assign them to your vehicles and drivers."
@@ -165,7 +165,7 @@ export const WithError = () => {
   return (
     <AppShell navbar={<Navi />}>
       <Page
-        onBack="#"
+        onBack={() => {}}
         onErrorReset={off}
         onError={(err, info) => {
           console.log(err);
@@ -208,7 +208,7 @@ export const WithText = () => {
 
   return (
     <AppShell navbar={<Navi />}>
-      <Page onBack="#" isLoading={isLoading} variant="text">
+      <Page onBack={() => {}} isLoading={isLoading} variant="text">
         <PageHeader
           title="Dashboard"
           description="Here you can manage your daily tours and assign them to your vehicles and drivers."
