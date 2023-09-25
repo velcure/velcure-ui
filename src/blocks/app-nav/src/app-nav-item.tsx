@@ -56,6 +56,8 @@ const classes = cva(
     'md:w-auto text-xs rounded-md',
     // colors
     'text-navbar-foreground hover:text-navbar-foreground-hover hover:bg-gray-700',
+    // react-router current
+    "[&[aria-current='page']]:bg-gray-800 [&[aria-current='page']]:text-white",
   ],
   {
     variants: {
