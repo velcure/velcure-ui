@@ -33,7 +33,7 @@ export const AppNav = forwardRef<HTMLDivElement, AppNavProps>((props, ref) => {
           </div>
         </nav>
         <div className="flex md:justify-center bg-navbar min-h-10 py-1 px-4">
-          <div className="hidden md:flex justify-between w-full max-w-full overflow-auto">
+          <div className="hidden md:flex justify-between w-full max-w-full">
             <nav
               className="flex items-stretch space-x-1"
               aria-label="Main Navigation"

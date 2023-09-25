@@ -63,7 +63,7 @@ const Navi = () => (
   >
     <AppNavItem title="Dashboard" isActive icon={<LuHome />} />
     <AppNavItem title="Disposition" />
-    <AppNavItem title="Tours" />
+    <AppNavItem title="Tours" count={5} />
     <AppNavItem title="Patients" />
     <AppNavItem title="Marketplace" />
     <AppNavItem title="Vehicles" />

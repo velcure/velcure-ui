@@ -14,6 +14,7 @@ export interface AppNavItemType extends AppNavBaseItem {
   href?: string;
   to?: string;
   onClick?: () => void;
+  count?: number;
 }
 
 export interface AppNavGroupType extends AppNavBaseItem {
