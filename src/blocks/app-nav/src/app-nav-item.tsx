@@ -49,7 +49,7 @@ const variants: Variants = {
 const classes = cva(
   [
     // base
-    'flex md:justify-center items-center px-3 py-2 transition-colors relative',
+    'flex md:justify-center items-center px-3 py-2 transition-colors relative select-none',
     // sm
     'w-full',
     // md+
