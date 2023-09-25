@@ -1,6 +1,6 @@
-import { cn } from '#/utilities';
+import { cn, forwardRef } from '#/utilities';
 import { cva } from 'class-variance-authority';
-import React, { forwardRef } from 'react';
+import React from 'react';
 
 type Props<T extends keyof JSX.IntrinsicElements> = React.ComponentProps<T>;
 
@@ -39,23 +39,21 @@ export interface TypographyProps
   extends BaseTypographyProps,
     TypographyOptions {}
 
-export const Typography = forwardRef<HTMLElement, TypographyProps>(
-  (props, ref) => {
-    const { variant = 'p', className, ...restProps } = props;
+export const Typography = forwardRef<TypographyProps, 'div'>((props, ref) => {
+  const { variant = 'p', className, ...restProps } = props;
 
-    const baseProps = {
-      className: cn(
-        classes({
-          variant,
-        }),
-        className
-      ),
-      ref,
-      ...restProps,
-    };
+  const baseProps = {
+    className: cn(
+      classes({
+        variant,
+      }),
+      className
+    ),
+    ref,
+    ...restProps,
+  };
 
-    return React.createElement(variant === 'lead' ? 'p' : variant, baseProps);
-  }
-);
+  return React.createElement(variant === 'lead' ? 'p' : variant, baseProps);
+});
 
 Typography.displayName = 'Typography';
