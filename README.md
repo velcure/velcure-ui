@@ -13,7 +13,7 @@ npm --save-dev install tailwindcss
 Update your `tailwind.config.js` file to include the following:
 
 ```js
-const velcurePlugin = require("@velcure/velcure-ui/theme");
+const velcurePlugin = require("@velcure/ui/theme");
 
 module.exports = {
   content: [
