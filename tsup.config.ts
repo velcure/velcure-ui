@@ -10,7 +10,7 @@ const commonConfig: Options = {
   minify: env === 'production',
   bundle: true,
   skipNodeModulesBundle: true,
-  entryPoints: ['src/index.ts', 'src/theme/index.ts'],
+  entryPoints: ['src/index.ts', 'src/blocks/index.ts', 'src/theme/index.ts'],
   watch: env === 'development',
   target: 'es2020',
   outDir: 'dist',
