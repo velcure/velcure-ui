@@ -1,5 +1,7 @@
 # Velcure UI
 
+Take a look at our Storybook.
+
 ## Getting Started
 
 Velcure can be easily integrated into your project through NPM. Simply run the following command:
