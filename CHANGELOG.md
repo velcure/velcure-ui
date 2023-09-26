@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.14.0](https://github.com/velcure/velcure-ui/compare/v1.13.0...v1.14.0) (2023-09-26)
+
+
+### Features
+
+* **modal:** confirmation dialog ([6a55a88](https://github.com/velcure/velcure-ui/commit/6a55a8898cfc3b87501fdd6c367c6a7940714a8e))
+
+
+### Bug Fixes
+
+* mb drawer ([792614c](https://github.com/velcure/velcure-ui/commit/792614c14516b4cf2163d461d1227a08eac933ff))
+* undo ([11aa15c](https://github.com/velcure/velcure-ui/commit/11aa15c2506bcc5266e2be1a5ee28519f023cb81))
+
 ## [1.13.0](https://github.com/velcure/velcure-ui/compare/v1.12.0...v1.13.0) (2023-09-25)
 
 
