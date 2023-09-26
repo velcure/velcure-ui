@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.0](https://github.com/velcure/velcure-ui/compare/v1.14.0...v1.15.0) (2023-09-26)
+
+
+### Features
+
+* docs ([a1c043b](https://github.com/velcure/velcure-ui/commit/a1c043bf2bdb6eb50911b2a26d18ad1024c7dc94))
+
 ## [1.14.0](https://github.com/velcure/velcure-ui/compare/v1.13.0...v1.14.0) (2023-09-26)
 
 
