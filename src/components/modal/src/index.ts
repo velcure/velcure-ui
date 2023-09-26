@@ -1,4 +1,12 @@
 export {
+  ConfirmationDialog,
+  ConfirmationDialogContent,
+} from './confirmation-dialog';
+export type {
+  ConfirmationDialogContentProps,
+  ConfirmationDialogProps,
+} from './confirmation-dialog';
+export {
   Drawer,
   DrawerBody,
   DrawerFooter,
