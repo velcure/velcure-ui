@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.1](https://github.com/velcure/velcure-ui/compare/v1.15.0...v1.15.1) (2023-09-27)
+
+
+### Bug Fixes
+
+* export of property label ([a464d0b](https://github.com/velcure/velcure-ui/commit/a464d0be3a24484c63a156bffe80d097726fa2d3))
+
 ## [1.15.0](https://github.com/velcure/velcure-ui/compare/v1.14.0...v1.15.0) (2023-09-26)
 
 
