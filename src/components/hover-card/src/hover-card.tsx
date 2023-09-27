@@ -1,6 +1,5 @@
 import {
   Popover,
-  PopoverArrow,
   PopoverContent,
   PopoverTrigger,
 } from '#/components/popover/src';
@@ -23,7 +22,6 @@ export const HoverCard: React.FC<HoverCardProps> = (props) => {
     <Popover trigger="hover">
       <PopoverTrigger>{children}</PopoverTrigger>
       <PopoverContent>
-        <PopoverArrow />
         <PopoverContent className={cn('p-5 flex-1 max-w-sm', className)}>
           {content}
         </PopoverContent>

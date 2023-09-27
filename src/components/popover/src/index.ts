@@ -1,8 +1,6 @@
 export { Popover } from './popover';
 export type { PopoverProps } from './popover';
 export { PopoverAnchor } from './popover-anchor';
-export { PopoverArrow } from './popover-arrow';
-export type { PopoverArrowProps } from './popover-arrow';
 export { PopoverBody } from './popover-body';
 export type { PopoverBodyProps } from './popover-body';
 export { PopoverContent } from './popover-content';
