@@ -5,6 +5,7 @@ import { AppNavToggleButton } from './app-nav-toggle-button';
 
 export interface AppNavProps extends ComponentPropsWithoutRef<'div'> {
   switcher?: React.ReactNode;
+  badges?: React.ReactNode;
   account?: React.ReactNode;
   /**
    * Items that will be rendered on the bottom-right of the navbar.
@@ -15,7 +16,8 @@ export interface AppNavProps extends ComponentPropsWithoutRef<'div'> {
 }
 
 export const AppNav = forwardRef<HTMLDivElement, AppNavProps>((props, ref) => {
-  const { children, secondary, account, switcher, ...restProps } = props;
+  const { children, secondary, account, switcher, badges, ...restProps } =
+    props;
 
   const { isOpen, onToggle, onClose } = useDisclosure();
 
@@ -29,7 +31,10 @@ export const AppNav = forwardRef<HTMLDivElement, AppNavProps>((props, ref) => {
         <nav className="flex justify-center bg-navbar">
           <div className="flex justify-between w-full max-w-full p-2 sm:px-4 min-h-10">
             <div className="flex">{switcher}</div>
-            <div className="flex gap-2 items-center">{account}</div>
+            <div className="flex gap-2 items-center">
+              {badges}
+              {account}
+            </div>
           </div>
         </nav>
         <div className="flex md:justify-center bg-navbar min-h-10 py-1 px-4">
