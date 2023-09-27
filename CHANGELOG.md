@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.16.0](https://github.com/velcure/velcure-ui/compare/v1.15.2...v1.16.0) (2023-09-27)
+
+
+### Features
+
+* add badges slot to topnav ([1a34e44](https://github.com/velcure/velcure-ui/commit/1a34e446cbe2f36ce71c6e63e121b9c13fb71b32))
+
 ## [1.15.2](https://github.com/velcure/velcure-ui/compare/v1.15.1...v1.15.2) (2023-09-27)
 
 
