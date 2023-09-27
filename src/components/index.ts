@@ -7,6 +7,7 @@ export * from './empty-state/src';
 export * from './error-boundary/src';
 export * from './focus-lock/src';
 export * from './form-control/src';
+export * from './hover-card/src';
 export * from './input/src';
 export * from './logo/src';
 export * from './menu/src';
