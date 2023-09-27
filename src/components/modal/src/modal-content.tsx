@@ -21,7 +21,7 @@ export interface ModalContentProps extends ComponentPropsWithoutRef<'section'> {
 
 const dialogClasses = cva(
   [
-    'flex flex-col relative w-full outline-none outline-offset-2 overflow-hidden',
+    'flex flex-col relative w-full outline-none outline-offset-2',
     'text-inherit rounded-md z-modal',
     'bg-background shadow-lg',
   ],
