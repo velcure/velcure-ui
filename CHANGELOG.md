@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.2](https://github.com/velcure/velcure-ui/compare/v1.15.1...v1.15.2) (2023-09-27)
+
+
+### Bug Fixes
+
+* overflow behaviour ([f20d469](https://github.com/velcure/velcure-ui/commit/f20d469f22cb5c004c892a580b013b213bfd65d1))
+
 ## [1.15.1](https://github.com/velcure/velcure-ui/compare/v1.15.0...v1.15.1) (2023-09-27)
 
 
