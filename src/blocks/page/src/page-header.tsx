@@ -40,9 +40,9 @@ export const PageHeader = forwardRef<HTMLDivElement, PageHeaderProps>(
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   className="w-4 h-4"
                 >
                   <path d="m12 19-7-7 7-7" />
@@ -68,9 +68,9 @@ export const PageHeader = forwardRef<HTMLDivElement, PageHeaderProps>(
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       className="h-4 w-4 cursor-help text-current"
                     >
                       <circle cx="12" cy="12" r="10" />

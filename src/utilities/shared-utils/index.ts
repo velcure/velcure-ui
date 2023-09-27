@@ -3,6 +3,12 @@ import { Children, forwardRef as forwardReactRef, isValidElement } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { As, ComponentWithAs, PropsOf, RightJoinProps } from '../react-types';
 
+export type Optional<T, K extends keyof T> = Pick<Partial<T>, K> & Omit<T, K>;
+type DistributiveOmit<T, K extends keyof any> = T extends any
+  ? Omit<T, K>
+  : never;
+export type Assign<T, U> = DistributiveOmit<T, keyof U> & U;
+
 function isDev() {
   return process.env.NODE_ENV !== 'production';
 }

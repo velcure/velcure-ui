@@ -6,7 +6,7 @@ import { cn } from '#/utilities';
 import { VariantProps, cva } from 'class-variance-authority';
 import { ComponentPropsWithoutRef, forwardRef } from 'react';
 
-const inputClass = cva(
+export const inputClass = cva(
   [
     'block w-full border-0 shadow-sm  leading-4 outline-none',
     'transition-colors',

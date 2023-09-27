@@ -11,6 +11,8 @@ const meta = {
   tags: ['autodocs'],
 } satisfies Meta<typeof SearchInput>;
 
+export default meta;
+
 export const searchInput = () => {
   const [value, setValue] = React.useState('');
   return (
