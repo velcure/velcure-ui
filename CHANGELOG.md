@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.17.0](https://github.com/velcure/velcure-ui/compare/v1.16.0...v1.17.0) (2023-09-27)
+
+
+### Features
+
+* hovercard ([874ed0c](https://github.com/velcure/velcure-ui/commit/874ed0cd2d95e8fd757a4b35ad0d605834137523))
+* searchinput ([9a97457](https://github.com/velcure/velcure-ui/commit/9a97457da26c4d805467c2cd95253db6efe155ad))
+
+
+### Bug Fixes
+
+* rm popoverarrow ([0eb32f1](https://github.com/velcure/velcure-ui/commit/0eb32f17a1f95058e743766a07c57ae37001ff7d))
+
 ## [1.16.0](https://github.com/velcure/velcure-ui/compare/v1.15.2...v1.16.0) (2023-09-27)
 
 
