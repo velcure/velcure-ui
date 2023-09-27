@@ -9,3 +9,5 @@ export type {
   InputLeftElementProps,
   InputRightElementProps,
 } from './input-element';
+export { SearchInput } from './search-input';
+export type { SearchInputProps } from './search-input';

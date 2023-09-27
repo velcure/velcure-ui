@@ -1,12 +1,6 @@
-import { IconButton } from '#/components/button/src';
 import { Meta } from '@storybook/react';
 import React from 'react';
-import {
-  MdCheck,
-  MdPhone,
-  MdVisibility,
-  MdVisibilityOff,
-} from 'react-icons/md';
+import { MdCheck, MdPhone } from 'react-icons/md';
 import {
   Input,
   InputGroup,
@@ -14,6 +8,7 @@ import {
   InputProps,
   InputRightElement,
 } from '../src';
+import { SearchInput } from '../src/search-input';
 
 const meta = {
   title: 'Components / Forms / Input',
@@ -82,27 +77,22 @@ export const WithInputElements = () => (
   </div>
 );
 
-export function PasswordInput() {
-  const [show, setShow] = React.useState(false);
-  const handleClick = () => setShow(!show);
-
+export const searchInput = () => {
+  const [value, setValue] = React.useState('');
   return (
-    <InputGroup size="md">
-      <Input
-        // padding-End
-        className="pe-8"
-        type={show ? 'text' : 'password'}
-        placeholder="Enter password"
-      />
-      <InputRightElement>
-        <IconButton
-          onClick={handleClick}
-          icon={show ? <MdVisibilityOff /> : <MdVisibility />}
-          aria-label="Show"
-          variant="ghost"
-          size="sm"
-        />
-      </InputRightElement>
-    </InputGroup>
+    <div>
+      <SearchInput value={value} onChange={(e) => setValue(e.target.value)} />
+
+      <button
+        onClick={() => {
+          setValue('test');
+        }}
+      >
+        Set value
+      </button>
+      <div>
+        <pre>{JSON.stringify(value, null, 2)}</pre>
+      </div>
+    </div>
   );
-}
+};

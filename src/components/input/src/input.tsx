@@ -49,7 +49,10 @@ export interface InputProps
   extends Omit<ComponentPropsWithoutRef<'input'>, Omitted>,
     InputOptions,
     VariantProps<typeof inputClass>,
-    FormControlOptions {}
+    FormControlOptions {
+  value?: HTMLInputElement['value'];
+  defaultValue?: HTMLInputElement['defaultValue'];
+}
 
 /**
  * Input
