@@ -8,7 +8,6 @@ import {
   InputProps,
   InputRightElement,
 } from '../src';
-import { SearchInput } from '../src/search-input';
 
 const meta = {
   title: 'Components / Forms / Input',
@@ -76,23 +75,3 @@ export const WithInputElements = () => (
     </InputGroup>
   </div>
 );
-
-export const searchInput = () => {
-  const [value, setValue] = React.useState('');
-  return (
-    <div>
-      <SearchInput value={value} onChange={(e) => setValue(e.target.value)} />
-
-      <button
-        onClick={() => {
-          setValue('test');
-        }}
-      >
-        Set value
-      </button>
-      <div>
-        <pre>{JSON.stringify(value, null, 2)}</pre>
-      </div>
-    </div>
-  );
-};
