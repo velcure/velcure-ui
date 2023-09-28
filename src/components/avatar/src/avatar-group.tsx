@@ -1,5 +1,4 @@
 import { cn, compact, getValidChildren } from '#/utilities';
-import { cva } from 'class-variance-authority';
 import { ComponentPropsWithoutRef, cloneElement, forwardRef } from 'react';
 import { AvatarProps, avatarClasses } from './avatar';
 
@@ -21,9 +20,6 @@ export interface AvatarGroupProps
     Omit<ComponentPropsWithoutRef<'div'>, 'children'>,
     Pick<AvatarProps, 'size' | 'rounded'> {}
 
-const excessClasses = cva('', {
-  variants: {},
-});
 /**
  * AvatarGroup displays a number of avatars grouped together in a stack.
  */
@@ -71,6 +67,7 @@ export const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroupProps>(
           'flex items-center justify-end flex-row-reverse',
           className
         )}
+        {...restProps}
       >
         {excess > 0 && (
           <span
