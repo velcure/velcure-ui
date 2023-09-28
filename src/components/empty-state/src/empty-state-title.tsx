@@ -11,6 +11,7 @@ export const EmptyStateTitle: React.FC<EmptyStateTitleProps> = (props) => {
         'text-2xl font-semibold tracking-tight scroll-m-20',
         className
       )}
+      {...rest}
     >
       {children}
     </div>
