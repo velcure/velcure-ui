@@ -1,6 +1,6 @@
 import { Textarea, TextareaProps } from '#/components/textarea/src';
+import { useController } from '#/rhf';
 import { forwardRef } from 'react';
-import { useController } from 'react-hook-form';
 import { FormControl, FormControlBaseProps } from './form-control';
 
 export type TextareaControlProps = FormControlBaseProps & {

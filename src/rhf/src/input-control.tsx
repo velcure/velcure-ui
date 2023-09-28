@@ -1,6 +1,6 @@
 import { Input, InputProps } from '#/components/input/src';
+import { useController } from '#/rhf';
 import { forwardRef } from 'react';
-import { useController } from 'react-hook-form';
 import { FormControl, FormControlBaseProps } from './form-control';
 
 export type InputControlProps = FormControlBaseProps & {
