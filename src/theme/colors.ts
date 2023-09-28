@@ -6,7 +6,7 @@ export const colors = {
   current: 'currentColor',
   transparent: 'transparent',
   //background: tailwindColors.white,
-  background: tailwindColors.slate[50],
+  background: tailwindColors.white,
   foreground: tailwindColors.slate[900],
   primary: '#111827', //tailwindColors.slate[900],
   'primary-foreground': tailwindColors.slate[50],
