@@ -8,7 +8,7 @@ import {
   FormControl as VelcureFormControl,
 } from '#/components/form-control/src';
 import { FormErrorMessageProps } from '#/components/form-control/src/form-error-message';
-import { useController } from '#/rhf';
+import { useController } from 'react-hook-form';
 import { useFormContext } from './form';
 
 export interface FormControlBaseProps extends Omit<FormControlProps, 'label'> {
