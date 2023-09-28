@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.18.0](https://github.com/velcure/velcure-ui/compare/v1.17.0...v1.18.0) (2023-09-28)
+
+
+### Features
+
+* checkboxes ([a8787d0](https://github.com/velcure/velcure-ui/commit/a8787d06b49c6be182750f3198c6ba8a7b1b07e7))
+* number input ([0e27ff6](https://github.com/velcure/velcure-ui/commit/0e27ff67fc0f925214c34d771a9e16fa0a0dd7de))
+* rhf stuff ([9b0d9f7](https://github.com/velcure/velcure-ui/commit/9b0d9f7161e3513b39ec84816b0531d15fa87091))
+
+
+### Bug Fixes
+
+* circles ([88addfd](https://github.com/velcure/velcure-ui/commit/88addfdd9abcd9e7dfa7da04247d1030237c188f))
+* excessprops ([ceb9da8](https://github.com/velcure/velcure-ui/commit/ceb9da8f3c9398cbca886e292fbcd63717ad7171))
+* exports ([c401ed4](https://github.com/velcure/velcure-ui/commit/c401ed494c04f2b7121ef1a53e578fcda3ef9e9b))
+* form ([aab2aee](https://github.com/velcure/velcure-ui/commit/aab2aee851184fdc4ba60a128bf5aaaf906324db))
+* imports ([70b90e3](https://github.com/velcure/velcure-ui/commit/70b90e36f8bc1a3be6cda23e308be995744452aa))
+* number input ([1e44c00](https://github.com/velcure/velcure-ui/commit/1e44c00aae82481b951358d792ed7555141f2df2))
+* story for search input ([c3a9dad](https://github.com/velcure/velcure-ui/commit/c3a9dad5636469e5363a9028bcc7d6c46b4e9243))
+* unused rest param ([595d045](https://github.com/velcure/velcure-ui/commit/595d04524a74e2c0c1968fdece53656b34abaa52))
+
 ## [1.17.0](https://github.com/velcure/velcure-ui/compare/v1.16.0...v1.17.0) (2023-09-27)
 
 
