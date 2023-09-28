@@ -15,6 +15,8 @@ export const config: Partial<Config> = {
         readonly: 'readonly',
         focus: 'focus',
         'focus-visible': 'focus-visible',
+        invalid: 'invalid',
+        indeterminate: 'indeterminate',
       },
       colors,
       borderColor: {
@@ -22,6 +24,9 @@ export const config: Partial<Config> = {
       },
       animation: {
         ripple: 'ripple 600ms linear',
+        check: 'check 200ms linear',
+        interminate:
+          'indeterminate-opacity 20ms linear, indeterminate-scale 200ms linear',
       },
       keyframes: {
         ripple: {
@@ -32,6 +37,34 @@ export const config: Partial<Config> = {
           '100%': {
             transform: 'scale(4)',
             opacity: '0',
+          },
+        },
+        check: {
+          from: {
+            opacity: '0',
+            strokeDashoffset: '16',
+            transform: 'scale(0.95)',
+          },
+          to: {
+            opacity: '1',
+            strokeDashoffset: '0',
+            transform: 'scale(1)',
+          },
+        },
+        'indeterminate-opacity': {
+          from: {
+            opacity: '0',
+          },
+          to: {
+            opacity: '1',
+          },
+        },
+        'indeterminate-scale': {
+          from: {
+            transform: 'scaleX(0.65)',
+          },
+          to: {
+            transform: 'scaleX(1)',
           },
         },
       },

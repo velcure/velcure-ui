@@ -1,3 +1,4 @@
+export { CheckIcon } from './check-icon';
 export { Icon } from './icon';
 export type { IconProps } from './icon';
 export { MinusIcon } from './minus-icon';

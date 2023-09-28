@@ -36,9 +36,6 @@ export const NumberInputField = forwardRef<
     isDisabled,
   });
 
-  console.log(isDisabled, isInvalid, isReadOnly, isRequired);
-  console.log(form);
-
   return (
     <velcure.input
       {...form}

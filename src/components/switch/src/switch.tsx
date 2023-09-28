@@ -1,66 +1,92 @@
+import { UseCheckboxProps, useCheckbox } from '#/components/checkbox/src';
 import { HTMLVelcureProps, velcure } from '#/components/factory';
-import { Assign, cn, createSplitProps } from '#/utilities';
+import { cn } from '#/utilities';
+import { cva } from 'class-variance-authority';
 import { forwardRef } from 'react';
-import { UseSwitchProps, useSwitch } from './use-switch';
 
 export interface SwitchProps
-  extends Assign<HTMLVelcureProps<'input'>, UseSwitchProps> {}
+  extends Omit<UseCheckboxProps, 'isIndeterminate'>,
+    Omit<HTMLVelcureProps<'input'>, keyof UseCheckboxProps> {}
 
+const checkboxStyle = cva(
+  [
+    'relative inline-flex shrink-0 rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out',
+    'cursor-pointer bg-muted',
+    // checked
+    'data-checked:bg-primary',
+    // focus
+    'data-focus:outline-none data-focus:ring-2 data-focus:ring-ring data-focus:ring-offset-2',
+    // disabled
+    'data-disabled:opacity-70 data-disabled:bg-muted data-disabled:cursor-not-allowed',
+    // invalid
+    'data-invalid:bg-destructive',
+  ],
+  {
+    variants: {
+      size: {
+        md: 'h-6 w-11',
+      },
+    },
+    defaultVariants: {
+      size: 'md',
+    },
+  }
+);
+
+const labelStyles = cva(['select-none ms-2 data-disabled:opacity-70'], {
+  variants: {
+    size: {
+      md: 'text-md',
+    },
+  },
+  defaultVariants: {
+    size: 'md',
+  },
+});
+
+/**
+ * The `Switch` component is used as an alternative for the checkbox component for switching between "enabled" and "disabled" states.
+ *
+ * @see WAI-ARIA https://www.w3.org/WAI/ARIA/apg/patterns/switch/
+ */
 export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
   (props, ref) => {
-    const [switchProps, { children, className, ...restProps }] =
-      createSplitProps<UseSwitchProps>()(props, [
-        'checked',
-        'defaultChecked',
-        'dir',
-        'disabled',
-        'form',
-        'getRootNode',
-        'id',
-        'ids',
-        'invalid',
-        'label',
-        'name',
-        'onCheckedChange',
-        'required',
-        'value',
-      ]);
-
-    const api = useSwitch(switchProps);
+    const { children, className, ...restProps } = props;
+    const {
+      state,
+      getIndicatorProps,
+      getInputProps,
+      getCheckboxProps,
+      getRootProps,
+      getLabelProps,
+    } = useCheckbox(restProps);
 
     return (
       <velcure.label
-        {...api.rootProps}
-        className={cn('flex relative items-center')}
+        {...getRootProps({
+          className: cn('flex relative items-center', className),
+        })}
       >
-        <velcure.input {...api.hiddenInputProps} ref={ref} />
+        <velcure.input {...getInputProps({}, ref)} />
         <velcure.span
-          {...api.controlProps}
-          className={cn(
-            'relative inline-flex shrink-0 rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out',
-            // focus
-            'data-focus:outline-none data-focus:ring-2 data-focus:ring-ring data-focus:ring-offset-2',
-            // colors
-            api.isChecked ? 'bg-primary' : 'bg-muted',
-            // size
-            'h-6 w-11',
-            // enabled
-            'cursor-pointer'
-          )}
+          {...getCheckboxProps({
+            className: cn(checkboxStyle()),
+          })}
         >
           <velcure.span
-            {...api.thumbProps}
-            className={cn(
-              'pointer-events-none relative inline-block transform rounded-full shadow ring-0 transition duration-200 ease-in-out',
-              'bg-background z-[1]',
-              // size
-              'h-5 w-5',
-              api.isChecked ? 'translate-x-5' : 'translate-x-0'
-            )}
+            {...getIndicatorProps({
+              className: cn(
+                'pointer-events-none relative inline-block transform rounded-full shadow ring-0 transition duration-200 ease-in-out',
+                'bg-background z-[1]',
+                // size
+                'h-5 w-5',
+                state.isChecked ? 'translate-x-5' : 'translate-x-0'
+              ),
+            })}
           >
             <velcure.span
               className={cn(
-                api.isChecked
+                state.isChecked
                   ? 'opacity-0 duration-100 ease-out'
                   : 'opacity-100 duration-200 ease-in',
                 'absolute inset-0 flex h-full w-full items-center justify-center transition-opacity'
@@ -83,7 +109,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
             </velcure.span>
             <velcure.span
               className={cn(
-                api.isChecked
+                state.isChecked
                   ? 'opacity-100 duration-200 ease-in'
                   : 'opacity-0 duration-100 ease-out',
                 'absolute inset-0 flex h-full w-full items-center justify-center transition-opacity'
@@ -100,7 +126,13 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
             </velcure.span>
           </velcure.span>
         </velcure.span>
-        <velcure.span {...api.labelProps}>{children}</velcure.span>
+        <velcure.span
+          {...getLabelProps({
+            className: cn(labelStyles()),
+          })}
+        >
+          {children}
+        </velcure.span>
       </velcure.label>
     );
   }
