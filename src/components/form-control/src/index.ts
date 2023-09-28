@@ -1,5 +1,6 @@
 export { FormControl, useFormControlContext } from './form-control';
 export type { FormControlOptions, FormControlProps } from './form-control';
+export { FormErrorMessage } from './form-error-message';
 export { FormHelperText } from './form-helper-text';
 export type { FormHelperTextProps } from './form-helper-text';
 export { FormLabel } from './form-label';

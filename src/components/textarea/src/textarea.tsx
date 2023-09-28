@@ -68,8 +68,6 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       id,
     });
 
-    console.log(resize);
-
     return (
       <textarea
         ref={ref}

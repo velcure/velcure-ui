@@ -33,16 +33,19 @@ const checkboxStyle = cva(
   }
 );
 
-const labelStyles = cva(['select-none ms-2 data-disabled:opacity-70'], {
-  variants: {
-    size: {
-      md: 'text-md',
+const labelStyles = cva(
+  ['leading-6 font-medium', 'select-none ms-2 data-disabled:opacity-70'],
+  {
+    variants: {
+      size: {
+        md: 'text-sm',
+      },
     },
-  },
-  defaultVariants: {
-    size: 'md',
-  },
-});
+    defaultVariants: {
+      size: 'md',
+    },
+  }
+);
 
 /**
  * The `Switch` component is used as an alternative for the checkbox component for switching between "enabled" and "disabled" states.
