@@ -48,10 +48,10 @@
       "import": "./dist/blocks/index.mjs",
       "require": "./dist/blocks/index.js"
     },
-    "./rhf": {
-      "types": "./dist/rhf/index.d.ts",
-      "import": "./dist/rhf/index.mjs",
-      "require": "./dist/rhf/index.js"
+    "./form": {
+      "types": "./dist/form/index.d.ts",
+      "import": "./dist/form/index.mjs",
+      "require": "./dist/form/index.js"
     }
   },
   "devDependencies": {

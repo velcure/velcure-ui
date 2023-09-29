@@ -1,10 +1,11 @@
+import { HTMLVelcureProps, velcure } from '#/components/factory';
 import {
   FormControlOptions,
   useFormControl,
 } from '#/components/form-control/src';
 import { cn } from '#/utilities';
 import { VariantProps, cva } from 'class-variance-authority';
-import { ComponentPropsWithoutRef, forwardRef } from 'react';
+import { forwardRef } from 'react';
 
 export const inputClass = cva(
   [
@@ -46,7 +47,7 @@ interface InputOptions {
 type Omitted = 'disabled' | 'required' | 'readOnly' | 'size';
 
 export interface InputProps
-  extends Omit<ComponentPropsWithoutRef<'input'>, Omitted>,
+  extends Omit<HTMLVelcureProps<'input'>, Omitted>,
     InputOptions,
     VariantProps<typeof inputClass>,
     FormControlOptions {
@@ -65,7 +66,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   const input = useFormControl<HTMLInputElement>(restProps);
 
   return (
-    <input
+    <velcure.input
       size={htmlSize}
       {...input}
       ref={ref}

@@ -9,6 +9,7 @@ import {
   SubmitButton,
   SwitchControl,
   TextareaControl,
+  TimeInputControl,
   useForm,
 } from '../src';
 
@@ -49,6 +50,8 @@ export const Basic = () => {
         <InputControl name="password" label="Password" />
         <TextareaControl name="description" label="Description" />
       </SwitchControl>
+
+      <TimeInputControl name="time" />
 
       <SubmitButton>
         <span>Submit</span>

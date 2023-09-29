@@ -1,4 +1,4 @@
-import { composeRefs } from '#/utilities';
+import { As, composeRefs } from '#/utilities';
 import { mergeProps } from '@zag-js/core';
 import React, {
   Children,
@@ -16,15 +16,20 @@ type VelcureForwardRefComponent<E extends React.ElementType> =
 type VelcurePropsWithRef<E extends React.ElementType> =
   React.ComponentPropsWithRef<E> & {
     asChild?: boolean;
+    as?: As;
   };
 
 const withAsChild = (Component: React.ElementType) => {
   const Comp = forwardRef<unknown, VelcurePropsWithRef<typeof Component>>(
     (props, ref) => {
-      const { asChild, children, ...restProps } = props;
+      const { asChild, as: As, children, ...restProps } = props;
 
-      if (!asChild) {
+      if (!asChild && !As) {
         return <Component {...props} ref={ref} />;
+      }
+
+      if (As) {
+        return <As {...restProps} ref={ref} />;
       }
 
       const onlyChild = Children.only(children);
@@ -52,6 +57,7 @@ export type HTMLVelcureProps<T extends keyof JSX.IntrinsicElements> =
      * Render as a different element type.
      */
     asChild?: boolean;
+    as?: As;
   };
 
 export const jsxFactory = () => {
@@ -59,9 +65,11 @@ export const jsxFactory = () => {
 
   return new Proxy(withAsChild, {
     apply(_target, _thisArg, argArray) {
+      console.log('??apply', argArray);
       return withAsChild(argArray[0]);
     },
     get(_, element) {
+      console.log('??get', element);
       const asElement = element as React.ElementType;
       if (!cache.has(asElement)) {
         cache.set(asElement, withAsChild(asElement));

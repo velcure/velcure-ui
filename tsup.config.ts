@@ -14,7 +14,7 @@ const commonConfig: Options = {
     'src/index.ts',
     'src/blocks/index.ts',
     'src/theme/index.ts',
-    'src/rhf/index.ts',
+    'src/form/index.ts',
   ],
   watch: env === 'development',
   target: 'es2020',

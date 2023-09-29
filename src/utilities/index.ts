@@ -1,3 +1,4 @@
+export * from './date-utils';
 export * from './dom-utils';
 export * from './lazy-utils';
 export * from './object-utils';

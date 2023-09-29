@@ -88,16 +88,15 @@ export const Datepicker = forwardRef<HTMLInputElement, DatepickerProps>(
 
     const { isOpen, onClose, onOpen } = useDisclosure();
 
-    const manuallyUpdateInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-      const inputValue = e.target.value;
-      const currentDate = parseInputValue({ inputValue, locale, format });
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const val = e.target.value;
+      setInputValue(val);
+
+      const currentDate = parseInputValue({ inputValue: val, locale, format });
 
       if (currentDate) {
         setValue(currentDate);
       }
-
-      // we must update in any csae the input value
-      setInputValue(inputValue);
     };
 
     const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -138,7 +137,7 @@ export const Datepicker = forwardRef<HTMLInputElement, DatepickerProps>(
               value={inputValue}
               autoComplete="off"
               placeholder={placeholder}
-              onChange={manuallyUpdateInput}
+              onChange={handleInputChange}
               onKeyDown={onKeyDown}
               isInvalid={
                 isInvalid ||

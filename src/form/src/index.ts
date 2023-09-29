@@ -12,6 +12,8 @@ export { SwitchControl } from './switch-control';
 export type { SwitchControlProps } from './switch-control';
 export { TextareaControl } from './textarea-control';
 export type { TextareaControlProps } from './textarea-control';
+export { TimeInputControl } from './time-input-control';
+export type { TimeInputControlProps } from './time-input-control';
 
 export {
   Controller,

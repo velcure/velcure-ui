@@ -3,6 +3,7 @@ export * from './use-animation-state';
 export * from './use-boolean';
 export * from './use-callback-ref';
 export * from './use-clickable';
+export * from './use-controllable-dates';
 export * from './use-controllable-state';
 export * from './use-disclosure';
 export * from './use-event';
