@@ -14,6 +14,13 @@ export default plugin.withOptions(
           clipPath: `path('M0 24C6 24 10 18 10 10C10 5 6 0 0 0H400C400 0 400 5 400 24H0Z')`,
         },
       });
+
+      // react full calendar theme...
+      addComponents({
+        '.fc': {
+          flex: '1',
+        },
+      });
     };
   },
   () => {

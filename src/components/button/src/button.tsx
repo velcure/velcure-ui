@@ -1,3 +1,4 @@
+import { velcure } from '#/components/factory';
 import { useMergeRefs, useRipple } from '#/hooks';
 import { cn, dataAttr, forwardRef } from '#/utilities/shared-utils';
 import { VariantProps, cva } from 'class-variance-authority';
@@ -75,7 +76,7 @@ export const Button = forwardRef<ButtonProps, 'button'>((props, ref) => {
     spinner,
     variant,
     size = group?.size,
-    as: As = 'button',
+    as,
     ...restProps
   } = props;
 
@@ -83,10 +84,11 @@ export const Button = forwardRef<ButtonProps, 'button'>((props, ref) => {
 
   const contentProps = { rightIcon, leftIcon, children };
 
-  const { ref: _ref, type: defaultType } = useButtonType(As);
+  const { ref: _ref, type: defaultType } = useButtonType(as);
 
   return (
-    <As
+    <velcure.button
+      as={as}
       type={type ?? defaultType}
       data-loading={dataAttr(isLoading)}
       className={cn(
@@ -121,7 +123,7 @@ export const Button = forwardRef<ButtonProps, 'button'>((props, ref) => {
           {spinner}
         </ButtonSpinner>
       )}
-    </As>
+    </velcure.button>
   );
 });
 

@@ -22,7 +22,7 @@ export const Environment = (props: EnvironmentProps) => {
   return (
     <EnvironmentProvider value={getRootNode}>
       {children}
-      {showSpan && <span data-ark-env="" hidden ref={ref} />}
+      {showSpan && <span data-velcure-env="" hidden ref={ref} />}
     </EnvironmentProvider>
   );
 };

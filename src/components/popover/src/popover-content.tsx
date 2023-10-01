@@ -30,7 +30,7 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
           )}
           className={cn(
             'relative flex flex-col',
-            'rounded-md border bg-popover text-popover-foreground shadow-md',
+            'rounded-md  bg-popover text-popover-foreground shadow-md',
             'outline-none',
             'z-inherit focus-visible:outline-none',
             props.className

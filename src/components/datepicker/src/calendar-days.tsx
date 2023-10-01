@@ -1,4 +1,4 @@
-import { cn } from '#/utilities';
+import { cn, getWeekDays } from '#/utilities';
 import { cva } from 'class-variance-authority';
 import type { FC } from 'react';
 import { useCalendarContext } from './calendar-context';
@@ -6,7 +6,6 @@ import {
   addDays,
   getFirstDayOfTheMonth,
   getFormattedDate,
-  getWeekDays,
   isDateEqual,
   isDateInRange,
 } from './utils';

@@ -1,8 +1,8 @@
+import { Box, HTMLVelcureProps } from '#/components/factory';
 import { cn, forwardRef } from '#/utilities';
 import { cva } from 'class-variance-authority';
-import React from 'react';
 
-type Props<T extends keyof JSX.IntrinsicElements> = React.ComponentProps<T>;
+type Props<T extends keyof JSX.IntrinsicElements> = HTMLVelcureProps<T>;
 
 type BaseTypographyProps = Props<'p'> &
   Props<'h1'> &
@@ -40,7 +40,7 @@ export interface TypographyProps
     TypographyOptions {}
 
 export const Typography = forwardRef<TypographyProps, 'div'>((props, ref) => {
-  const { variant = 'p', className, ...restProps } = props;
+  const { variant = 'p', className, as, ...restProps } = props;
 
   const baseProps = {
     className: cn(
@@ -53,7 +53,9 @@ export const Typography = forwardRef<TypographyProps, 'div'>((props, ref) => {
     ...restProps,
   };
 
-  return React.createElement(variant === 'lead' ? 'p' : variant, baseProps);
+  return (
+    <Box as={as ? as : variant === 'lead' ? 'p' : variant} {...baseProps} />
+  );
 });
 
 Typography.displayName = 'Typography';

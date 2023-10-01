@@ -1,6 +1,6 @@
 import { Button, IconButton } from '#/components/button/src';
 import { Typography } from '#/components/typography/src';
-import { cn } from '#/utilities';
+import { WeekStart, cn, startOfToday } from '#/utilities';
 import {
   ComponentPropsWithoutRef,
   ReactNode,
@@ -14,10 +14,8 @@ import { CalendarMonths } from './calendar-months';
 import { CalendarYears } from './calendar-years';
 import {
   Views,
-  WeekStart,
   getFormattedDate,
   getViewDatePage,
-  startOfToday,
   startOfYearPeriod,
 } from './utils';
 

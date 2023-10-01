@@ -1,5 +1,6 @@
 import { createContext } from '#/hooks';
-import { Views, type WeekStart } from './utils';
+import { WeekStart } from '#/utilities';
+import { Views } from './utils';
 
 type CalendarContextValue = {
   viewDate: Date;

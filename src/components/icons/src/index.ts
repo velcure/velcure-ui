@@ -1,4 +1,6 @@
 export { CheckIcon } from './check-icon';
+export { ChevronLeftIcon } from './chevron-left-icon';
+export { ChevronRightIcon } from './chevron-right-icon';
 export { Icon } from './icon';
 export type { IconProps } from './icon';
 export { MinusIcon } from './minus-icon';
