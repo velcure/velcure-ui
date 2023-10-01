@@ -1,12 +1,12 @@
 import dayjs from 'dayjs';
-import { EventInternal } from '../scheduler-types';
+import { CalendarEvent } from '../scheduler-types';
 
 type Sorted = {
   gridRow: number;
   gridSpan: number;
-} & EventInternal;
+} & CalendarEvent;
 
-export function sortedEvents(events: EventInternal[], date: Date) {
+export function sortedEvents(events: CalendarEvent[], date: Date) {
   const dd = dayjs(date);
 
   return events.reduce((sorted, event) => {

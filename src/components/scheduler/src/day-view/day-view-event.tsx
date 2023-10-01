@@ -1,13 +1,13 @@
 import { HTMLVelcureProps, velcure } from '#/components/factory';
 import dayjs from 'dayjs';
-import { EventInternal } from '../scheduler-types';
+import { CalendarEvent } from '../scheduler-types';
 
 import { cn } from '#/utilities';
 import { forwardRef } from 'react';
 import { useSchedulerContext } from '../use-scheduler';
 
 interface DayViewEventButtonProps extends HTMLVelcureProps<'button'> {
-  event: EventInternal;
+  event: CalendarEvent;
 }
 
 export const DayViewEventButton = forwardRef<

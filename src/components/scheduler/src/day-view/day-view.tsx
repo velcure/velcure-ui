@@ -1,12 +1,14 @@
 import { HTMLVelcureProps, velcure } from '#/components/factory';
-import { HoverCard } from '#/components/hover-card/src';
 import { useMergeRefs } from '#/hooks';
 import { cn } from '#/utilities';
-import { Fragment, forwardRef, useEffect, useMemo, useRef } from 'react';
+import { forwardRef, useEffect, useMemo, useRef, useState } from 'react';
+import { EmptyCell } from '../event/empty-cell';
+import { EventList } from '../event/event-list';
 import { useSchedulerContext } from '../use-scheduler';
 import { getHoursToDisplay } from '../utils';
-import { DayViewEventButton } from './day-view-event';
-import { sortedEvents } from './utils';
+import { DayViewColumns } from './day-view-columns';
+import { HorizontalLines } from './horizontal-lines';
+import { VerticalLines } from './vertical-lines';
 
 export interface SchedulerDayViewProps
   extends Omit<HTMLVelcureProps<'div'>, 'dir'> {}
@@ -22,6 +24,8 @@ export const SchedulerDayView = forwardRef<
   const containerOffset = useRef<HTMLDivElement>(null);
   const container = useRef<HTMLDivElement>(null);
   const containerNav = useRef<HTMLDivElement>(null);
+
+  const [offsetHeight, setOffsetHeight] = useState<number>();
 
   const resourceCount = resources.length;
 
@@ -42,16 +46,32 @@ export const SchedulerDayView = forwardRef<
 
   const hours = useMemo(() => getHoursToDisplay(0, 23), []);
 
-  const sorted = useMemo(
-    () => sortedEvents(events ?? [], date),
-    [events, date]
-  );
+  const numberOfGridStopsPerDay = hours.length * 12;
+  const hourSize = 58;
+
+  // const sorted = useMemo(
+  //   () => sortedEvents(events ?? [], date),
+  //   [events, date]
+  // );
+
+  useEffect(() => {
+    if (!containerOffset.current) return;
+
+    setOffsetHeight(containerOffset.current.offsetHeight);
+  }, [containerOffset.current]);
 
   return (
     <div
       ref={useMergeRefs(ref, container)}
       {...restProps}
-      className={cn('isolate flex flex-auto flex-col overflow-auto')}
+      className={cn('isolate flex flex-auto flex-col')}
+      style={
+        {
+          ...restProps.style,
+          '--one-minute-height': `calc(${hourSize}px/60)`,
+          '--gridDefaultSize': `${hourSize}px`,
+        } as React.CSSProperties // This can't live in the css file because it's a dynamic value and css variable gets super
+      }
     >
       <div style={{ width: '165%' }} className="flex flex-none flex-col ">
         <DayViewNavigation ref={containerNav} resources={resources} />
@@ -60,87 +80,58 @@ export const SchedulerDayView = forwardRef<
           <div className="sticky left-0 z-10 flex-none w-14 bg-background ring-1 ring-gray-100" />
           <div className="grid flex-auto grid-cols-1 grid-rows-1">
             {/* Horizontal lines */}
-            <div
-              className="col-start-1 col-end-2 row-start-1 grid divide-y divide-gray-100"
-              style={{ gridTemplateRows: 'repeat(48, minmax(3.5rem, 1fr))' }}
-            >
-              <div ref={containerOffset} className="row-end-1 h-7"></div>
-              {hours.map((hour, idx) => (
-                <Fragment key={idx}>
-                  <div key={idx}>
-                    <div className="sticky left-0 z-20 -ml-14 -mt-2.5 w-14 pr-2 text-right text-xs leading-5 text-gray-400">
-                      {hour.minute(0).format('HH:mm')}
-                    </div>
-                  </div>
-                  <div />
-                </Fragment>
-              ))}
-            </div>
+            <HorizontalLines
+              hours={hours}
+              containerOffsetRef={containerOffset}
+            />
 
             {/* Vertical lines */}
-            <div
-              className={cn(
-                'col-start-1 col-end-2 row-start-1 hidden sm:grid divide-x divide-gray-100',
-                'grid-rows-1'
-              )}
-              style={{
-                gridTemplateColumns: `repeat(${resourceCount}, minmax(0, 1fr))`,
-              }}
-            >
-              {resources.map((resource, index) => (
-                <div
-                  key={resource.id}
-                  className="row-span-full"
-                  style={{
-                    gridColumnStart: index + 1,
-                  }}
-                />
-              ))}
-              <div
-                className="row-span-full w-8"
-                style={{
-                  gridColumnStart: resourceCount + 1,
-                }}
-              />
-            </div>
+            <VerticalLines count={resourceCount} />
 
             {/** Event List */}
-            <ol
-              className="col-start-1 col-end-2 row-start-1 grid sm:pr-8"
-              style={{
-                gridTemplateColumns: `repeat(${resourceCount}, minmax(0, 1fr))`,
-                // Bei 5 Minuten pro GridRow braucht man 1440 / 5 = 288 GridRows für einen ganzen Tag
-                // 1 Grid Row = 5 minutes; 1 span = 5 minutes
-                gridTemplateRows: '1.75rem repeat(288, minmax(0, 1fr)) auto',
-              }}
+            <DayViewColumns
+              offsetHeight={offsetHeight}
+              gridStopsPerDay={numberOfGridStopsPerDay}
             >
-              {sorted.map((event) => (
+              {[...Array(resourceCount)].map((_, i) => (
                 <li
-                  key={event.id}
-                  className="relative mt-px flex"
-                  style={{
-                    // idx of resource + 1 because grid columns start at 1
-                    gridColumnStart: (event?.resourceIndex || 0) + 1,
-                    gridRow: `${event?.gridRow + 2} / span ${event?.gridSpan}`, // offset
-                    //  gridRowEnd: `span ${event?.gridSpan}`,
-                    // gridRow: event.gridRow,
-                    // gridRowEnd: `span ${event.gridSpan}`,
-                  }}
+                  key={`event-resource-list-${i}`}
+                  className="relative"
+                  style={{ gridColumnStart: i + 1 }}
                 >
-                  <HoverCard
-                    content={
-                      <div className="flex flex-col text-xs leading-5">
-                        <div className="order-1 text-blue-700">
-                          <pre>{JSON.stringify(event, null, 2)}</pre>
-                        </div>
-                      </div>
-                    }
-                  >
-                    <DayViewEventButton event={event} />
-                  </HoverCard>
+                  <EventList resourceIndex={i} />
                 </li>
               ))}
-            </ol>
+            </DayViewColumns>
+
+            {/** empty cells */}
+            <DayViewColumns
+              offsetHeight={offsetHeight}
+              gridStopsPerDay={numberOfGridStopsPerDay}
+            >
+              {resources.map((resource, i) => (
+                <li
+                  key={resource.id}
+                  className="relative"
+                  style={{
+                    gridRow: `1 / span ${numberOfGridStopsPerDay}`,
+                  }}
+                >
+                  {[...Array(numberOfGridStopsPerDay)].map((_, j) => {
+                    const key = `${i}-${j}`;
+
+                    return (
+                      <EmptyCell
+                        key={key}
+                        resource={resource}
+                        gridCellIdx={j}
+                        totalGridCells={numberOfGridStopsPerDay}
+                      />
+                    );
+                  })}
+                </li>
+              ))}
+            </DayViewColumns>
           </div>
         </div>
       </div>

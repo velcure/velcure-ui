@@ -35,6 +35,6 @@ export interface ResourceInput {
 }
 
 export type ResourceInternal = ResourceInput;
-export type EventInternal = EventInput & {
+export type CalendarEvent = EventInput & {
   resourceIndex?: number;
 };
