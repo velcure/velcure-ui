@@ -103,10 +103,6 @@
     "zod": "^3.22.2"
   },
   "dependencies": {
-    "@fullcalendar/core": "^6.1.9",
-    "@fullcalendar/react": "^6.1.9",
-    "@fullcalendar/resource": "^6.1.9",
-    "@fullcalendar/resource-timeline": "^6.1.9",
     "@popperjs/core": "^2.11.8",
     "@zag-js/element-size": "^0.21.0",
     "@zag-js/focus-visible": "^0.21.0",
