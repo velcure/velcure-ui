@@ -17,6 +17,7 @@ export interface EventInput {
   resourceId?: string;
   startDate: string | Date;
   endDate: string | Date;
+  color?: string;
 }
 
 export interface ResourceInput {

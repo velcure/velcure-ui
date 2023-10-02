@@ -1,5 +1,7 @@
 import { HTMLVelcureProps, velcure } from '#/components/factory';
 import { cn } from '#/utilities';
+import { parseColor } from '@zag-js/color-utils';
+import { darken, readableColor } from 'color2k';
 import dayjs from 'dayjs';
 import { forwardRef } from 'react';
 import { CalendarEvent } from '../scheduler-types';
@@ -10,10 +12,20 @@ export interface EventProps extends HTMLVelcureProps<'button'> {
   eventDuration: number;
 }
 
+const getColor = (str?: string) => {
+  try {
+    return parseColor(str || '');
+  } catch (error) {
+    return parseColor('#EFF6FF');
+  }
+};
+
 export const Event = forwardRef<HTMLButtonElement, EventProps>((props, ref) => {
   const { className, event, eventDuration, onClick, ...restProps } = props;
 
   const { onClickEvent } = useSchedulerContext();
+
+  const color = getColor(event?.color);
 
   return (
     <velcure.button
@@ -23,9 +35,22 @@ export const Event = forwardRef<HTMLButtonElement, EventProps>((props, ref) => {
         'group flex h-full w-full flex-col overflow-y-auto',
         'rounded-lg px-2 py-1 text-xs text-start leading-5',
         // colors
-        'bg-blue-50 border border-blue-200 hover:bg-blue-100',
+        'transition-colors',
+        'bg-[var(--bg-color)] border-[var(--border-color)]',
+        'text-[var(--color)]',
+        'border hover:bg-[var(--bg-color-hover)]',
         className
       )}
+      style={
+        {
+          ...restProps.style,
+          '--color': readableColor(color.toString('hex')),
+          '--bg-color': color.toString('css'),
+          '--border-color': darken(color.toString('hex'), 0.1),
+          '--bg-color-hover': darken(color.toString('hex'), 0.05),
+        } as React.CSSProperties
+      }
+      data-color={event.color}
       onClick={(e) => {
         onClick?.(e);
         onClickEvent?.(event);

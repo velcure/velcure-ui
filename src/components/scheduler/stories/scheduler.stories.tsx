@@ -69,6 +69,9 @@ const resources: ResourceInput[] = [
   },
 ];
 
+const randomColor = () =>
+  `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+
 // A function to Generate events with dayjs for each Resource
 // the date we create resources around is "TODAY", we create at least 10 resources for "yesterday"
 // and at least 10 resources for "tomorrow" and at least 10 resources for "today"
@@ -93,6 +96,7 @@ function generateEvents() {
       name: resource.name,
       startDate: startTime.toISOString(),
       endDate: endTime.toISOString(),
+      color: randomColor(),
     });
   });
 
@@ -110,6 +114,7 @@ function generateEvents() {
       name: resource.name,
       startDate: startTime.toISOString(),
       endDate: endTime.toISOString(),
+      color: randomColor(),
     });
   });
 
@@ -127,6 +132,7 @@ function generateEvents() {
       name: resource.name,
       startDate: startTime.toISOString(),
       endDate: endTime.toISOString(),
+      color: randomColor(),
     });
   });
 
@@ -136,6 +142,7 @@ function generateEvents() {
     name: 'Spans yesterday to today',
     startDate: yesterday.hour(23).minute(0).second(0).toISOString(),
     endDate: today.hour(1).second(0).toISOString(),
+    color: randomColor(),
   });
 
   return events;

@@ -104,6 +104,7 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
+    "@zag-js/color-utils": "^0.22.0",
     "@zag-js/element-size": "^0.21.0",
     "@zag-js/focus-visible": "^0.21.0",
     "@zag-js/number-input": "^0.22.0",
@@ -112,6 +113,7 @@
     "@zag-js/types": "^0.22.0",
     "aria-hidden": "^1.2.3",
     "class-variance-authority": "^0.7.0",
+    "color2k": "^2.0.2",
     "cx": "^23.9.0",
     "dayjs": "^1.11.10",
     "react-focus-lock": "^2.9.5",
