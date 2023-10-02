@@ -6,6 +6,7 @@ import { EmptyCell } from '../event/empty-cell';
 import { EventList } from '../event/event-list';
 import { useSchedulerContext } from '../use-scheduler';
 import { getHoursToDisplay } from '../utils';
+import { CurrentTime } from './current-time';
 import { DayViewColumns } from './day-view-columns';
 import { HorizontalLines } from './horizontal-lines';
 import { VerticalLines } from './vertical-lines';
@@ -19,7 +20,7 @@ export const SchedulerDayView = forwardRef<
 >((props, ref) => {
   const { className, ...restProps } = props;
 
-  const { date, events, resources } = useSchedulerContext();
+  const { resources } = useSchedulerContext();
 
   const containerOffset = useRef<HTMLDivElement>(null);
   const container = useRef<HTMLDivElement>(null);
@@ -49,11 +50,6 @@ export const SchedulerDayView = forwardRef<
   const numberOfGridStopsPerDay = hours.length * 12;
   const hourSize = 58;
 
-  // const sorted = useMemo(
-  //   () => sortedEvents(events ?? [], date),
-  //   [events, date]
-  // );
-
   useEffect(() => {
     if (!containerOffset.current) return;
 
@@ -70,13 +66,15 @@ export const SchedulerDayView = forwardRef<
           ...restProps.style,
           '--one-minute-height': `calc(${hourSize}px/60)`,
           '--gridDefaultSize': `${hourSize}px`,
+          '--calendar-offset-top': '28px',
         } as React.CSSProperties // This can't live in the css file because it's a dynamic value and css variable gets super
       }
     >
       <div style={{ width: '165%' }} className="flex flex-none flex-col ">
         <DayViewNavigation ref={containerNav} resources={resources} />
 
-        <div className="flex flex-1 w-auto">
+        <div className="relative flex flex-1 w-auto">
+          <CurrentTime />
           <div className="sticky left-0 z-10 flex-none w-14 bg-background ring-1 ring-gray-100" />
           <div className="grid flex-auto grid-cols-1 grid-rows-1">
             {/* Horizontal lines */}

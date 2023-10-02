@@ -6,6 +6,16 @@ export const [SchedulerProvider, useSchedulerContext] =
   createContext<UseSchedulerReturn>();
 
 export interface SchedulerOptions {
+  /**
+   * Alternative starthour for the scheduler
+   * @default 0
+   */
+  startHour?: number;
+  /**
+   * Alternative endhour for the scheduler
+   * @default 23
+   */
+  endHour?: number;
   businessHours?: {
     daysOfWeek: number[];
     startTime: string;
@@ -37,7 +47,13 @@ export interface SchedulerOptions {
 export type UseSchedulerReturn = ReturnType<typeof useScheduler>;
 
 export const useScheduler = (options: SchedulerOptions = {}) => {
-  const { events = [], resources = [], onClickEvent } = options;
+  const {
+    events = [],
+    resources = [],
+    onClickEvent,
+    startHour = 0,
+    endHour = 23,
+  } = options;
 
   const [date, setDate] = useState(new Date());
 
@@ -60,5 +76,7 @@ export const useScheduler = (options: SchedulerOptions = {}) => {
     events: internalEvents,
     resources,
     onClickEvent,
+    startHour,
+    endHour,
   };
 };
