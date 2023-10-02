@@ -1,5 +1,5 @@
+import { useSafeLayoutEffect } from '#/hooks';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { useSafeLayoutEffect } from '../useSafeLayoutEffect';
 
 type NativeImageProps = React.ImgHTMLAttributes<HTMLImageElement>;
 

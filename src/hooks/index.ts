@@ -16,7 +16,6 @@ export * from './use-size';
 export * from './use-timeout';
 export * from './use-update-effect';
 export * from './useDebounce';
-export * from './useImage';
 export * from './useMergeRefs';
 export * from './useRipple';
 export * from './useSafeLayoutEffect';

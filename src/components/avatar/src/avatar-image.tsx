@@ -1,4 +1,4 @@
-import { useImage } from '#/hooks/useImage';
+import { useImage } from '#/components/image/src';
 import { cn } from '#/utilities';
 import { cloneElement, forwardRef } from 'react';
 import { AvatarName } from './avatar-name';

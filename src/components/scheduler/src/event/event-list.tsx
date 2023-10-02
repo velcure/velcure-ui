@@ -7,7 +7,7 @@ export interface EventListProps {
 }
 
 export const EventList: React.FC<EventListProps> = (props) => {
-  const { resourceIndex, ...restProps } = props;
+  const { resourceIndex } = props;
   const { events, date } = useSchedulerContext();
 
   const dd = dayjs(date);

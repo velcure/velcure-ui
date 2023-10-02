@@ -1,5 +1,7 @@
 import { AppShell, Page, PageBody, PageHeader } from '#/blocks';
-import { Button } from '#/components/button/src';
+import { Button, ButtonGroup, IconButton } from '#/components/button/src';
+import { Image } from '#/components/image/src';
+import { Menu, MenuItem, MenuList, MenuTrigger } from '#/components/menu/src';
 import {
   Drawer,
   DrawerBody,
@@ -7,9 +9,16 @@ import {
   DrawerHeader,
   DrawerOverlay,
 } from '#/components/modal/src';
+import {
+  Property,
+  PropertyList,
+  PropertyValue,
+} from '#/components/property/src';
+import { Typography } from '#/components/typography/src';
 import { Meta } from '@storybook/react';
 import dayjs from 'dayjs';
 import { useMemo, useState } from 'react';
+import { PiDotsThreeVertical, PiPhoneCall } from 'react-icons/pi';
 import { Scheduler } from '../src/scheduler';
 import { EventInput, ResourceInput } from '../src/scheduler-types';
 
@@ -132,6 +141,81 @@ function generateEvents() {
   return events;
 }
 
+const TourSheet: React.FC<{
+  isOpen: boolean;
+  onClose: () => void;
+  selection?: any;
+}> = (props) => {
+  const { isOpen, onClose, selection } = props;
+  const tour = {
+    pickupAddress: 'Musterstraße 1, 12345 Musterstadt',
+    dropoffAddress: 'Musterstraße 2, 12345 Musterstadt',
+  };
+  return (
+    <Drawer isOpen={isOpen} onClose={onClose} blockScrollOnMount={false}>
+      <DrawerOverlay />
+      <DrawerContent>
+        <DrawerHeader>
+          <span>Tour</span>
+        </DrawerHeader>
+        <DrawerBody>
+          <div className="pb-1 sm:pb-6 -mx-6">
+            <div className="relative h-40 sm:h-56">
+              <Image
+                className="absolute h-full w-full object-cover"
+                src="https://raw.githubusercontent.com/maplibre/maplibre-gl-directions/main/doc/images/demo-screenshot-1.png"
+              />
+            </div>
+            <div className="px-6 mt-6 sm:mt-8 sm:flex sm:items-end">
+              <div className="flex-1">
+                <div>
+                  <div className="flex items-center">
+                    <Typography variant="h3">Patienten Name</Typography>
+                  </div>
+                  <Typography as="small" variant="small">
+                    @Krankenhaus Name
+                  </Typography>
+                </div>
+                <ButtonGroup className="mt-5 w-full">
+                  <Button className="w-full" leftIcon={<PiPhoneCall />}>
+                    Anrufen
+                  </Button>
+                  <Menu>
+                    <MenuTrigger>
+                      <IconButton
+                        aria-label="More options"
+                        variant="outline"
+                        icon={<PiDotsThreeVertical />}
+                      />
+                    </MenuTrigger>
+                    <MenuList>
+                      <MenuItem>Bearbeiten</MenuItem>
+                      <MenuItem>Weiter in Abrechnung</MenuItem>
+                      <MenuItem>Details zum Auftrag</MenuItem>
+                    </MenuList>
+                  </Menu>
+                </ButtonGroup>
+              </div>
+            </div>
+          </div>
+          <PropertyList>
+            <Property label="Abholadresse" value={tour.pickupAddress} />
+            <Property label="Abfahrt" value="09:30" />
+            <Property label="Zieladresse" value={tour.dropoffAddress} />
+            <Property label="Ankunft" value="10:30" />
+            <Property label="Patient">
+              <PropertyValue>
+                <span className="text-muted-foreground">Max Mustermann</span>
+              </PropertyValue>
+            </Property>
+          </PropertyList>
+          {selection && <pre>{JSON.stringify(selection, null, 2)}</pre>}
+        </DrawerBody>
+      </DrawerContent>
+    </Drawer>
+  );
+};
+
 export const Default = () => {
   const events = useMemo(() => generateEvents(), []);
 
@@ -158,24 +242,11 @@ export const Default = () => {
           </PageBody>
         </Page>
       </AppShell>
-      <Drawer
+      <TourSheet
         isOpen={!!selectedEvent}
         onClose={() => setSelectedEvent(null)}
-        blockScrollOnMount={false}
-      >
-        <DrawerOverlay />
-        <DrawerContent>
-          <DrawerHeader>Tour</DrawerHeader>
-          <DrawerBody>
-            <pre>{JSON.stringify(selectedEvent, null, 2)}</pre>
-            <hr className="my-4" />
-            <div className="flex flex-col gap-4">
-              <Button variant="outline">Bearbeiten</Button>
-              <Button variant="outline">Rechnung erstellen</Button>
-            </div>
-          </DrawerBody>
-        </DrawerContent>
-      </Drawer>
+        selection={selectedEvent}
+      />
     </>
   );
 };

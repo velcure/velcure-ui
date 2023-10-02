@@ -12,6 +12,7 @@ export * from './focus-lock/src';
 export * from './form-control/src';
 export * from './hover-card/src';
 export * from './icons/src';
+export * from './image/src';
 export * from './input/src';
 export * from './logo/src';
 export * from './menu/src';
