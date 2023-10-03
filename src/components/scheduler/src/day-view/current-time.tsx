@@ -22,7 +22,7 @@ export const CurrentTime = forwardRef<HTMLDivElement, CurrentTimeProps>(
     const { className, ...restProps } = props;
 
     const currentTimeRef = useRef<HTMLDivElement>(null);
-    const { startHour, endHour } = useSchedulerContext();
+    const { startHour, endHour, timeFormat } = useSchedulerContext();
     const [scrolledIntoView, setScrolledIntoView] = useState(false);
     const [currentTimePos, setCurrentTimePos] = useState<number | null>(null);
 
@@ -82,7 +82,7 @@ export const CurrentTime = forwardRef<HTMLDivElement, CurrentTimeProps>(
           zIndex: 70,
         }}
       >
-        <div className="w-14 pr-2 text-right">{dayjs().format('HH:mm')}</div>
+        <div className="w-14 pr-2 text-right">{dayjs().format(timeFormat)}</div>
         <div className="bg-red-400 h-3 w-px" />
         <div className="bg-red-400 h-px w-full" />
       </velcure.div>

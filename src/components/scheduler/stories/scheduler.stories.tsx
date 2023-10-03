@@ -14,59 +14,53 @@ import {
   PropertyList,
   PropertyValue,
 } from '#/components/property/src';
+import { ToastProvider, useToast } from '#/components/toast/src';
 import { Typography } from '#/components/typography/src';
 import { Meta } from '@storybook/react';
 import dayjs from 'dayjs';
-import { useMemo, useState } from 'react';
+import { Fragment, useMemo, useState } from 'react';
 import { PiDotsThreeVertical, PiPhoneCall } from 'react-icons/pi';
 import { Scheduler } from '../src/scheduler';
 import { EventInput, ResourceInput } from '../src/scheduler-types';
 
-const meta = {
+const meta: Meta = {
   title: 'Components / Disposition / Scheduler',
   component: Scheduler,
   parameters: {
     layout: 'full',
   },
+  decorators: [
+    (Story) => (
+      <Fragment>
+        <ToastProvider />
+        <Story />
+      </Fragment>
+    ),
+  ],
   tags: ['autodocs'],
 } satisfies Meta<typeof Scheduler>;
 
 export default meta;
 
+const genResources = (sum: number): ResourceInput[] => {
+  const resources: ResourceInput[] = [];
+
+  for (let i = 0; i < sum; i++) {
+    resources.push({
+      id: `${i}`,
+      name: `Resource ${i}`,
+    });
+  }
+
+  return resources;
+};
+
 const resources: ResourceInput[] = [
   {
-    id: '1',
-    name: 'KTW #1',
+    id: '12333',
+    name: 'Pool',
   },
-  {
-    id: '2',
-    name: 'KTW #2',
-  },
-  {
-    id: '3',
-    name: 'KTW #3',
-  },
-  {
-    id: '4',
-    name: 'KTW #4',
-  },
-  {
-    id: '5',
-    name: 'KTW #5',
-  },
-  {
-    id: '6',
-    name: 'KTW #6',
-  },
-
-  {
-    id: '7',
-    name: 'KTW #7',
-  },
-  {
-    id: '8',
-    name: 'KTW #8',
-  },
+  ...genResources(12),
 ];
 
 const randomColor = () =>
@@ -228,6 +222,8 @@ export const Default = () => {
 
   const [selectedEvent, setSelectedEvent] = useState<EventInput | null>(null);
 
+  const toast = useToast();
+
   return (
     <>
       <AppShell>
@@ -237,13 +233,15 @@ export const Default = () => {
             <Scheduler
               resources={resources}
               events={events}
-              businessHours={{
-                daysOfWeek: [1, 2, 3, 4, 5],
-                startTime: '08:00',
-                endTime: '18:00',
-              }}
               onClickEvent={(event) => {
                 setSelectedEvent(event);
+              }}
+              onEventUpdate={(event) => {
+                toast({
+                  status: 'success',
+                  title: 'Event updated',
+                  description: JSON.stringify(event),
+                });
               }}
             />
           </PageBody>
@@ -254,6 +252,28 @@ export const Default = () => {
         onClose={() => setSelectedEvent(null)}
         selection={selectedEvent}
       />
+    </>
+  );
+};
+
+export const WithStartAndEndhour = () => {
+  const events = useMemo(() => generateEvents(), []);
+
+  return (
+    <>
+      <AppShell>
+        <Page variant="full">
+          <PageHeader title="Scheduler" />
+          <PageBody>
+            <Scheduler
+              resources={resources}
+              events={events}
+              startHour={8}
+              endHour={23}
+            />
+          </PageBody>
+        </Page>
+      </AppShell>
     </>
   );
 };

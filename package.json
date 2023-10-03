@@ -103,6 +103,8 @@
     "zod": "^3.22.2"
   },
   "dependencies": {
+    "@dnd-kit/core": "^6.0.8",
+    "@dnd-kit/modifiers": "^6.0.1",
     "@popperjs/core": "^2.11.8",
     "@zag-js/color-utils": "^0.22.0",
     "@zag-js/element-size": "^0.21.0",

@@ -1,12 +1,12 @@
 import { HTMLVelcureProps, velcure } from '#/components/factory';
 import { cn } from '#/utilities';
+
 import { parseColor } from '@zag-js/color-utils';
 import { darken, readableColor } from 'color2k';
 import dayjs from 'dayjs';
 import { forwardRef } from 'react';
 import { CalendarEvent } from '../scheduler-types';
 import { useSchedulerContext } from '../use-scheduler';
-
 export interface EventProps extends HTMLVelcureProps<'button'> {
   event: CalendarEvent;
   eventDuration: number;
@@ -23,7 +23,7 @@ const getColor = (str?: string) => {
 export const Event = forwardRef<HTMLButtonElement, EventProps>((props, ref) => {
   const { className, event, eventDuration, onClick, ...restProps } = props;
 
-  const { onClickEvent } = useSchedulerContext();
+  const { onClickEvent, timeFormat } = useSchedulerContext();
 
   const color = getColor(event?.color);
 
@@ -33,7 +33,7 @@ export const Event = forwardRef<HTMLButtonElement, EventProps>((props, ref) => {
       {...restProps}
       className={cn(
         'group flex h-full w-full flex-col overflow-y-auto',
-        'rounded-lg px-2 py-1 text-xs text-start leading-5',
+        'rounded-lg',
         // colors
         'transition-colors',
         'bg-[var(--bg-color)] border-[var(--border-color)]',
@@ -44,6 +44,7 @@ export const Event = forwardRef<HTMLButtonElement, EventProps>((props, ref) => {
       style={
         {
           ...restProps.style,
+
           '--color': readableColor(color.toString('hex')),
           '--bg-color': color.toString('css'),
           '--border-color': darken(color.toString('hex'), 0.1),
@@ -56,13 +57,15 @@ export const Event = forwardRef<HTMLButtonElement, EventProps>((props, ref) => {
         onClickEvent?.(event);
       }}
     >
-      <div>{event.name}</div>
-      {eventDuration >= 30 && (
-        <p className="text-subtle text-left text-[10px] leading-none">
-          {dayjs(event.startDate).format('HH:mm')} -{' '}
-          {dayjs(event.endDate).format('HH:mm')}
-        </p>
-      )}
+      <div className="flex h-full w-full flex-col px-2 py-1 text-xs text-start leading-5">
+        <div>{event.name}</div>
+        {eventDuration >= 30 && (
+          <p className="text-subtle text-left text-[10px] leading-none">
+            {dayjs(event.startDate).format(timeFormat)} -{' '}
+            {dayjs(event.endDate).format(timeFormat)}
+          </p>
+        )}
+      </div>
     </velcure.button>
   );
 });

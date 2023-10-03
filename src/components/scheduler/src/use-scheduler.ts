@@ -1,4 +1,4 @@
-import { createContext } from '#/hooks';
+import { createContext, useControllableState } from '#/hooks';
 import { useMemo, useState } from 'react';
 import { EventInput, ResourceInput } from './scheduler-types';
 
@@ -6,6 +6,15 @@ export const [SchedulerProvider, useSchedulerContext] =
   createContext<UseSchedulerReturn>();
 
 export interface SchedulerOptions {
+  /**
+   * Date to be displayed in the scheduler
+   * @default new Date()
+   */
+  date?: Date;
+  /**
+   * Callback for when the date changes
+   */
+  onDateChange?: (date: Date) => void;
   /**
    * Alternative starthour for the scheduler
    * @default 0
@@ -16,11 +25,12 @@ export interface SchedulerOptions {
    * @default 23
    */
   endHour?: number;
-  businessHours?: {
-    daysOfWeek: number[];
-    startTime: string;
-    endTime: string;
-  };
+  /**
+   * Format to render Time
+   * @default 'HH:mm'
+   */
+  timeFormat?: string;
+
   /**
    * @default 'de'
    */
@@ -42,20 +52,38 @@ export interface SchedulerOptions {
   events?: EventInput[];
 
   onClickEvent?: (event: EventInput) => void;
+
+  onEventUpdate?: (event: EventInput) => void;
 }
 
 export type UseSchedulerReturn = ReturnType<typeof useScheduler>;
 
 export const useScheduler = (options: SchedulerOptions = {}) => {
   const {
-    events = [],
+    locale = 'de',
+    events: eventsProp,
     resources = [],
     onClickEvent,
     startHour = 0,
     endHour = 23,
+    timeFormat = 'HH:mm',
+    nowIndicator = true,
+    date: dateProp,
+    onDateChange,
+    onEventUpdate,
   } = options;
 
-  const [date, setDate] = useState(new Date());
+  const [isDragging, setIsDragging] = useState(false);
+
+  const [events, setEvents] = useControllableState({
+    defaultValue: eventsProp || [],
+  });
+
+  const [date, setDate] = useControllableState({
+    value: dateProp,
+    defaultValue: new Date(),
+    onChange: onDateChange,
+  });
 
   const internalEvents = useMemo(() => {
     return events.map((event) => {
@@ -71,12 +99,19 @@ export const useScheduler = (options: SchedulerOptions = {}) => {
   }, [events, resources]);
 
   return {
+    locale,
     date,
     setDate,
     events: internalEvents,
+    setEvents,
     resources,
     onClickEvent,
     startHour,
     endHour,
+    timeFormat,
+    nowIndicator,
+    onEventUpdate,
+    isDragging,
+    setIsDragging,
   };
 };

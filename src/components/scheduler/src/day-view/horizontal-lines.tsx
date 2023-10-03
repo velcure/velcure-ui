@@ -2,6 +2,7 @@ import { HTMLVelcureProps } from '#/components/factory';
 import { cn } from '#/utilities';
 import dayjs from 'dayjs';
 import { forwardRef, useId } from 'react';
+import { useSchedulerContext } from '../use-scheduler';
 
 export interface HorizontalLinesProps
   extends Omit<HTMLVelcureProps<'div'>, 'children'> {
@@ -9,11 +10,11 @@ export interface HorizontalLinesProps
   containerOffsetRef: React.RefObject<HTMLDivElement>;
 }
 
-const timeFormat = 'HH:mm';
-
 export const HorizontalLines = forwardRef<HTMLDivElement, HorizontalLinesProps>(
   (props, ref) => {
     const { className, hours, containerOffsetRef, ...restProps } = props;
+
+    const { timeFormat } = useSchedulerContext();
     // We need to force the minute to zero, because otherwise in ex GMT+5.5, it would show :30 minute times (but at the positino of :00)
     const finalHour = hours[hours.length - 1]
       .add(1, 'hour')

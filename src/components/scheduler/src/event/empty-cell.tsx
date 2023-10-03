@@ -1,7 +1,9 @@
 import { HTMLVelcureProps, velcure } from '#/components/factory';
+import { useMergeRefs } from '#/hooks';
 import { cn } from '#/utilities';
+import { useDroppable } from '@dnd-kit/core';
 import dayjs, { Dayjs } from 'dayjs';
-import { forwardRef } from 'react';
+import { forwardRef, useId } from 'react';
 import { ResourceInternal } from '../scheduler-types';
 import { useSchedulerContext } from '../use-scheduler';
 
@@ -10,6 +12,8 @@ export interface EmptyCellProps
   resource: ResourceInternal;
   gridCellIdx: number;
   totalGridCells: number;
+  selectionLength: number;
+  startHour: number;
 }
 
 interface GridCellToDateProps {
@@ -17,10 +21,17 @@ interface GridCellToDateProps {
   gridCellIdx: number;
   totalGridCells: number;
   selectionLength: number;
+  startHour: number;
 }
 
 const gridCellToDateTime = (options: GridCellToDateProps) => {
-  const { date, gridCellIdx, totalGridCells, selectionLength } = options;
+  const {
+    date,
+    gridCellIdx,
+    totalGridCells,
+    selectionLength = 23,
+    startHour = 0,
+  } = options;
 
   const minutesInSelection = (selectionLength + 1) * 60;
   const minutesPerCell = minutesInSelection / totalGridCells;
@@ -31,15 +42,22 @@ const gridCellToDateTime = (options: GridCellToDateProps) => {
   const cellDateTime = dayjs(date)
     // .tz(timezone)
     .startOf('day')
-    .add(minutesIntoSelection, 'minutes');
-  // .add(startHour, 'hours');
+    .add(minutesIntoSelection, 'minutes')
+    .add(startHour, 'hours');
   return cellDateTime;
 };
 
 export const EmptyCell = forwardRef<HTMLDivElement, EmptyCellProps>(
   (props, ref) => {
-    const { className, resource, gridCellIdx, totalGridCells, ...restProps } =
-      props;
+    const {
+      className,
+      resource,
+      gridCellIdx,
+      totalGridCells,
+      startHour,
+      selectionLength,
+      ...restProps
+    } = props;
 
     const { date } = useSchedulerContext();
 
@@ -47,16 +65,20 @@ export const EmptyCell = forwardRef<HTMLDivElement, EmptyCellProps>(
       date,
       gridCellIdx,
       totalGridCells,
-      selectionLength: 23,
+      selectionLength,
+      startHour,
     });
 
-    const minutes = cellToDate.diff(dayjs(date).startOf('day'), 'minutes');
+    const minutes = cellToDate
+      .subtract(startHour, 'hour')
+      .diff(dayjs(date).startOf('day'), 'minutes');
 
     return (
       <Cell
         ref={ref}
         topOffsetMinutes={minutes}
         timeSlot={dayjs(cellToDate)}
+        resource={resource}
         {...restProps}
       />
     );
@@ -65,24 +87,41 @@ export const EmptyCell = forwardRef<HTMLDivElement, EmptyCellProps>(
 
 EmptyCell.displayName = 'EmptyCell';
 
-interface CellProps extends HTMLVelcureProps<'div'> {
+interface CellProps extends Omit<HTMLVelcureProps<'div'>, 'resource'> {
   isDisabled?: boolean;
   topOffsetMinutes?: number;
   timeSlot: Dayjs;
+  resource: ResourceInternal;
 }
 
 const Cell = forwardRef<HTMLDivElement, CellProps>((props, ref) => {
-  const { isDisabled, topOffsetMinutes, timeSlot, ...restProps } = props;
+  const { isDisabled, topOffsetMinutes, timeSlot, resource, ...restProps } =
+    props;
   const hoverEventDuration = 15;
 
   const onEmptyClick = () => {
-    console.log('empty cell clicked');
     alert(timeSlot.toISOString());
   };
 
+  const id = useId();
+
+  const { isOver, setNodeRef, active } = useDroppable({
+    id,
+    data: {
+      resourceId: resource.id,
+    },
+  });
+
+  const activeDuration = active
+    ? dayjs(active.data.current?.endDate).diff(
+        active.data.current?.startDate,
+        'minutes'
+      )
+    : null;
+
   return (
     <velcure.div
-      ref={ref}
+      ref={useMergeRefs(ref, setNodeRef)}
       className={cn(
         'group flex w-[calc(100%-1px)] items-center justify-center',
         !isDisabled && 'bg-background',
@@ -92,7 +131,9 @@ const Cell = forwardRef<HTMLDivElement, CellProps>((props, ref) => {
       data-disabled={isDisabled}
       data-slot={timeSlot.toISOString()}
       style={{
-        height: `calc(${hoverEventDuration}*var(--one-minute-height))`,
+        height: `calc(${
+          isOver ? activeDuration : hoverEventDuration
+        }*var(--one-minute-height))`,
         overflow: 'visible',
         top: topOffsetMinutes
           ? `calc(${topOffsetMinutes}*var(--one-minute-height))`
@@ -105,12 +146,14 @@ const Cell = forwardRef<HTMLDivElement, CellProps>((props, ref) => {
           'opacity-4 absolute hidden rounded-lg p-2',
           'text-xs font-semibold leading-5 group-hover:flex group-hover:cursor-pointer',
           'group-hover:cursor-pointer group-hover:bg-accent group-hover:text-accent-foreground',
-
+          isOver && 'bg-accent flex',
           hoverEventDuration && hoverEventDuration > 15 && 'items-start pt-3',
           hoverEventDuration && hoverEventDuration < 15 && 'items-center'
         )}
         style={{
-          height: `calc(${hoverEventDuration}*var(--one-minute-height) - 2px)`,
+          height: `calc(${
+            isOver ? activeDuration : hoverEventDuration
+          }*var(--one-minute-height) - 2px)`,
           zIndex: 10,
           width: 'calc(100% - 2px)',
         }}

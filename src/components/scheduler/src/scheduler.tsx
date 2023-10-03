@@ -1,6 +1,6 @@
 import { HTMLVelcureProps, velcure } from '#/components/factory';
-import { cn } from '#/utilities';
-import { forwardRef } from 'react';
+import { cn, createSplitProps } from '#/utilities';
+import { forwardRef, useRef } from 'react';
 import { SchedulerDayView } from './day-view';
 import { SchedulerHeader } from './scheduler-header';
 import {
@@ -15,25 +15,24 @@ export interface SchedulerProps
 
 export const Scheduler = forwardRef<HTMLDivElement, SchedulerProps>(
   (props, ref) => {
-    const {
-      className,
-      businessHours,
-      locale = 'de',
-      nowIndicator = true,
-      resources = [],
-      events = [],
-      onClickEvent,
-      ...restProps
-    } = props;
+    const [schedulerProps, { className, ...restProps }] =
+      createSplitProps<SchedulerOptions>()(props, [
+        'startHour',
+        'endHour',
+        'timeFormat',
+        'locale',
+        'nowIndicator',
+        'resources',
+        'events',
+        'onClickEvent',
+        'date',
+        'onDateChange',
+        'onEventUpdate',
+      ]);
 
-    const ctx = useScheduler({
-      businessHours,
-      locale,
-      nowIndicator,
-      resources,
-      events,
-      onClickEvent,
-    });
+    const ctx = useScheduler(schedulerProps);
+
+    const containerRef = useRef<HTMLDivElement>(null);
 
     return (
       <MobileNotSupported>
@@ -42,16 +41,24 @@ export const Scheduler = forwardRef<HTMLDivElement, SchedulerProps>(
             ref={ref}
             {...restProps}
             className={cn(
-              'flex h-full w-full flex-col gap-4 flex-1',
+              'flex min-h-0 min-w-0 flex-col gap-4 flex-1',
               className
             )}
           >
             <SchedulerHeader />
-            <velcure.div className="bg-background relative isolate flex flex-1 flex-col overflow-scroll">
-              <velcure.div className="relative flex  max-w-full flex-none flex-col sm:max-w-none md:max-w-full">
-                <SchedulerDayView />
-              </velcure.div>
-            </velcure.div>
+            <div
+              className={cn(
+                'flex-1 min-h-0 min-w-0 overflow-y-auto flex flex-col',
+                'isolate relative',
+                ctx.isDragging
+                  ? 'overflow-y-hidden overflow-x-scroll'
+                  : 'overflow-auto'
+              )}
+            >
+              <div className="flex flex-1 flex-col w-full">
+                <SchedulerDayView ref={containerRef} />
+              </div>
+            </div>
           </velcure.div>
         </SchedulerProvider>
       </MobileNotSupported>
@@ -71,7 +78,7 @@ const MobileNotSupported = ({ children }: { children: React.ReactNode }) => {
           Please use a desktop browser to view this page
         </p>
       </div>
-      <div className="hidden h-full sm:block">{children}</div>
+      <div className="hidden h-full sm:flex flex-1">{children}</div>
     </>
   );
 };

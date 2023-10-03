@@ -16,7 +16,7 @@ export const DayViewEventButton = forwardRef<
 >((props, ref) => {
   const { className, event, ...restProps } = props;
 
-  const { onClickEvent } = useSchedulerContext();
+  const { onClickEvent, timeFormat } = useSchedulerContext();
 
   return (
     <velcure.button
@@ -38,11 +38,11 @@ export const DayViewEventButton = forwardRef<
     >
       <p className="text-blue-500 group-hover:text-blue-700 ">
         <time dateTime={new Date(event.startDate).toISOString()}>
-          {dayjs(event.startDate).format('HH:mm')}
+          {dayjs(event.startDate).format(timeFormat)}
         </time>
         <span>-</span>
         <time dateTime={new Date(event.endDate).toISOString()}>
-          {dayjs(event.endDate).format('HH:mm')}
+          {dayjs(event.endDate).format(timeFormat)}
         </time>
       </p>
       <p>
