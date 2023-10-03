@@ -173,6 +173,7 @@ const DayViewNavigation = forwardRef<HTMLDivElement, DayViewNavigationProps>(
           {resources.map((resource) => (
             <div
               key={resource.id}
+              id="resource-name"
               className="flex items-center justify-center py-3"
             >
               <span>{resource.name}</span>
