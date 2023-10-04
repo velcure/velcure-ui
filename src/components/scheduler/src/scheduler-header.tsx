@@ -1,4 +1,4 @@
-import { ButtonGroup, IconButton } from '#/components/button/src';
+import { Button, ButtonGroup, IconButton } from '#/components/button/src';
 import { HTMLVelcureProps } from '#/components/factory';
 import { ChevronLeftIcon, ChevronRightIcon } from '#/components/icons/src';
 import { Typography } from '#/components/typography/src';
@@ -8,13 +8,15 @@ import { forwardRef } from 'react';
 import { useSchedulerContext } from './use-scheduler';
 
 export interface SchedulerHeaderProps
-  extends Omit<HTMLVelcureProps<'div'>, 'children'> {}
+  extends Omit<HTMLVelcureProps<'div'>, 'children'> {
+  actions?: React.ReactNode;
+}
 
 export const SchedulerHeader = forwardRef<HTMLDivElement, SchedulerHeaderProps>(
   (props, ref) => {
-    const { className, ...restProps } = props;
+    const { className, actions, ...restProps } = props;
 
-    const { date, setDate } = useSchedulerContext();
+    const { date, setDate, i18nConfig } = useSchedulerContext();
 
     const today = dayjs(date);
 
@@ -23,35 +25,50 @@ export const SchedulerHeader = forwardRef<HTMLDivElement, SchedulerHeaderProps>(
         ref={ref}
         {...restProps}
         className={cn(
-          'pt-4 flex flex-none flex-col justify-between px-4 sm:flex-row sm:items-center',
+          'flex flex-none flex-col justify-between sm:flex-row sm:items-center',
+          'border-b border-muted py-4 px-6',
           className
         )}
       >
-        <Typography variant="h3">
-          {today.format('dddd, MMMM D')}
-          <Typography as="span" variant="h3" className="text-muted-foreground">
-            , {today.format('YYYY')}
-          </Typography>
+        <Typography as="h3" className="text-base font-semibold leading-6">
+          <time dateTime={today.toISOString()}>
+            {today.format(`dddd, D. MMMM'YY`)}
+          </time>
         </Typography>
-        <div className="flex items-center space-x-2 rtl:space-x-reverse">
+        <div className="flex items-center space-x-4 rtl:space-x-reverse">
           <ButtonGroup isAttached>
             <IconButton
               variant="outline"
               aria-label="Previous day"
               icon={<ChevronLeftIcon />}
               onClick={() => {
-                setDate?.(today.subtract(1, 'day').toDate());
+                setDate(today.subtract(1, 'day').toDate());
               }}
             />
+            <Button
+              variant="outline"
+              className="font-semibold text-sm"
+              onClick={() => {
+                setDate(dayjs().toDate());
+              }}
+            >
+              {i18nConfig?.today || 'Today'}
+            </Button>
             <IconButton
               variant="outline"
               aria-label="Next day"
               icon={<ChevronRightIcon />}
               onClick={() => {
-                setDate?.(today.add(1, 'day').toDate());
+                setDate(today.add(1, 'day').toDate());
               }}
             />
           </ButtonGroup>
+          {actions && (
+            <div className="flex items-center gap-4">
+              <div className="h-6 w-px bg-gray-300" />
+              {actions}
+            </div>
+          )}
         </div>
       </header>
     );

@@ -2,6 +2,7 @@ import { HTMLVelcureProps } from '#/components/factory';
 import { useMergeRefs } from '#/hooks';
 import { cn } from '#/utilities';
 
+import { motion } from 'framer-motion';
 import { forwardRef, useEffect, useMemo, useRef, useState } from 'react';
 import { EmptyCell } from '../event/empty-cell';
 import { EventList } from '../event/event-list';
@@ -23,7 +24,8 @@ export const SchedulerDayView = forwardRef<
 >((props, ref) => {
   const { className, ...restProps } = props;
 
-  const { resources, nowIndicator, startHour, endHour } = useSchedulerContext();
+  const { resources, nowIndicator, startHour, endHour, direction } =
+    useSchedulerContext();
 
   const containerOffset = useRef<HTMLDivElement>(null);
   const container = useRef<HTMLDivElement>(null);
@@ -78,19 +80,30 @@ export const SchedulerDayView = forwardRef<
         }
       >
         <div style={{ width: '165%' }} className="flex flex-none flex-col">
-          <DayResources ref={containerNav} resources={resources} />
+          {direction === 'horizontal' ? (
+            <DayResources ref={containerNav} resources={resources} />
+          ) : (
+            <HorizontalLines
+              hours={hours}
+              containerOffsetRef={containerOffset}
+            />
+          )}
 
           <div className="relative flex flex-1 w-auto">
             {nowIndicator && <CurrentTime />}
             <div className="sticky left-0 z-10 flex-none w-14 bg-background ring-1 ring-gray-100" />
             <div className="grid flex-auto grid-cols-1 grid-rows-1">
-              {/* Horizontal lines */}
-              <HorizontalLines
-                hours={hours}
-                containerOffsetRef={containerOffset}
-              />
+              {/* Horizontal lines, represents the hours */}
+              {direction === 'vertical' ? (
+                <DayResources ref={containerNav} resources={resources} />
+              ) : (
+                <HorizontalLines
+                  hours={hours}
+                  containerOffsetRef={containerOffset}
+                />
+              )}
 
-              {/* Vertical lines */}
+              {/* Vertical lines represents the "resource slots"  */}
               <VerticalLines count={resourceCount} />
 
               {/** Event List */}
@@ -99,13 +112,13 @@ export const SchedulerDayView = forwardRef<
                 gridStopsPerDay={numberOfGridStopsPerDay}
               >
                 {[...Array(resourceCount)].map((_, i) => (
-                  <li
+                  <motion.li
                     key={`event-resource-list-${i}`}
                     className="relative"
                     style={{ gridColumnStart: i + 1 }}
                   >
                     <EventList resourceIndex={i} />
-                  </li>
+                  </motion.li>
                 ))}
               </DayViewColumns>
 

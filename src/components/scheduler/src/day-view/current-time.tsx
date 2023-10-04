@@ -22,7 +22,7 @@ export const CurrentTime = forwardRef<HTMLDivElement, CurrentTimeProps>(
     const { className, ...restProps } = props;
 
     const currentTimeRef = useRef<HTMLDivElement>(null);
-    const { startHour, endHour, timeFormat } = useSchedulerContext();
+    const { startHour, endHour, timeFormat, direction } = useSchedulerContext();
     const [scrolledIntoView, setScrolledIntoView] = useState(false);
     const [currentTimePos, setCurrentTimePos] = useState<number | null>(null);
 
@@ -70,21 +70,35 @@ export const CurrentTime = forwardRef<HTMLDivElement, CurrentTimeProps>(
     return (
       <velcure.div
         ref={useMergeRefs(currentTimeRef, ref)}
+        data-testid="current-time"
         {...restProps}
         className={cn(
-          'absolute top-0 z-40 flex h-px items-center justify-center text-xs w-full',
+          'absolute top-0 flex items-center justify-center text-xs',
+          direction === 'horizontal' ? 'h-px w-full' : 'w-px h-full',
           className
         )}
         aria-hidden={true}
         style={{
           ...restProps.style,
-          top: `calc(${currentTimePos}*var(--one-minute-height) + var(--calendar-offset-top))`,
+          ...(direction === 'horizontal'
+            ? {
+                top: `calc(${currentTimePos}*var(--one-minute-height) + var(--calendar-offset-top))`,
+              }
+            : {
+                left: `calc(${currentTimePos}*var(--one-minute-height) + var(--calendar-offset-top))`,
+              }),
+
           zIndex: 70,
         }}
       >
         <div className="w-14 pr-2 text-right">{dayjs().format(timeFormat)}</div>
         <div className="bg-red-400 h-3 w-3 rounded-full" />
-        <div className="bg-red-400 h-px w-full" />
+        <div
+          className={cn(
+            'bg-red-400',
+            direction === 'horizontal' ? 'h-px w-full' : 'w-px h-full'
+          )}
+        />
       </velcure.div>
     );
   }

@@ -5,6 +5,10 @@ import { EventInput, ResourceInput } from './scheduler-types';
 export const [SchedulerProvider, useSchedulerContext] =
   createContext<UseSchedulerReturn>();
 
+type I18nConfig = {
+  today: string;
+};
+
 export interface SchedulerOptions {
   /**
    * Date to be displayed in the scheduler
@@ -60,6 +64,8 @@ export interface SchedulerOptions {
    * @default 'horizontal'
    */
   direction?: 'horizontal' | 'vertical';
+
+  i18nConfig?: I18nConfig;
 }
 
 export type UseSchedulerReturn = ReturnType<typeof useScheduler>;
@@ -78,6 +84,7 @@ export const useScheduler = (options: SchedulerOptions = {}) => {
     onDateChange,
     onEventUpdate,
     direction = 'horizontal',
+    i18nConfig,
   } = options;
 
   const [isDragging, setIsDragging] = useState(false);
@@ -121,5 +128,6 @@ export const useScheduler = (options: SchedulerOptions = {}) => {
     isDragging,
     setIsDragging,
     direction,
+    i18nConfig,
   };
 };

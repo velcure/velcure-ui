@@ -13,11 +13,13 @@ import {
 
 export interface SchedulerProps
   extends HTMLVelcureProps<'div'>,
-    SchedulerOptions {}
+    SchedulerOptions {
+  actions?: React.ReactNode;
+}
 
 export const Scheduler = forwardRef<HTMLDivElement, SchedulerProps>(
   (props, ref) => {
-    const [schedulerProps, { className, ...restProps }] =
+    const [schedulerProps, { className, actions, ...restProps }] =
       createSplitProps<SchedulerOptions>()(props, [
         'startHour',
         'endHour',
@@ -31,6 +33,7 @@ export const Scheduler = forwardRef<HTMLDivElement, SchedulerProps>(
         'onDateChange',
         'onEventUpdate',
         'direction',
+        'i18nConfig',
       ]);
 
     const ctx = useScheduler(schedulerProps);
@@ -102,12 +105,9 @@ export const Scheduler = forwardRef<HTMLDivElement, SchedulerProps>(
           <velcure.div
             ref={ref}
             {...restProps}
-            className={cn(
-              'flex min-h-0 min-w-0 flex-col gap-4 flex-1',
-              className
-            )}
+            className={cn('flex min-h-0 min-w-0 flex-col flex-1', className)}
           >
-            <SchedulerHeader />
+            <SchedulerHeader actions={actions} />
             <div
               className={cn(
                 'flex-1 min-h-0 min-w-0 overflow-y-auto flex flex-col',

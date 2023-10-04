@@ -1,5 +1,6 @@
 import { useDraggable } from '@dnd-kit/core';
 import dayjs from 'dayjs';
+import { AnimatePresence, motion } from 'framer-motion';
 import { CalendarEvent } from '../scheduler-types';
 import { useSchedulerContext } from '../use-scheduler';
 import { Event } from './event';
@@ -9,12 +10,12 @@ export interface EventListProps {
 
 export const EventList: React.FC<EventListProps> = (props) => {
   const { resourceIndex } = props;
-  const { events, date, startHour } = useSchedulerContext();
+  const { events, date } = useSchedulerContext();
 
   const dd = dayjs(date);
 
   return (
-    <>
+    <AnimatePresence>
       {events
         .filter((event) => {
           if (event.resourceIndex !== resourceIndex) {
@@ -52,7 +53,7 @@ export const EventList: React.FC<EventListProps> = (props) => {
             />
           );
         })}
-    </>
+    </AnimatePresence>
   );
 };
 
@@ -149,7 +150,7 @@ const EventContainer: React.FC<EventContainerProps> = (props) => {
   }
 
   return (
-    <div
+    <motion.div
       key={`${event.id}-${eventStart.toISOString()}`}
       className="absolute inset-x-1 "
       ref={setNodeRef}
@@ -166,6 +167,18 @@ const EventContainer: React.FC<EventContainerProps> = (props) => {
           transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
         }),
       }}
+      initial={{
+        opacity: 0,
+        scale: 0.9,
+      }}
+      animate={{
+        opacity: 1,
+        scale: 1,
+      }}
+      exit={{
+        opacity: 0,
+        scale: 0.9,
+      }}
     >
       <Event
         event={event}
@@ -174,6 +187,6 @@ const EventContainer: React.FC<EventContainerProps> = (props) => {
           zIndex,
         }}
       />
-    </div>
+    </motion.div>
   );
 };

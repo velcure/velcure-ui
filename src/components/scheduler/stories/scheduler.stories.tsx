@@ -241,8 +241,51 @@ export const Default = () => {
                   status: 'success',
                   title: 'Event updated',
                   description: JSON.stringify(event),
+                  isClosable: true,
                 });
               }}
+              direction="horizontal"
+              actions={<Button>Create Tour</Button>}
+            />
+          </PageBody>
+        </Page>
+      </AppShell>
+      <TourSheet
+        isOpen={!!selectedEvent}
+        onClose={() => setSelectedEvent(null)}
+        selection={selectedEvent}
+      />
+    </>
+  );
+};
+
+export const Vertical = () => {
+  const events = useMemo(() => generateEvents(), []);
+
+  const [selectedEvent, setSelectedEvent] = useState<EventInput | null>(null);
+
+  const toast = useToast();
+
+  return (
+    <>
+      <AppShell>
+        <Page variant="full">
+          <PageHeader title="Scheduler" />
+          <PageBody>
+            <Scheduler
+              resources={resources}
+              events={events}
+              onClickEvent={(event) => {
+                setSelectedEvent(event);
+              }}
+              onEventUpdate={(event) => {
+                toast({
+                  status: 'success',
+                  title: 'Event updated',
+                  description: JSON.stringify(event),
+                });
+              }}
+              direction="vertical"
             />
           </PageBody>
         </Page>
