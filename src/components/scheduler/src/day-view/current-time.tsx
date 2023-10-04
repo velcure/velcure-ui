@@ -83,7 +83,7 @@ export const CurrentTime = forwardRef<HTMLDivElement, CurrentTimeProps>(
         }}
       >
         <div className="w-14 pr-2 text-right">{dayjs().format(timeFormat)}</div>
-        <div className="bg-red-400 h-3 w-px" />
+        <div className="bg-red-400 h-3 w-3 rounded-full" />
         <div className="bg-red-400 h-px w-full" />
       </velcure.div>
     );

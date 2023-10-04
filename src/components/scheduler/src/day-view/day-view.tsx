@@ -1,4 +1,4 @@
-import { HTMLVelcureProps, velcure } from '#/components/factory';
+import { HTMLVelcureProps } from '#/components/factory';
 import { useMergeRefs } from '#/hooks';
 import { cn } from '#/utilities';
 
@@ -8,6 +8,7 @@ import { EventList } from '../event/event-list';
 import { useSchedulerContext } from '../use-scheduler';
 import { getHoursToDisplay } from '../utils';
 import { CurrentTime } from './current-time';
+import { DayResources } from './day-resources';
 import { DayViewColumns } from './day-view-columns';
 import { DndContext } from './dnd-context';
 import { HorizontalLines } from './horizontal-lines';
@@ -77,7 +78,7 @@ export const SchedulerDayView = forwardRef<
         }
       >
         <div style={{ width: '165%' }} className="flex flex-none flex-col">
-          <DayViewNavigation ref={containerNav} resources={resources} />
+          <DayResources ref={containerNav} resources={resources} />
 
           <div className="relative flex flex-1 w-auto">
             {nowIndicator && <CurrentTime />}
@@ -147,41 +148,3 @@ export const SchedulerDayView = forwardRef<
 });
 
 SchedulerDayView.displayName = 'SchedulerDayView';
-
-interface DayViewNavigationProps {
-  resources?: any[];
-}
-
-const DayViewNavigation = forwardRef<HTMLDivElement, DayViewNavigationProps>(
-  (props, ref) => {
-    const { resources = [] } = props;
-    const total = resources.length;
-
-    return (
-      <velcure.div
-        ref={ref}
-        className="sticky top-0 z-30 flex-none bg-background shadow ring-1 ring-black ring-opacity-5 sm:pr-8"
-      >
-        {/** create a separate mobile topbar here */}
-        <div
-          className="-mr-px hidden divide-x divide-gray-100 border-r border-gray-100 text-sm leading-6 text-gray-500 sm:grid"
-          style={{
-            gridTemplateColumns: `repeat(${total}, minmax(0, 1fr))`,
-          }}
-        >
-          <div className="col-end-1 w-14" />
-          {resources.map((resource) => (
-            <div
-              key={resource.id}
-              id="resource-name"
-              className="flex items-center justify-center py-3"
-            >
-              <span>{resource.name}</span>
-              <span>ID: {resource.id}</span>
-            </div>
-          ))}
-        </div>
-      </velcure.div>
-    );
-  }
-);

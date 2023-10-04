@@ -54,6 +54,12 @@ export interface SchedulerOptions {
   onClickEvent?: (event: EventInput) => void;
 
   onEventUpdate?: (event: EventInput) => void;
+  /**
+   * direction of the scheduler, only used for resource view
+   * 'horizontal' or 'vertical'
+   * @default 'horizontal'
+   */
+  direction?: 'horizontal' | 'vertical';
 }
 
 export type UseSchedulerReturn = ReturnType<typeof useScheduler>;
@@ -71,6 +77,7 @@ export const useScheduler = (options: SchedulerOptions = {}) => {
     date: dateProp,
     onDateChange,
     onEventUpdate,
+    direction = 'horizontal',
   } = options;
 
   const [isDragging, setIsDragging] = useState(false);
@@ -113,5 +120,6 @@ export const useScheduler = (options: SchedulerOptions = {}) => {
     onEventUpdate,
     isDragging,
     setIsDragging,
+    direction,
   };
 };

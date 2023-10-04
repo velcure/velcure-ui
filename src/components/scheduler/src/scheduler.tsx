@@ -30,6 +30,7 @@ export const Scheduler = forwardRef<HTMLDivElement, SchedulerProps>(
         'date',
         'onDateChange',
         'onEventUpdate',
+        'direction',
       ]);
 
     const ctx = useScheduler(schedulerProps);
