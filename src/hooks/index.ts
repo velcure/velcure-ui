@@ -6,6 +6,7 @@ export * from './use-clickable';
 export * from './use-controllable-dates';
 export * from './use-controllable-state';
 export * from './use-disclosure';
+export * from './use-double-click';
 export * from './use-event';
 export * from './use-event-listener';
 export * from './use-focus-effect';

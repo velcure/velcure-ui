@@ -4,7 +4,9 @@ import { Checkbox } from '#/components/checkbox/src';
 import { SearchInput } from '#/components/input/src';
 import { Menu, MenuItem, MenuList, MenuTrigger } from '#/components/menu/src';
 import { Typography } from '#/components/typography/src';
+import { useDoubleClick } from '#/hooks';
 import { Meta } from '@storybook/react';
+import dayjs from 'dayjs';
 import { useState } from 'react';
 import { LuMoreVertical } from 'react-icons/lu';
 import {
@@ -211,30 +213,93 @@ export const _Card = () => (
   </Card>
 );
 
-export const FruitsTableComplete = () => (
-  <Card>
-    <CardHeader className="pb-0">
-      <div className="mb-8 flex items-center justify-between gap-8">
-        <div>
-          <Typography variant="h5">Fruits</Typography>
-          <Typography className="mt-1">
-            See information about your favorite fruits
-          </Typography>
+export type ITourData = {
+  id: string;
+  vehicle?: string;
+  startDate: string;
+  endDate: string;
+  passenger: string;
+  pickupAddress: string;
+  dropoffAddress: string;
+  status: string;
+};
+
+const tourData: ITourData[] = Array.from(Array(10)).map((_row, index) => ({
+  id: `row-${index}`,
+  vehicle: `Vehicle #${index}`,
+  startDate: '2021-08-01T12:00:00',
+  endDate: '2021-08-01T13:00:00',
+  passenger: `Passenger #${index}`,
+  pickupAddress: '123 Main Street, New York, NY 10001',
+  dropoffAddress: '456 Main Street, New York, NY 10001',
+  status: 'Completed',
+}));
+
+export const ToursTableComplete = () => {
+  const onClick = useDoubleClick({
+    onSingleClick: (e) => console.log('single click', e),
+    onDoubleClick: (e) => console.log('double click', e),
+  });
+
+  return (
+    <Card>
+      <CardHeader className="pb-0">
+        <div className="mb-8 flex items-center justify-between gap-8">
+          <div>
+            <Typography variant="h5">Fruits</Typography>
+            <Typography className="mt-1">
+              See information about your favorite fruits
+            </Typography>
+          </div>
         </div>
-      </div>
-      <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-        <SearchInput className="max-w-xs" placeholder="Search for a fruit" />
-      </div>
-    </CardHeader>
-    <CardBody className="overflow-auto px-0">
-      <Selection />
-    </CardBody>
-    <CardFooter className="flex items-center justify-between">
-      <Typography variant="small">Page 1 of 1</Typography>
-      <ButtonGroup size="sm">
-        <Button>Previous</Button>
-        <Button>Next</Button>
-      </ButtonGroup>
-    </CardFooter>
-  </Card>
-);
+        <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
+          <SearchInput className="max-w-xs" placeholder="Search for a fruit" />
+        </div>
+      </CardHeader>
+      <CardBody className="overflow-auto px-0">
+        <TableContainer>
+          <Table className="table-auto">
+            <THead>
+              <THeadRow>
+                <THeadCell>Vehicle</THeadCell>
+                <THeadCell>Date</THeadCell>
+                <THeadCell>PU Time</THeadCell>
+                <THeadCell>DO Time</THeadCell>
+                <THeadCell>Passenger</THeadCell>
+                <THeadCell>PU Address</THeadCell>
+                <THeadCell>DO Address</THeadCell>
+                <THeadCell>Status</THeadCell>
+
+                <THeadCell overflow />
+              </THeadRow>
+            </THead>
+            <TBody>
+              {tourData.map((body, idx) => (
+                <Tr key={`${body.id}- ${idx}`} onClick={onClick}>
+                  <TCell>{body.vehicle}</TCell>
+                  <TCell>{dayjs(body.startDate).format('DD.MM.YYYY')}</TCell>
+                  <TCell>{dayjs(body.startDate).format('HH:mm')}</TCell>
+                  <TCell>{dayjs(body.endDate).format('HH:mm')}</TCell>
+                  <TCell>{body.passenger}</TCell>
+                  <TCell truncated>{body.pickupAddress}</TCell>
+                  <TCell truncated>{body.dropoffAddress}</TCell>
+                  <TCell>{body.status}</TCell>
+                  <TCell overflow>
+                    <Actions />
+                  </TCell>
+                </Tr>
+              ))}
+            </TBody>
+          </Table>
+        </TableContainer>
+      </CardBody>
+      <CardFooter className="flex items-center justify-between">
+        <Typography variant="small">Page 1 of 1</Typography>
+        <ButtonGroup size="sm">
+          <Button>Previous</Button>
+          <Button>Next</Button>
+        </ButtonGroup>
+      </CardFooter>
+    </Card>
+  );
+};
