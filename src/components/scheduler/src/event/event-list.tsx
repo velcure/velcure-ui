@@ -14,6 +14,7 @@ export const EventList: React.FC<EventListProps> = (props) => {
 
   const dd = dayjs(date);
 
+  console.log('ventList', events);
   return (
     <AnimatePresence>
       {events
@@ -162,7 +163,9 @@ const EventContainer: React.FC<EventContainerProps> = (props) => {
         right: `calc(${right}% - 1px)`,
         width: `${width}%`,
         top: `calc(${eventStartDiff}*var(--one-minute-height))`,
-        height: `calc(${eventDuration}*var(--one-minute-height))`,
+        height: `calc(${
+          eventDuration > 15 ? eventDuration : 15
+        }*var(--one-minute-height))`,
         ...(transform && {
           transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
         }),

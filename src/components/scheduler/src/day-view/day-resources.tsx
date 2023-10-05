@@ -67,14 +67,14 @@ export const DayResources = forwardRef<HTMLDivElement, DayResourcesProps>(
             <div
               key={resource.id}
               id="resource-name"
-              className={
+              className={cn(
+                'overflow-hidden',
                 direction === 'horizontal'
                   ? 'flex items-center justify-center py-3'
                   : '-rotate-90'
-              }
+              )}
             >
               <span>{resource.name}</span>
-              <span>ID: {resource.id}</span>
             </div>
           ))}
         </div>
