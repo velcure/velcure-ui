@@ -111,6 +111,7 @@
     "@zag-js/focus-visible": "^0.21.0",
     "@zag-js/number-input": "^0.22.0",
     "@zag-js/react": "^0.22.0",
+    "@zag-js/select": "^0.22.0",
     "@zag-js/splitter": "^0.22.0",
     "@zag-js/types": "^0.22.0",
     "aria-hidden": "^1.2.3",

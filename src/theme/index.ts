@@ -17,8 +17,11 @@ export default plugin.withOptions(
 
       // react full calendar theme...
       addComponents({
-        '.fc': {
-          flex: '1',
+        '.scrolling-touch': {
+          '-webkit-overflow-scrolling': 'touch',
+        },
+        '.scrolling-auto': {
+          '-webkit-overflow-scrolling': 'auto',
         },
       });
     };

@@ -28,6 +28,7 @@ export const config: Partial<Config> = {
         interminate:
           'indeterminate-opacity 20ms linear, indeterminate-scale 200ms linear',
       },
+
       keyframes: {
         ripple: {
           '0%': {
@@ -67,6 +68,9 @@ export const config: Partial<Config> = {
             transform: 'scaleX(1)',
           },
         },
+      },
+      height: {
+        inherit: 'inherit',
       },
       minWidth: {
         2: '0.5rem',

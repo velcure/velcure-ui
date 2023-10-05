@@ -122,3 +122,5 @@ export type PropGetter<P = Record<string, unknown>, R = DOMAttributes> = (
 export type MaybeRenderProp<P> =
   | React.ReactNode
   | ((props: P) => React.ReactNode);
+
+export type CollectionItem = string | object;

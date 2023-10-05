@@ -14,7 +14,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
     <div
       ref={ref}
       className={cn(
-        'relative flex flex-col bg-clip-border sm:rounded-lg bg-card sm:shadow text-card-foreground border',
+        'relative flex flex-col bg-clip-border sm:rounded-lg bg-card sm:shadow text-card-foreground',
         className
       )}
       {...restProps}

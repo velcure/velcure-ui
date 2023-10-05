@@ -39,7 +39,14 @@ function debounce<T extends (...args: any[]) => any>(func: T, wait: number): T {
  */
 export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
   (props, ref) => {
-    const { onChange, value, defaultValue, delay = 300, ...restProps } = props;
+    const {
+      onChange,
+      value,
+      defaultValue,
+      delay = 300,
+      className,
+      ...restProps
+    } = props;
 
     const [searchValue, setSearchValue] = useState<
       HTMLInputElement['value'] | undefined
@@ -92,7 +99,7 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
     }, [value]);
 
     return (
-      <InputGroup>
+      <InputGroup className={className}>
         <Input
           {...restProps}
           ref={ref}
