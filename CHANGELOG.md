@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.19.0](https://github.com/velcure/velcure-ui/compare/v1.18.0...v1.19.0) (2023-10-05)
+
+
+### Features
+
+* better scroll behaviour ([77f0a5e](https://github.com/velcure/velcure-ui/commit/77f0a5eaff686cc850682f665c08959c515fb527))
+* colors for scheduler ([7adf0c4](https://github.com/velcure/velcure-ui/commit/7adf0c465786612d479fe3f392e3d92e4ad9cb6e))
+* current time ([7fe5954](https://github.com/velcure/velcure-ui/commit/7fe595422ccfbd1171cef8be81c076ebe66a08a5))
+* current time ([a7dba38](https://github.com/velcure/velcure-ui/commit/a7dba38f47bcfc2b1bd9ee8c109d88dd7690063d))
+* dblclick ([f8add91](https://github.com/velcure/velcure-ui/commit/f8add91adc33b771ab7082e2e5c2ac48c6ac5572))
+* improved animations ([1c92bb0](https://github.com/velcure/velcure-ui/commit/1c92bb0d090ec601b1fcc19dd82fb3fe1b9e963c))
+* improved current time indicator ([8bae469](https://github.com/velcure/velcure-ui/commit/8bae469e1b2ef61d6587d220954f3c2d16e76b22))
+* improved scrolling and dnd ([9ea93e5](https://github.com/velcure/velcure-ui/commit/9ea93e5f909e60e3d69270e925191027bf708f2c))
+* table ([9951b48](https://github.com/velcure/velcure-ui/commit/9951b48b7b63955ecc6fadbc38c9714b72992847))
+
+
+### Bug Fixes
+
+* scheduler showcase ([b9e7d90](https://github.com/velcure/velcure-ui/commit/b9e7d9064982d99fad84d3f69906caa196d7fbf3))
+* scheduler showcase ([6919734](https://github.com/velcure/velcure-ui/commit/6919734cf12017fedf195bb62163cb9bb52abd81))
+* some fixes ([06e54c1](https://github.com/velcure/velcure-ui/commit/06e54c137df37687face1393d4b9c8cb8cda55ef))
+
 ## [1.18.0](https://github.com/velcure/velcure-ui/compare/v1.17.0...v1.18.0) (2023-09-28)
 
 
