@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.19.2](https://github.com/velcure/velcure-ui/compare/v1.19.1...v1.19.2) (2023-10-05)
+
+
+### Bug Fixes
+
+* scheduler issue min duration ([6ccfb58](https://github.com/velcure/velcure-ui/commit/6ccfb58c06f8cef915242f894c8a1fb73888d9d0))
+
 ## [1.19.1](https://github.com/velcure/velcure-ui/compare/v1.19.0...v1.19.1) (2023-10-05)
 
 
