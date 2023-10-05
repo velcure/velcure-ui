@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.19.1](https://github.com/velcure/velcure-ui/compare/v1.19.0...v1.19.1) (2023-10-05)
+
+
+### Bug Fixes
+
+* schedule with only a few resources ([4c5338b](https://github.com/velcure/velcure-ui/commit/4c5338bc1140bddad9d84aa4b63041d6c6c6c7da))
+
 ## [1.19.0](https://github.com/velcure/velcure-ui/compare/v1.18.0...v1.19.0) (2023-10-05)
 
 
