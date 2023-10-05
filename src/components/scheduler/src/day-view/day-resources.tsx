@@ -42,27 +42,27 @@ export const DayResources = forwardRef<HTMLDivElement, DayResourcesProps>(
         className={cn(
           containerClass({
             direction,
-          })
+          }),
+          'ms-14 flex flex-row'
         )}
       >
-        {/** create a separate mobile topbar here */}
         <div
           className="-mr-px hidden divide-x divide-gray-100 border-r border-gray-100 text-sm leading-6 text-gray-500 sm:grid"
           style={{
             ...(direction === 'horizontal'
               ? {
-                  gridTemplateColumns: `repeat(${total}, minmax(0, 1fr))`,
+                  gridTemplateColumns: `repeat(${total}, 230px)`,
                 }
               : {
                   gridTemplateRows: `repeat(${total}, minmax(0, 1fr))`,
                 }),
           }}
         >
-          <div
+          {/* <div
             className={
               direction === 'horizontal' ? 'col-end-1 w-14' : 'row-end-1 h-7'
             }
-          />
+          /> */}
           {resources.map((resource) => (
             <div
               key={resource.id}

@@ -124,7 +124,6 @@ const Cell = forwardRef<HTMLDivElement, CellProps>((props, ref) => {
       ref={useMergeRefs(ref, setNodeRef)}
       className={cn(
         'group flex w-[calc(100%-1px)] items-center justify-center',
-        !isDisabled && 'bg-background',
         topOffsetMinutes && 'absolute'
       )}
       onClick={onEmptyClick}

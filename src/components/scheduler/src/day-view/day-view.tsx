@@ -69,7 +69,7 @@ export const SchedulerDayView = forwardRef<
       <div
         ref={useMergeRefs(ref, container)}
         {...restProps}
-        className={cn('isolate flex flex-auto flex-col')}
+        className={cn('isolate flex-1 flex  flex-col overflow-auto')}
         style={
           {
             ...restProps.style,
@@ -79,7 +79,7 @@ export const SchedulerDayView = forwardRef<
           } as React.CSSProperties // This can't live in the css file because it's a dynamic value and css variable gets super
         }
       >
-        <div style={{ width: '165%' }} className="flex flex-none flex-col">
+        <div className="flex flex-none flex-col w-max">
           {direction === 'horizontal' ? (
             <DayResources ref={containerNav} resources={resources} />
           ) : (

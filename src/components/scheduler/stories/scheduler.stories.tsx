@@ -229,7 +229,7 @@ export const Default = () => {
       <AppShell>
         <Page variant="full">
           <PageHeader title="Scheduler" />
-          <PageBody>
+          <PageBody className="overflow-hidden">
             <Scheduler
               resources={resources}
               events={events}

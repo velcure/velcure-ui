@@ -25,7 +25,8 @@ export const DayViewColumns = forwardRef<HTMLOListElement, DayViewColumnsProps>(
         ref={ref}
         className={cn(
           'col-start-1 col-end-2 row-start-1 grid sm:pr-8',
-          'auto-cols-auto text-[0px]',
+          // 'auto-cols-auto',
+          'auto-cols-[230px] text-[0px]',
           className
         )}
         {...restProps}

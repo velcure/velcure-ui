@@ -110,11 +110,11 @@ export const Scheduler = forwardRef<HTMLDivElement, SchedulerProps>(
             <SchedulerHeader actions={actions} />
             <div
               className={cn(
-                'flex-1 min-h-0 min-w-0 overflow-y-auto flex flex-col',
-                'isolate',
-                ctx.isDragging
-                  ? 'overflow-y-hidden overflow-x-scroll'
-                  : 'overflow-auto'
+                'flex-1 min-h-0 min-w-0 flex flex-col relative',
+                'isolate'
+                // ctx.isDragging
+                //   ? 'overflow-y-hidden overflow-x-scroll'
+                //   : 'overflow-auto'
               )}
               ref={containerRef}
               onScroll={handleScroll}
@@ -134,7 +134,7 @@ export const Scheduler = forwardRef<HTMLDivElement, SchedulerProps>(
                 onMouseLeave={clearCounter}
                 onMouseUp={clearCounter}
               />
-              <div className="flex flex-1 flex-col w-full">
+              <div className="flex flex-1 flex-col absolute inset-0">
                 <SchedulerDayView />
               </div>
               <IconButton

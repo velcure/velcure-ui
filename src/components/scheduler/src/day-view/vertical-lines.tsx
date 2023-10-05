@@ -13,7 +13,7 @@ const containerClass = cva('col-start-1 col-end-2 row-start-1 grid', {
   variants: {
     direction: {
       horizontal: cn(
-        'auto-cols-auto grid-rows-1',
+        'auto-cols-[230px] grid-rows-1',
         'divide-x divide-muted',
         'sm:pr-8'
       ),
