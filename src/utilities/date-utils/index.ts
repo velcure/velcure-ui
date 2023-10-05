@@ -90,3 +90,13 @@ export function toDate<DateType extends Date = Date>(
     return new Date(NaN) as DateType;
   }
 }
+
+export const startOfDay = (date?: Date): Date => {
+  if (!date) {
+    date = new Date();
+  }
+
+  const newDate = new Date(date.getTime());
+  newDate.setHours(0, 0, 0, 0);
+  return newDate;
+};

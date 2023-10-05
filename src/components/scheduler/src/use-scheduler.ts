@@ -1,4 +1,5 @@
 import { createContext, useControllableState } from '#/hooks';
+import { startOfDay } from '#/utilities';
 import { useMemo, useState } from 'react';
 import { EventInput, ResourceInput } from './scheduler-types';
 
@@ -94,8 +95,8 @@ export const useScheduler = (options: SchedulerOptions = {}) => {
   });
 
   const [date, setDate] = useControllableState({
-    value: dateProp,
-    defaultValue: new Date(),
+    value: dateProp ? startOfDay(dateProp) : undefined,
+    defaultValue: startOfDay(),
     onChange: onDateChange,
   });
 

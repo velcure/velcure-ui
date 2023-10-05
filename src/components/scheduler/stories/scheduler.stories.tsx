@@ -325,33 +325,25 @@ export const Issue1 = () => {
   const events = useMemo(
     () => [
       {
-        id: 'S9QIN-ipFa',
-
-        name: 'S9QIN-ipFa',
+        id: 'o6GJ3q6D5Y',
+        name: 'o6GJ3q6D5Y',
         resourceId: 'pool',
-        startDate: '2023-10-09T07:30:00.000Z',
-        endDate: '2023-10-09T07:30:00.000Z',
+        startDate: '2023-10-08T07:30:00.000Z',
+        endDate: '2023-10-08T08:33:10.031Z',
       },
       {
-        id: 'o2nofH_7VM',
-        name: 'o2nofH_7VM',
+        id: 'xAi_0woaAE',
+        name: 'xAi_0woaAE',
         resourceId: 'pool',
-        startDate: '2023-10-09T07:30:00.000Z',
-        endDate: '2023-10-09T07:31:32.196Z',
-      },
-      {
-        id: 'tAIjVEUcuo',
-        name: 'tAIjVEUcuo',
-        resourceId: 'pool',
-        startDate: '2023-10-09T10:30:00.000Z',
-        endDate: '2023-10-09T10:31:32.196Z',
+        startDate: '2023-10-08T10:56:49.969Z',
+        endDate: '2023-10-08T12:00:00.000Z',
       },
     ],
     []
   );
 
   const [selectedEvent, setSelectedEvent] = useState<EventInput | null>(null);
-
+  const [date, setDate] = useState(new Date('2023-10-09T00:00:00.000Z'));
   const toast = useToast();
 
   return (
@@ -361,7 +353,8 @@ export const Issue1 = () => {
           <PageHeader title="Scheduler" />
           <PageBody className="overflow-hidden">
             <Scheduler
-              date={new Date('2023-10-09T00:00:00.000Z')}
+              date={date}
+              onDateChange={setDate}
               resources={[
                 {
                   id: 'pool',
