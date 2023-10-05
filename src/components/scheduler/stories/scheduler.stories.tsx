@@ -343,7 +343,7 @@ export const Issue1 = () => {
   );
 
   const [selectedEvent, setSelectedEvent] = useState<EventInput | null>(null);
-  const [date, setDate] = useState(new Date('2023-10-09T00:00:00.000Z'));
+  const [date, setDate] = useState(new Date('2023-10-07T22:00:00.000Z'));
   const toast = useToast();
 
   return (

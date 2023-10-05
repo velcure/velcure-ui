@@ -1,6 +1,8 @@
-import { As, cn, forwardRef } from '#/utilities';
+import { useButtonType } from '#/components/button/src/use-button-type';
+import { HTMLVelcureProps, velcure } from '#/components/factory';
+import { mergeRefs } from '#/hooks';
+import { cn, forwardRef } from '#/utilities';
 import { cva } from 'class-variance-authority';
-import { Children, ComponentPropsWithoutRef, cloneElement } from 'react';
 import { MenuCommand } from './menu-command';
 import { MenuIcon } from './menu-icon';
 import { UseMenuItemProps, useMenuItem } from './use-menu';
@@ -19,11 +21,6 @@ interface MenuItemOptions
    * Right-aligned label text content, useful for displaying hotkeys.
    */
   command?: string;
-  /**
-   * asChild will copy the props of the MenuItem to the child element.
-   * This is useful for when you want to render a Link or other component
-   */
-  asChild?: boolean;
 }
 
 /**
@@ -33,10 +30,8 @@ type IsDisabledProps = 'disabled' | 'aria-disabled';
 type HTMLAttributes = React.HTMLAttributes<HTMLElement>;
 
 export interface MenuItemProps
-  extends Omit<ComponentPropsWithoutRef<'button'>, IsDisabledProps>,
-    MenuItemOptions {
-  as?: As;
-}
+  extends Omit<HTMLVelcureProps<'button'>, IsDisabledProps>,
+    MenuItemOptions {}
 
 const classes = cva(
   [
@@ -54,15 +49,7 @@ const classes = cva(
 );
 
 export const MenuItem = forwardRef<MenuItemProps, 'button'>((props, ref) => {
-  const {
-    icon,
-    command,
-    className,
-    children,
-    asChild,
-    as: As = 'button',
-    ...rest
-  } = props;
+  const { icon, command, className, children, ...rest } = props;
 
   const menuitemProps = useMenuItem(rest, ref) as HTMLAttributes;
 
@@ -74,28 +61,19 @@ export const MenuItem = forwardRef<MenuItemProps, 'button'>((props, ref) => {
     children
   );
 
-  if (asChild) {
-    const child: any = Children.only(children);
-    return cloneElement(
-      child,
-      {
-        ...menuitemProps,
-        className: cn(classes(), child.props.className),
-      },
-      <>
-        {icon && <MenuIcon className="text-sm me-3">{icon}</MenuIcon>}
-        {_children}
-        {command && <MenuCommand className="ms-3">{command}</MenuCommand>}
-      </>
-    );
-  }
+  const { ref: _ref, type: defaultType } = useButtonType(rest.as);
 
   return (
-    <As {...menuitemProps} className={cn(classes(), className)} type="button">
+    <velcure.button
+      {...menuitemProps}
+      ref={mergeRefs(ref, _ref)}
+      className={cn(classes(), className)}
+      type={defaultType}
+    >
       {icon && <MenuIcon className="text-sm me-3">{icon}</MenuIcon>}
       {_children}
       {command && <MenuCommand className="ms-3">{command}</MenuCommand>}
-    </As>
+    </velcure.button>
   );
 });
 

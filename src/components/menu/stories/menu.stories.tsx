@@ -55,10 +55,8 @@ export const WithDisabledItem = () => (
         <Button size="sm">Open menu</Button>
       </MenuTrigger>
       <MenuList>
-        <MenuItem asChild icon={<FaSearch />} command="⌥T">
-          <a href="#">
-            <span>Search</span>
-          </a>
+        <MenuItem as="a" href="#" icon={<FaSearch />} command="⌥T">
+          <span>Search</span>
         </MenuItem>
         <MenuItem icon={<FaUndoAlt />}>Undo</MenuItem>
         <MenuItem icon={<FaTruck />}>Delivery</MenuItem>
