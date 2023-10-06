@@ -14,7 +14,6 @@ export const EventList: React.FC<EventListProps> = (props) => {
 
   const dd = dayjs(date);
 
-  console.log('ventList', events);
   return (
     <AnimatePresence>
       {events

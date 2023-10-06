@@ -115,8 +115,6 @@ export const useScheduler = (options: SchedulerOptions = {}) => {
     });
   }, [events, resources]);
 
-  console.log(internalEvents, events);
-
   return {
     locale,
     date,
