@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.21.0](https://github.com/velcure/velcure-ui/compare/v1.20.1...v1.21.0) (2023-10-06)
+
+
+### Features
+
+* menu options as combobox ([2f4d69d](https://github.com/velcure/velcure-ui/commit/2f4d69dcd1d7b5ffcfd4cee70e2cd2559d78b971))
+
+
+### Bug Fixes
+
+* console out ([8160082](https://github.com/velcure/velcure-ui/commit/8160082d903aafec73383d1238b4eec7b308076d))
+
 ## [1.20.1](https://github.com/velcure/velcure-ui/compare/v1.20.0...v1.20.1) (2023-10-06)
 
 
