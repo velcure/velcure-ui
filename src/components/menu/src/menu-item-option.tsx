@@ -26,8 +26,6 @@ export const MenuItemOption = forwardRef<
     ref
   ) as HTMLAttributes<HTMLElement>;
 
-  console.log(optionProps);
-
   return (
     <velcure.button
       {...optionProps}
