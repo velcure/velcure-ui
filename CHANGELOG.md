@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.20.1](https://github.com/velcure/velcure-ui/compare/v1.20.0...v1.20.1) (2023-10-06)
+
+
+### Bug Fixes
+
+* fixes event updates from container ([0071261](https://github.com/velcure/velcure-ui/commit/0071261f2a99df150fe7d7dbbf17e9de37be3da3))
+* removed debug messages ([b5b1bb2](https://github.com/velcure/velcure-ui/commit/b5b1bb2afd7b646fdb97884804a354d18247dfde))
+
 ## [1.20.0](https://github.com/velcure/velcure-ui/compare/v1.19.2...v1.20.0) (2023-10-05)
 
 
