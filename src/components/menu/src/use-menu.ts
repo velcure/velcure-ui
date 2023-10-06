@@ -801,7 +801,7 @@ export function useMenuOptionGroup(props: UseMenuOptionGroupProps = {}) {
      * We can't rely on displayName or the element's type since
      * they can be changed by the user.
      */
-    if ((child.type as any).id !== 'MenuItemOption') return child;
+    if ((child.type as any).displayName !== 'MenuItemOption') return child;
 
     const onClick = (event: MouseEvent) => {
       onChange(child.props.value);

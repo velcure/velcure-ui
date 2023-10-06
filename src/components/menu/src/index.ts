@@ -6,8 +6,12 @@ export { MenuGroup } from './menu-group';
 export type { MenuGroupProps } from './menu-group';
 export { MenuItem } from './menu-item';
 export type { MenuItemProps } from './menu-item';
+export { MenuItemOption } from './menu-item-option';
+export type { MenuItemOptionProps } from './menu-item-option';
 export { MenuList } from './menu-list';
 export type { MenuListProps } from './menu-list';
+export { MenuOptionGroup } from './menu-option-group';
+export type { MenuOptionGroupProps } from './menu-option-group';
 export { MenuTrigger } from './menu-trigger';
 export type { MenuTriggerProps } from './menu-trigger';
 export {

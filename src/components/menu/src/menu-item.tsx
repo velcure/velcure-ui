@@ -2,9 +2,9 @@ import { useButtonType } from '#/components/button/src/use-button-type';
 import { HTMLVelcureProps, velcure } from '#/components/factory';
 import { mergeRefs } from '#/hooks';
 import { cn, forwardRef } from '#/utilities';
-import { cva } from 'class-variance-authority';
 import { MenuCommand } from './menu-command';
 import { MenuIcon } from './menu-icon';
+import { menuItemRootClasses } from './styles';
 import { UseMenuItemProps, useMenuItem } from './use-menu';
 
 interface MenuItemOptions
@@ -33,21 +33,6 @@ export interface MenuItemProps
   extends Omit<HTMLVelcureProps<'button'>, IsDisabledProps>,
     MenuItemOptions {}
 
-const classes = cva(
-  [
-    'cursor-pointer disabled:pointer-events-none disabled:opacity-40',
-    'text-popover-foreground text-sm select-none no-underline flex w-full items-center text-start shrink-0 grow-0',
-    'py-2 px-3 rounded-md text-start transition-colors  disabled:cursor-not-allowed',
-    'focus:bg-accent focus:text-accent-foreground',
-    'active:bg-accent active:text-accent-foreground',
-    'hover:bg-accent hover:text-accent-foreground',
-    'disabled:hover:bg-popover',
-  ],
-  {
-    variants: {},
-  }
-);
-
 export const MenuItem = forwardRef<MenuItemProps, 'button'>((props, ref) => {
   const { icon, command, className, children, ...rest } = props;
 
@@ -67,7 +52,7 @@ export const MenuItem = forwardRef<MenuItemProps, 'button'>((props, ref) => {
     <velcure.button
       {...menuitemProps}
       ref={mergeRefs(ref, _ref)}
-      className={cn(classes(), className)}
+      className={cn(menuItemRootClasses(), className)}
       type={defaultType}
     >
       {icon && <MenuIcon className="text-sm me-3">{icon}</MenuIcon>}

@@ -1,8 +1,9 @@
+import { HTMLVelcureProps, velcure } from '#/components/factory';
 import { Typography } from '#/components/typography/src';
 import { cn } from '#/utilities';
-import { ComponentPropsWithoutRef, forwardRef } from 'react';
+import { forwardRef } from 'react';
 
-export interface MenuGroupProps extends ComponentPropsWithoutRef<'div'> {
+export interface MenuGroupProps extends HTMLVelcureProps<'div'> {
   title?: string;
 }
 
@@ -11,7 +12,7 @@ export const MenuGroup = forwardRef<HTMLDivElement, MenuGroupProps>(
     const { title, className, children, ...restProps } = props;
 
     return (
-      <div ref={ref} role="group" {...restProps}>
+      <velcure.div ref={ref} role="group" {...restProps}>
         {title && (
           <div className="w-full mb-2">
             <Typography
@@ -23,7 +24,7 @@ export const MenuGroup = forwardRef<HTMLDivElement, MenuGroupProps>(
           </div>
         )}
         {children}
-      </div>
+      </velcure.div>
     );
   }
 );

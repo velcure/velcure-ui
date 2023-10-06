@@ -1,7 +1,16 @@
 import { Button } from '#/components/button/src';
 import { Meta } from '@storybook/react';
+import { useState } from 'react';
 import { FaSearch, FaTruck, FaUndoAlt, FaUnlink } from 'react-icons/fa';
-import { Menu, MenuGroup, MenuItem, MenuList, MenuTrigger } from '../src';
+import {
+  Menu,
+  MenuGroup,
+  MenuItem,
+  MenuItemOption,
+  MenuList,
+  MenuOptionGroup,
+  MenuTrigger,
+} from '../src';
 
 const meta = {
   title: 'Components / Overlay / Menu',
@@ -101,3 +110,50 @@ export const withGroupedItems = () => (
     </MenuList>
   </Menu>
 );
+
+type Vehicle = {
+  label: string;
+  value: string;
+};
+
+const generateMenuVehicleOptions = (count: number): Vehicle[] => {
+  const options: Vehicle[] = [];
+
+  for (let i = 0; i < count; i++) {
+    options.push({
+      label: `Vehicle ${i + 1}`,
+      value: `vehicle-${i + 1}`,
+    });
+  }
+
+  return options;
+};
+
+export const MenuOptions = () => {
+  const options = generateMenuVehicleOptions(30);
+  const [value, setValue] = useState(options[0].value);
+
+  return (
+    <Menu closeOnSelect={false}>
+      <MenuTrigger>
+        <Button className="" variant="outline" size="sm">
+          {value ? `${value}` : 'Choose a vehicle'}
+        </Button>
+      </MenuTrigger>
+      <MenuList className="max-h-72 overflow-auto">
+        <MenuOptionGroup
+          title="Vehicle"
+          defaultValue={value}
+          type="radio"
+          onChange={(value) => setValue(value as string)}
+        >
+          {options.map((option) => (
+            <MenuItemOption key={option.value} value={option.value}>
+              {option.label}
+            </MenuItemOption>
+          ))}
+        </MenuOptionGroup>
+      </MenuList>
+    </Menu>
+  );
+};
