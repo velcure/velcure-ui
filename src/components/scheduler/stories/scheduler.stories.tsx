@@ -395,3 +395,81 @@ export const Issue1 = () => {
     </>
   );
 };
+
+export const IssueEventsNotChanging = () => {
+  const [selectedEvent, setSelectedEvent] = useState<EventInput | null>(null);
+  const [date, setDate] = useState(new Date('2023-10-06T22:00:00.000Z'));
+  const toast = useToast();
+
+  const events = useMemo(() => {
+    if (date.toISOString() === '2023-10-07T22:00:00.000Z') {
+      return [
+        {
+          id: 'o6GJ3q6D5Y',
+          name: 'o6GJ3q6D5Y',
+          resourceId: 'pool',
+          startDate: '2023-10-08T07:30:00.000Z',
+          endDate: '2023-10-08T08:33:10.031Z',
+        },
+        {
+          id: 'xAi_0woaAE',
+          name: 'xAi_0woaAE',
+          resourceId: 'pool',
+          startDate: '2023-10-08T10:56:49.969Z',
+          endDate: '2023-10-08T12:00:00.000Z',
+        },
+      ];
+    }
+
+    return [];
+  }, [date]);
+
+  return (
+    <>
+      <AppShell>
+        <Page variant="full">
+          <PageHeader title="Scheduler" />
+          <PageBody className="overflow-hidden">
+            <Scheduler
+              date={date}
+              onDateChange={setDate}
+              resources={[
+                {
+                  id: 'pool',
+                  name: 'Pool',
+                },
+                {
+                  id: '01H8GRRPP0M257NNWNG53QSMHM',
+                  name: 'KTW #2',
+                },
+                {
+                  id: '01HAC12480RMQQDKSNNYJSPR7H',
+                  name: 'Test',
+                },
+              ]}
+              events={events}
+              onClickEvent={(event) => {
+                setSelectedEvent(event);
+              }}
+              onEventUpdate={(event) => {
+                toast({
+                  status: 'success',
+                  title: 'Event updated',
+                  description: JSON.stringify(event),
+                  isClosable: true,
+                });
+              }}
+              direction="horizontal"
+              actions={<Button>Create Tour</Button>}
+            />
+          </PageBody>
+        </Page>
+      </AppShell>
+      <TourSheet
+        isOpen={!!selectedEvent}
+        onClose={() => setSelectedEvent(null)}
+        selection={selectedEvent}
+      />
+    </>
+  );
+};

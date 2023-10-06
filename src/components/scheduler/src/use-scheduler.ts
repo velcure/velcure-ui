@@ -1,6 +1,6 @@
 import { createContext, useControllableState } from '#/hooks';
 import { startOfDay } from '#/utilities';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { EventInput, ResourceInput } from './scheduler-types';
 
 export const [SchedulerProvider, useSchedulerContext] =
@@ -90,9 +90,11 @@ export const useScheduler = (options: SchedulerOptions = {}) => {
 
   const [isDragging, setIsDragging] = useState(false);
 
-  const [events, setEvents] = useControllableState({
-    defaultValue: eventsProp || [],
-  });
+  const [events, setEvents] = useState(eventsProp || []);
+
+  useEffect(() => {
+    setEvents(eventsProp || []);
+  }, [eventsProp]);
 
   const [date, setDate] = useControllableState({
     value: dateProp ? startOfDay(dateProp) : undefined,
@@ -112,6 +114,8 @@ export const useScheduler = (options: SchedulerOptions = {}) => {
       };
     });
   }, [events, resources]);
+
+  console.log(internalEvents, events);
 
   return {
     locale,
