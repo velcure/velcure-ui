@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.22.0](https://github.com/velcure/velcure-ui/compare/v1.21.0...v1.22.0) (2023-10-08)
+
+
+### Features
+
+* absence calendar ([6ddb934](https://github.com/velcure/velcure-ui/commit/6ddb9343e9368fd1fae30854e2c99ae1a13afcdb))
+* simple color swatch picker ([84cb718](https://github.com/velcure/velcure-ui/commit/84cb718a91ac413d8b5300312bfce54b47863cbb))
+
 ## [1.21.0](https://github.com/velcure/velcure-ui/compare/v1.20.1...v1.21.0) (2023-10-06)
 
 
