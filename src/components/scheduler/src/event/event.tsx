@@ -1,9 +1,8 @@
 import { HTMLVelcureProps, velcure } from '#/components/factory';
 import { cn } from '#/utilities';
-
 import { parseColor } from '@zag-js/color-utils';
-import { darken, readableColor } from 'color2k';
 import dayjs from 'dayjs';
+import { darken, readableColor } from 'polished';
 import { forwardRef } from 'react';
 import { CalendarEvent } from '../scheduler-types';
 import { useSchedulerContext } from '../use-scheduler';
@@ -47,8 +46,8 @@ export const Event = forwardRef<HTMLButtonElement, EventProps>((props, ref) => {
 
           '--color': readableColor(color.toString('hex')),
           '--bg-color': color.toString('css'),
-          '--border-color': darken(color.toString('hex'), 0.1),
-          '--bg-color-hover': darken(color.toString('hex'), 0.05),
+          '--border-color': darken(0.1)(color.toString('hex')),
+          '--bg-color-hover': darken(0.05)(color.toString('hex')),
         } as React.CSSProperties
       }
       data-color={event.color}

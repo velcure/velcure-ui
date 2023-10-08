@@ -4,6 +4,7 @@ export * from './avatar/src';
 export * from './button/src';
 export * from './card/src';
 export * from './checkbox/src';
+export * from './colorpickers/src';
 export * from './datepicker/src';
 export * from './empty-state/src';
 export * from './environment/src';
