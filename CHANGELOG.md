@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.25.1](https://github.com/velcure/velcure-ui/compare/v1.25.0...v1.25.1) (2023-10-09)
+
+
+### Bug Fixes
+
+* pb of select ([a3c402b](https://github.com/velcure/velcure-ui/commit/a3c402b42776bed2a52c997c266f8b700486692d))
+* stroneLinejoin ([34d22ec](https://github.com/velcure/velcure-ui/commit/34d22ec2a2498810d273d4e3eaecc39c7caceeb2))
+
 ## [1.25.0](https://github.com/velcure/velcure-ui/compare/v1.24.1...v1.25.0) (2023-10-09)
 
 
