@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.24.1](https://github.com/velcure/velcure-ui/compare/v1.24.0...v1.24.1) (2023-10-09)
+
+
+### Bug Fixes
+
+* absence calendar onDateChange ([55bcb5d](https://github.com/velcure/velcure-ui/commit/55bcb5d8d0cd6391187a67045a1f36a1a6454b7f))
+* popover zindex ([2466689](https://github.com/velcure/velcure-ui/commit/246668917931fc9018cfddce300b23115ea92650))
+
 ## [1.24.0](https://github.com/velcure/velcure-ui/compare/v1.23.0...v1.24.0) (2023-10-09)
 
 
