@@ -99,8 +99,19 @@ export const AbsenceCalendar = forwardRef<HTMLDivElement, AbsenceCalendarProps>(
       const lastDay = range[range.length - 1].getTime();
 
       return absencesProp?.filter((a) => {
-        const absenceStart = new Date(a.startsAt).getTime();
-        const absenceEnd = new Date(a.endsAt).getTime();
+        const start = dayjs(a.startsAt).startOf('day').toDate();
+        const end = dayjs(a.endsAt).endOf('day').toDate();
+        // wenn start früher ist als der erste tag, setze start auf den ersten tag
+        if (start.getTime() < firstDay) {
+          start.setTime(firstDay);
+        }
+
+        if (end.getTime() > lastDay) {
+          end.setTime(lastDay);
+        }
+
+        const absenceStart = start.getTime();
+        const absenceEnd = end.getTime();
 
         return absenceStart >= firstDay && absenceEnd <= lastDay;
       });

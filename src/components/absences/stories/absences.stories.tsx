@@ -87,3 +87,94 @@ export const CalendarMonth = () => (
 export const CalendarYear = () => (
   <AbsenceCalendar users={users} absences={absences} scale="year" />
 );
+
+const affectedAbsences = [
+  {
+    id: '01HCAHFTM85YE591NAPG1C0XWA',
+    created: '2023-10-09 15:39:30.824Z',
+    updated: '2023-10-09 15:39:30.824Z',
+    allDay: true,
+    adjustedDuration: 4320,
+    startsAt: '2023-10-12T00:00:00+02:00',
+    endsAt: '2023-10-15T23:59:59.999+02:00',
+    state: 'declined',
+    reason: '',
+    employeeId: '01HC9X945DXTY3VMV6FZGBYJ2X',
+    absenceTypeId: '01HCA48NN5SJMDE7C2D3KPH3NY',
+    organizationId: '01H6DR92W9AMTYJP2786R819TP',
+    userId: '01HC9X945DXTY3VMV6FZGBYJ2X',
+  },
+  {
+    id: '01HCAHGYHNNP30VX9H68PB3XAQ',
+    created: '2023-10-09 15:40:07.605Z',
+    updated: '2023-10-09 15:40:07.605Z',
+    allDay: true,
+    adjustedDuration: 4320,
+    startsAt: '2023-10-12T00:00:00+02:00',
+    endsAt: '2023-10-15T23:59:59.999+02:00',
+    state: 'approved',
+    reason: '',
+    employeeId: '01HC9X8V03HBE0S6R4A8Z9PQ1B',
+    absenceTypeId: '01HCA48NN5SJMDE7C2D3KPH3NY',
+    organizationId: '01H6DR92W9AMTYJP2786R819TP',
+    userId: '01HC9X8V03HBE0S6R4A8Z9PQ1B',
+  },
+];
+
+const affectedUsers = [
+  {
+    id: '01HC9X8V03HBE0S6R4A8Z9PQ1B',
+    name: 'Albert Rolsen',
+    email: '',
+  },
+  {
+    id: '01HC9X945DXTY3VMV6FZGBYJ2X',
+    name: 'Gerárd Wong',
+    email: '',
+  },
+  {
+    id: '01HC9X88E2BPCVQH2KWW6T4QXA',
+    name: 'Gerry Wagenhof',
+    email: '',
+  },
+  {
+    id: '01HC9X7W1XZT70VRP76GXPTSQK',
+    name: 'Glanz Gloria',
+    email: '',
+  },
+  {
+    id: '01HC9X83032PRKXXNRAYCJG9V0',
+    name: 'Heinrich Lippe',
+    email: '',
+  },
+  {
+    id: '01HC9X7NZN0GJF74BE4XM5YV9B',
+    name: 'Herbert Schrödinger',
+    email: '',
+  },
+  {
+    id: '01HC9X8MJ2WTAVY8DS8MHPZZVM',
+    name: 'Massimo Dutti',
+    email: '',
+  },
+  {
+    id: '01H9QNXYFBWAHJY95ZXH36BYRH',
+    name: 'Max Kreisel',
+    email: '',
+  },
+  {
+    id: '01HC9X8ECZZFECSE4SC6K7JYC3',
+    name: 'Peter Zwinker',
+    email: '',
+  },
+];
+
+export const BugNotShowingAbsences = () => (
+  <AbsenceCalendar
+    date={new Date('2023-10-09T22:00:00.000Z')}
+    users={affectedUsers}
+    // @ts-ignore
+    absences={affectedAbsences}
+    scale="week"
+  />
+);
