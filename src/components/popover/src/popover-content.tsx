@@ -20,7 +20,7 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
       usePopoverContext();
 
     return (
-      <div {...getPopoverPositionerProps(rootProps)} className="z-10">
+      <div {...getPopoverPositionerProps(rootProps)} className="z-popover">
         <PopoverTransition
           {...motionProps}
           {...getPopoverProps(contentProps, ref)}
