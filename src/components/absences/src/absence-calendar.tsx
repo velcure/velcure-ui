@@ -21,6 +21,7 @@ import {
 
 interface AbsenceCalendarOptions {
   date?: Date | string;
+  onDateChange?: (date: Date) => void;
   scale?: AbsenceScale;
   onScaleChange?: (scale: AbsenceScale) => void;
   users?: AbsenceUser[];
@@ -61,6 +62,7 @@ export const AbsenceCalendar = forwardRef<HTMLDivElement, AbsenceCalendarProps>(
       users,
       onAbsenceAddClick,
       absences: absencesProp,
+      onDateChange,
       agenda = true,
       translateFn = (key) => key,
       ...restProps
@@ -69,6 +71,7 @@ export const AbsenceCalendar = forwardRef<HTMLDivElement, AbsenceCalendarProps>(
     const [date, setDate] = useControllableState({
       value: dateProp ? new Date(dateProp) : undefined,
       defaultValue: new Date(),
+      onChange: onDateChange,
     });
 
     const [scale, setScale] = useControllableState<AbsenceScale>({
