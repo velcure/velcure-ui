@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.26.0](https://github.com/velcure/velcure-ui/compare/v1.25.2...v1.26.0) (2023-10-09)
+
+
+### Features
+
+* on absence click ([f9f4d8c](https://github.com/velcure/velcure-ui/commit/f9f4d8cdf9282e329911edbbbab5b64e33d65b24))
+
+
+### Bug Fixes
+
+* improved color ratio ([23e342d](https://github.com/velcure/velcure-ui/commit/23e342dd096218a9a19ec439554d341ef666b810))
+
 ## [1.25.2](https://github.com/velcure/velcure-ui/compare/v1.25.1...v1.25.2) (2023-10-09)
 
 
