@@ -20,9 +20,11 @@ const containerClasses = cva(
   {
     variants: {
       state: {
-        new: 'bg-yellow-50 text-yellow-500 hover:bg-yellow-100',
-        approved: 'bg-green-50 text-green-500 hover:bg-green-100',
-        declined: 'bg-red-50 text-red-500 hover:bg-red-100',
+        new: 'bg-yellow-100 text-slate-950 hover:bg-yellow-200 outline outline-yellow-300',
+        approved:
+          'bg-green-100 text-slate-950 hover:bg-green-200 outline outline-green-300',
+        declined:
+          'bg-red-100 text-slate-950 hover:bg-red-200 outline outline-red-300',
       },
     },
   }

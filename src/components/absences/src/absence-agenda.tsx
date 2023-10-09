@@ -57,15 +57,15 @@ export const AbsenceAgenda = forwardRef<HTMLDivElement, AbsenceAgendaProps>(
         </Menu>
         <div className="flex divide-x divide-muted">
           <div className="inline-flex flex-row gap-2 items-center px-2">
-            <Circle className="bg-yellow-100 h-5 w-5" />
+            <Circle className="bg-yellow-100 border border-yellow-300 h-5 w-5" />
             <span className="ml-2">{translateFn('new')}</span>
           </div>
           <div className="inline-flex flex-row gap-2 items-center px-2">
-            <Circle className="bg-red-100 h-5 w-5" />
+            <Circle className="bg-red-100 border border-red-300 h-5 w-5" />
             <span className="ml-2">{translateFn('declined')}</span>
           </div>
           <div className="inline-flex flex-row gap-2 items-center px-2">
-            <Circle className="bg-green-100 h-5 w-5" />
+            <Circle className="bg-green-100 border border-green-300 h-5 w-5" />
             <span className="ml-2">{translateFn('approved')}</span>
           </div>
         </div>
