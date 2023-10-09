@@ -26,6 +26,7 @@ interface AbsenceCalendarOptions {
   onScaleChange?: (scale: AbsenceScale) => void;
   users?: AbsenceUser[];
   onAbsenceAddClick?: (user: AbsenceUser, date: Date) => void;
+  onAbsenceClick?: (absence: Absence) => void;
   translateFn?: AbsenceTranslateFn;
   absences?: Absence[];
   /**
@@ -65,6 +66,7 @@ export const AbsenceCalendar = forwardRef<HTMLDivElement, AbsenceCalendarProps>(
       onDateChange,
       agenda = true,
       translateFn = (key) => key,
+      onAbsenceClick,
       ...restProps
     } = props;
 
@@ -144,6 +146,7 @@ export const AbsenceCalendar = forwardRef<HTMLDivElement, AbsenceCalendarProps>(
                 days={range}
                 absences={absences?.filter((a) => a.userId === user.id)}
                 onAbsenceAddClick={onAbsenceAddClick}
+                onAbsenceClick={onAbsenceClick}
               />
             ))}
           </div>

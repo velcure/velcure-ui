@@ -12,6 +12,7 @@ export interface AbsenceUserRowProps extends HTMLVelcureProps<'div'> {
   days: Date[];
   absences?: Absence[];
   onAbsenceAddClick?: (user: AbsenceUser, date: Date) => void;
+  onAbsenceClick?: (absence: Absence) => void;
 }
 
 export const AbsenceUserRow = forwardRef<HTMLDivElement, AbsenceUserRowProps>(
@@ -22,6 +23,7 @@ export const AbsenceUserRow = forwardRef<HTMLDivElement, AbsenceUserRowProps>(
       days,
       absences = [],
       onAbsenceAddClick,
+      onAbsenceClick,
       ...restProps
     } = props;
 
@@ -77,6 +79,7 @@ export const AbsenceUserRow = forwardRef<HTMLDivElement, AbsenceUserRowProps>(
                   key={abs.id}
                   timeRangeStart={days[0]}
                   timeRangeEnd={days[days.length - 1]}
+                  onAbsenceClick={onAbsenceClick}
                 />
               );
             })}

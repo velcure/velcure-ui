@@ -9,6 +9,7 @@ export interface AbsenceItemProps extends HTMLVelcureProps<'div'> {
   timeRangeStart: Date;
   timeRangeEnd: Date;
   absence: Absence;
+  onAbsenceClick?: (absence: Absence) => void;
 }
 
 const containerClasses = cva(
@@ -38,6 +39,7 @@ export const AbsenceItem = forwardRef<HTMLDivElement, AbsenceItemProps>(
       timeRangeEnd,
       absence,
       style,
+      onAbsenceClick,
       ...restProps
     } = props;
 
@@ -94,7 +96,12 @@ export const AbsenceItem = forwardRef<HTMLDivElement, AbsenceItemProps>(
           width: `calc(${timestampPercentages.innerWidthPercentage}% - .5rem)`,
         }}
       >
-        <velcure.button className="overflow-hidden block p-2 h-full w-full text-ellipsis whitespace-normal text-sm">
+        <velcure.button
+          className="overflow-hidden block p-2 h-full w-full text-ellipsis whitespace-normal text-sm"
+          onClick={() => {
+            onAbsenceClick?.(absence);
+          }}
+        >
           <span className="overflow-hidden text-ellipsis whitespace-nowrap">
             {formatRangeDates(absence.startsAt, absence.endsAt)}
           </span>
