@@ -40,7 +40,7 @@ export interface SelectProps
 
 const fieldClasses = cva(
   [
-    'appearance-none pb-px leading-normal bg-background',
+    'appearance-none leading-normal bg-background',
     'pe-8 ps-4 w-full relative transition-colors',
     'ring-1 ring-input ring-inset',
     'focus-visible:outline-none focus:ring-2 focus:ring-ring',
