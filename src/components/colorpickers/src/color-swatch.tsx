@@ -1,4 +1,4 @@
-import { HTMLVelcureProps, Square, velcure } from '#/components/factory';
+import { HTMLVelcureProps, velcure } from '#/components/factory';
 import { CheckIcon } from '#/components/icons/src';
 import { useControllableState } from '#/hooks';
 import { ariaAttr, cn } from '#/utilities';
@@ -47,8 +47,7 @@ export const ColorSwatch = React.forwardRef<HTMLTableElement, ColorSwatchProps>(
 
                 return (
                   <td key={colIdx} className="p-2 text-[0px]">
-                    <Square
-                      as="button"
+                    <velcure.button
                       type="button"
                       style={
                         {
@@ -74,7 +73,7 @@ export const ColorSwatch = React.forwardRef<HTMLTableElement, ColorSwatchProps>(
                           color: checkColor,
                         }}
                       />
-                    </Square>
+                    </velcure.button>
                   </td>
                 );
               })}
