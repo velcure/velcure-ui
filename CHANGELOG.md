@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.24.0](https://github.com/velcure/velcure-ui/compare/v1.23.0...v1.24.0) (2023-10-09)
+
+
+### Features
+
+* datepicker control ([f88ed4d](https://github.com/velcure/velcure-ui/commit/f88ed4de8b5c2edc879416b4e5e9484c7589db16))
+
 ## [1.23.0](https://github.com/velcure/velcure-ui/compare/v1.22.1...v1.23.0) (2023-10-09)
 
 
