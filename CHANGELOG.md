@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.25.0](https://github.com/velcure/velcure-ui/compare/v1.24.1...v1.25.0) (2023-10-09)
+
+
+### Features
+
+* select control ([d1782eb](https://github.com/velcure/velcure-ui/commit/d1782eb780aea87667d3af4c8d3e34ae35c02ca8))
+
 ## [1.24.1](https://github.com/velcure/velcure-ui/compare/v1.24.0...v1.24.1) (2023-10-09)
 
 
