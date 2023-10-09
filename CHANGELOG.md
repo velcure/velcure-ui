@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.23.0](https://github.com/velcure/velcure-ui/compare/v1.22.1...v1.23.0) (2023-10-09)
+
+
+### Features
+
+* absence view switch ([38b71f5](https://github.com/velcure/velcure-ui/commit/38b71f5c50031792df6762a7a9a48496f99c0a7c))
+
+
+### Bug Fixes
+
+* on absence create click ([a9b152d](https://github.com/velcure/velcure-ui/commit/a9b152d50349560035aa0a0c1fe166c525748216))
+
 ## [1.22.1](https://github.com/velcure/velcure-ui/compare/v1.22.0...v1.22.1) (2023-10-09)
 
 
