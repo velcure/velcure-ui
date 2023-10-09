@@ -17,3 +17,5 @@ export type Absence = {
   state: AbsenceState;
   userId: AbsenceId;
 };
+
+export type AbsenceTranslateFn = (key: string) => string;

@@ -8,17 +8,24 @@ import {
 } from '#/utilities';
 import dayjs from 'dayjs';
 import { forwardRef, useMemo } from 'react';
-import { AbsenceAgenda, AbsenceAgendaProps } from './absence-agenda';
+import { AbsenceAgenda } from './absence-agenda';
 import { AbsenceDays } from './absence-days';
 import { AbsenceNavigation } from './absence-navigation';
 import { AbsenceUserRow } from './absence-user-row';
-import { Absence, AbsenceScale, AbsenceUser } from './types';
+import {
+  Absence,
+  AbsenceScale,
+  AbsenceTranslateFn,
+  AbsenceUser,
+} from './types';
 
 interface AbsenceCalendarOptions {
   date?: Date | string;
   scale?: AbsenceScale;
+  onScaleChange?: (scale: AbsenceScale) => void;
   users?: AbsenceUser[];
   onAbsenceAddClick?: (user: AbsenceUser, date: Date) => void;
+  translateFn?: AbsenceTranslateFn;
   absences?: Absence[];
   /**
    * Render the Agenda view of the calendar.
@@ -29,8 +36,7 @@ interface AbsenceCalendarOptions {
 
 export interface AbsenceCalendarProps
   extends HTMLVelcureProps<'div'>,
-    AbsenceCalendarOptions,
-    Pick<AbsenceAgendaProps, 'labels'> {}
+    AbsenceCalendarOptions {}
 
 /**
  * The Absence Calendar component is used to track and manage employee absences.
@@ -50,17 +56,25 @@ export const AbsenceCalendar = forwardRef<HTMLDivElement, AbsenceCalendarProps>(
     const {
       className,
       date: dateProp,
-      scale = 'week',
+      scale: scaleProp,
+      onScaleChange,
       users,
       onAbsenceAddClick,
       absences: absencesProp,
       agenda = true,
+      translateFn = (key) => key,
       ...restProps
     } = props;
 
     const [date, setDate] = useControllableState({
       value: dateProp ? new Date(dateProp) : undefined,
       defaultValue: new Date(),
+    });
+
+    const [scale, setScale] = useControllableState<AbsenceScale>({
+      value: scaleProp,
+      defaultValue: 'week',
+      onChange: onScaleChange,
     });
 
     const range = useMemo(() => {
@@ -95,7 +109,13 @@ export const AbsenceCalendar = forwardRef<HTMLDivElement, AbsenceCalendarProps>(
         {...restProps}
         className={cn('grid gap-4', className)}
       >
-        {agenda && <AbsenceAgenda />}
+        {agenda && (
+          <AbsenceAgenda
+            scale={scale}
+            setScale={setScale}
+            translateFn={translateFn}
+          />
+        )}
         <div className="flex flex-wrap w-full border border-gray-100 isolate">
           {/** navigation */}
           <AbsenceNavigation date={date} scale={scale} setDate={setDate}>

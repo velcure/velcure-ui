@@ -77,7 +77,7 @@ const absences: Absence[] = [
 ];
 
 export const CalendarWeek = () => (
-  <AbsenceCalendar users={users} absences={absences} scale="week" />
+  <AbsenceCalendar users={users} absences={absences} />
 );
 
 export const CalendarMonth = () => (
