@@ -6,6 +6,8 @@ export type { FormControlBaseProps } from './form-control';
 export { SubmitButton } from './submit-button';
 export type { SubmitButtonProps } from './submit-button';
 
+export { DatepickerControl } from './datepicker-control';
+export type { DatepickerControlProps } from './datepicker-control';
 export { InputControl } from './input-control';
 export type { InputControlProps } from './input-control';
 export { SwitchControl } from './switch-control';

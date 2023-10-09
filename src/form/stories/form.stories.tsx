@@ -4,6 +4,7 @@ import { Meta } from '@storybook/react';
 import * as yup from 'yup';
 import { z } from 'zod';
 import {
+  DatepickerControl,
   Form,
   InputControl,
   SubmitButton,
@@ -115,6 +116,7 @@ export const withZodSchema = () => {
     <Form methods={methods} onSubmit={onSubmit} className="space-y-4">
       <InputControl name="name" label="Name" />
       <TextareaControl name="description" label="Description" />
+      <DatepickerControl name="date" label="Date" />
 
       <SubmitButton>
         <span>Submit</span>
