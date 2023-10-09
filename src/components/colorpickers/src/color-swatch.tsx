@@ -49,6 +49,7 @@ export const ColorSwatch = React.forwardRef<HTMLTableElement, ColorSwatchProps>(
                   <td key={colIdx} className="p-2 text-[0px]">
                     <Square
                       as="button"
+                      type="button"
                       style={
                         {
                           '--bg-color': color.color,
