@@ -10,7 +10,7 @@ export const ChevronDownIcon = forwardRef<IconProps, 'svg'>((props, ref) => {
       stroke="currentColor"
       strokeWidth="2"
       strokeLinecap="round"
-      stroneLinejoin="round"
+      strokeLinejoin="round"
       fill="none"
       ref={ref}
     >
