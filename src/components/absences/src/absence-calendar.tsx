@@ -129,6 +129,7 @@ export const AbsenceCalendar = forwardRef<HTMLDivElement, AbsenceCalendarProps>(
                 user={user}
                 days={range}
                 absences={absences?.filter((a) => a.userId === user.id)}
+                onAbsenceAddClick={onAbsenceAddClick}
               />
             ))}
           </div>

@@ -11,11 +11,19 @@ export interface AbsenceUserRowProps extends HTMLVelcureProps<'div'> {
   user: AbsenceUser;
   days: Date[];
   absences?: Absence[];
+  onAbsenceAddClick?: (user: AbsenceUser, date: Date) => void;
 }
 
 export const AbsenceUserRow = forwardRef<HTMLDivElement, AbsenceUserRowProps>(
   (props, ref) => {
-    const { className, user, days, absences = [], ...restProps } = props;
+    const {
+      className,
+      user,
+      days,
+      absences = [],
+      onAbsenceAddClick,
+      ...restProps
+    } = props;
 
     return (
       <div
@@ -48,6 +56,9 @@ export const AbsenceUserRow = forwardRef<HTMLDivElement, AbsenceUserRowProps>(
                   'opacity-0 hover:opacity-100',
                   'w-full h-full cursor-pointer justify-center text-center items-center flex hover:bg-slate-100 transition-colors'
                 )}
+                onClick={() => {
+                  onAbsenceAddClick?.(user, day);
+                }}
               >
                 <PlusIcon />
               </velcure.button>
