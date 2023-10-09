@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.25.2](https://github.com/velcure/velcure-ui/compare/v1.25.1...v1.25.2) (2023-10-09)
+
+
+### Bug Fixes
+
+* start and end time ([6871a16](https://github.com/velcure/velcure-ui/commit/6871a16f91d808351ac4ce2ea34cea7d25fb20e0))
+
 ## [1.25.1](https://github.com/velcure/velcure-ui/compare/v1.25.0...v1.25.1) (2023-10-09)
 
 
