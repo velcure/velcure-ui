@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.22.1](https://github.com/velcure/velcure-ui/compare/v1.22.0...v1.22.1) (2023-10-09)
+
+
+### Bug Fixes
+
+* button type ([6b4b9ee](https://github.com/velcure/velcure-ui/commit/6b4b9ee2a7ebf6952029ea46ab01c23e06dad74d))
+* button type ([7bbc5ec](https://github.com/velcure/velcure-ui/commit/7bbc5ec4f44acb7e3b760215a73da6b31e459be7))
+
 ## [1.22.0](https://github.com/velcure/velcure-ui/compare/v1.21.0...v1.22.0) (2023-10-08)
 
 
