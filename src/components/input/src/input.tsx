@@ -27,7 +27,7 @@ export const inputClass = cva(
       size: {
         xs: 'h-6 rounded-sm p-2 text-xs',
         sm: 'h-8 rounded-sm p-3 text-sm',
-        md: 'h-10 py-2 px-4 rounded-md text-base',
+        md: 'h-10 py-2 px-4 rounded-md text-sm',
         lg: 'h-12 p-4 rounded-md text-lg',
       },
     },

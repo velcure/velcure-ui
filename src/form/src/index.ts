@@ -10,6 +10,8 @@ export { DatepickerControl } from './datepicker-control';
 export type { DatepickerControlProps } from './datepicker-control';
 export { InputControl } from './input-control';
 export type { InputControlProps } from './input-control';
+export { SelectControl } from './select-control';
+export type { SelectControlProps } from './select-control';
 export { SwitchControl } from './switch-control';
 export type { SwitchControlProps } from './switch-control';
 export { TextareaControl } from './textarea-control';

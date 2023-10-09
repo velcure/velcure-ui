@@ -27,6 +27,7 @@ export * from './portal/src';
 export * from './property/src';
 export * from './radio/src';
 export * from './scheduler/src';
+export * from './select/src';
 export * from './spinner/src';
 export * from './table/src';
 export * from './textarea/src';
