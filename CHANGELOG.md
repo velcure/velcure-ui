@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.28.0](https://github.com/velcure/velcure-ui/compare/v1.27.0...v1.28.0) (2023-10-10)
+
+
+### Features
+
+* chip component ([25935a0](https://github.com/velcure/velcure-ui/commit/25935a079459ce54fd8fc18a2c1d23be68c9bbdc))
+
 ## [1.27.0](https://github.com/velcure/velcure-ui/compare/v1.26.0...v1.27.0) (2023-10-10)
 
 
