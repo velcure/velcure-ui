@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/react';
 import dayjs, { Dayjs } from 'dayjs';
 import { AbsenceCalendar } from '../src/absence-calendar';
-import { Absence, AbsenceState } from '../src/types';
+import { Absence, AbsenceState, AbsenceType } from '../src/types';
 
 const meta = {
   title: 'Components / Schedulers / Absences',
@@ -88,6 +88,24 @@ export const CalendarYear = () => (
   <AbsenceCalendar users={users} absences={absences} scale="year" />
 );
 
+const absenceTypes: AbsenceType[] = [
+  {
+    id: '1',
+    name: 'Urlaub',
+    color: '#F87171',
+  },
+  {
+    id: '2',
+    name: 'Krankheit',
+    color: '#FBBF24',
+  },
+  {
+    id: '3',
+    name: 'Fortbildung',
+    color: '#60A5FA',
+  },
+];
+
 const affectedAbsences = [
   {
     id: '01HCAHFTM85YE591NAPG1C0XWA',
@@ -100,7 +118,7 @@ const affectedAbsences = [
     state: 'declined',
     reason: '',
     employeeId: '01HC9X945DXTY3VMV6FZGBYJ2X',
-    absenceTypeId: '01HCA48NN5SJMDE7C2D3KPH3NY',
+    absenceTypeId: '1',
     organizationId: '01H6DR92W9AMTYJP2786R819TP',
     userId: '01HC9X945DXTY3VMV6FZGBYJ2X',
   },
@@ -115,7 +133,7 @@ const affectedAbsences = [
     state: 'approved',
     reason: '',
     employeeId: '01HC9X8V03HBE0S6R4A8Z9PQ1B',
-    absenceTypeId: '01HCA48NN5SJMDE7C2D3KPH3NY',
+    absenceTypeId: '2',
     organizationId: '01H6DR92W9AMTYJP2786R819TP',
     userId: '01HC9X8V03HBE0S6R4A8Z9PQ1B',
   },
@@ -175,6 +193,7 @@ export const BugNotShowingAbsences = () => (
     users={affectedUsers}
     // @ts-ignore
     absences={affectedAbsences}
+    absenceTypes={absenceTypes}
     scale="week"
   />
 );

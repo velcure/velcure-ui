@@ -1,13 +1,6 @@
 import { HTMLVelcureProps, velcure } from '#/components/factory';
-import { useControllableState } from '#/hooks';
-import {
-  cn,
-  generateMonthDates,
-  generateWeekDates,
-  getAllMonthsOfYear,
-} from '#/utilities';
-import dayjs from 'dayjs';
-import { forwardRef, useMemo } from 'react';
+import { cn, createSplitProps } from '#/utilities';
+import { forwardRef } from 'react';
 import { AbsenceAgenda } from './absence-agenda';
 import { AbsenceDays } from './absence-days';
 import { AbsenceNavigation } from './absence-navigation';
@@ -16,8 +9,13 @@ import {
   Absence,
   AbsenceScale,
   AbsenceTranslateFn,
+  AbsenceType,
   AbsenceUser,
 } from './types';
+import {
+  AbsenceCalendarProvider,
+  useAbsenceCalendar,
+} from './use-absence-calendar';
 
 interface AbsenceCalendarOptions {
   date?: Date | string;
@@ -34,6 +32,10 @@ interface AbsenceCalendarOptions {
    * @default true
    */
   agenda?: boolean;
+  /**
+   * Absence types to display in the calendar.
+   */
+  absenceTypes?: AbsenceType[];
 }
 
 export interface AbsenceCalendarProps
@@ -55,103 +57,46 @@ export interface AbsenceCalendarProps
  */
 export const AbsenceCalendar = forwardRef<HTMLDivElement, AbsenceCalendarProps>(
   (props, ref) => {
-    const {
-      className,
-      date: dateProp,
-      scale: scaleProp,
-      onScaleChange,
-      users,
-      onAbsenceAddClick,
-      absences: absencesProp,
-      onDateChange,
-      agenda = true,
-      translateFn = (key) => key,
-      onAbsenceClick,
-      ...restProps
-    } = props;
+    const [calendarProps, { className, ...restProps }] =
+      createSplitProps<AbsenceCalendarOptions>()(props, [
+        'date',
+        'scale',
+        'onScaleChange',
+        'users',
+        'onAbsenceAddClick',
+        'absences',
+        'onDateChange',
+        'agenda',
+        'translateFn',
+        'onAbsenceClick',
+        'absenceTypes',
+      ]);
 
-    const [date, setDate] = useControllableState({
-      value: dateProp ? new Date(dateProp) : undefined,
-      defaultValue: new Date(),
-      onChange: onDateChange,
-    });
-
-    const [scale, setScale] = useControllableState<AbsenceScale>({
-      value: scaleProp,
-      defaultValue: 'week',
-      onChange: onScaleChange,
-    });
-
-    const range = useMemo(() => {
-      switch (scale) {
-        case 'year':
-          return getAllMonthsOfYear(dayjs(date).year());
-        case 'month': {
-          return generateMonthDates(date);
-        }
-        default:
-        case 'week': {
-          return generateWeekDates(date);
-        }
-      }
-    }, [date, scale]);
-
-    const absences = useMemo(() => {
-      const firstDay = range[0].getTime();
-      const lastDay = range[range.length - 1].getTime();
-
-      return absencesProp?.filter((a) => {
-        const start = dayjs(a.startsAt).startOf('day').toDate();
-        const end = dayjs(a.endsAt).endOf('day').toDate();
-        // wenn start früher ist als der erste tag, setze start auf den ersten tag
-        if (start.getTime() < firstDay) {
-          start.setTime(firstDay);
-        }
-
-        if (end.getTime() > lastDay) {
-          end.setTime(lastDay);
-        }
-
-        const absenceStart = start.getTime();
-        const absenceEnd = end.getTime();
-
-        return absenceStart >= firstDay && absenceEnd <= lastDay;
-      });
-    }, [absencesProp, range[0].getTime(), range[range.length - 1].getTime()]);
+    const ctx = useAbsenceCalendar(calendarProps);
+    const { users } = ctx;
 
     return (
-      <velcure.div
-        ref={ref}
-        {...restProps}
-        className={cn('grid gap-4', className)}
-      >
-        {agenda && (
-          <AbsenceAgenda
-            scale={scale}
-            setScale={setScale}
-            translateFn={translateFn}
-          />
-        )}
-        <div className="flex flex-wrap w-full border border-gray-100 isolate">
-          {/** navigation */}
-          <AbsenceNavigation date={date} scale={scale} setDate={setDate}>
-            <AbsenceDays days={range} scale={scale} />
-          </AbsenceNavigation>
+      <AbsenceCalendarProvider value={ctx}>
+        <velcure.div
+          ref={ref}
+          {...restProps}
+          className={cn('grid gap-4', className)}
+        >
+          <AbsenceAgenda />
+          <div className="flex flex-wrap w-full border border-gray-100 isolate">
+            {/** navigation */}
+            <AbsenceNavigation>
+              <AbsenceDays />
+            </AbsenceNavigation>
 
-          <div className="flex flex-col w-full divide-y divide-gray-100">
-            {users?.map((user) => (
-              <AbsenceUserRow
-                key={user.id}
-                user={user}
-                days={range}
-                absences={absences?.filter((a) => a.userId === user.id)}
-                onAbsenceAddClick={onAbsenceAddClick}
-                onAbsenceClick={onAbsenceClick}
-              />
-            ))}
+            <div className="flex flex-col w-full divide-y divide-gray-100">
+              {users?.map((user) => (
+                <AbsenceUserRow key={user.id} user={user} />
+              ))}
+            </div>
           </div>
-        </div>
-      </velcure.div>
+        </velcure.div>
+      </AbsenceCalendarProvider>
     );
   }
 );

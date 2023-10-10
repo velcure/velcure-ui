@@ -1,9 +1,10 @@
-import { HTMLVelcureProps, velcure } from '#/components/factory';
+import { Circle, HTMLVelcureProps, velcure } from '#/components/factory';
 import { cn, formatRangeDates } from '#/utilities';
 import { cva } from 'class-variance-authority';
 import dayjs from 'dayjs';
 import { forwardRef, useMemo } from 'react';
 import { Absence } from './types';
+import { useAbsenceCalendarContext } from './use-absence-calendar';
 
 export interface AbsenceItemProps extends HTMLVelcureProps<'div'> {
   timeRangeStart: Date;
@@ -42,6 +43,8 @@ export const AbsenceItem = forwardRef<HTMLDivElement, AbsenceItemProps>(
       onAbsenceClick,
       ...restProps
     } = props;
+
+    const { absenceTypes } = useAbsenceCalendarContext();
 
     // Convert dates to milliseconds for calculations
     const rangeStart = timeRangeStart.getTime();
@@ -83,6 +86,10 @@ export const AbsenceItem = forwardRef<HTMLDivElement, AbsenceItemProps>(
       };
     }, [rangeStart, rangeEnd, absenceStart, absenceEnd]);
 
+    const absenceType = useMemo(() => {
+      return absenceTypes.find((type) => type.id === absence.absenceTypeId);
+    }, [absenceTypes, absence.absenceTypeId]);
+
     return (
       <velcure.div
         ref={ref}
@@ -97,14 +104,25 @@ export const AbsenceItem = forwardRef<HTMLDivElement, AbsenceItemProps>(
         }}
       >
         <velcure.button
-          className="overflow-hidden block p-2 h-full w-full text-ellipsis whitespace-normal text-sm"
+          className="inline-flex items-start gap-1 flex-col p-2 h-full w-full truncate text-sm"
           onClick={() => {
             onAbsenceClick?.(absence);
           }}
         >
-          <span className="overflow-hidden text-ellipsis whitespace-nowrap">
+          <span className="truncate">
             {formatRangeDates(absence.startsAt, absence.endsAt)}
           </span>
+          {absenceType && (
+            <div className="flex items-center truncate">
+              <Circle
+                className="h-3 w-3 mr-1"
+                style={{
+                  backgroundColor: absenceType.color,
+                }}
+              />
+              <span className="truncate text-xs">{absenceType.name}</span>
+            </div>
+          )}
         </velcure.button>
       </velcure.div>
     );

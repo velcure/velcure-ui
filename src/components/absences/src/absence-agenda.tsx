@@ -10,17 +10,20 @@ import {
 } from '#/components/menu/src';
 import { cn } from '#/utilities';
 import { forwardRef } from 'react';
-import { AbsenceScale, AbsenceTranslateFn } from './types';
+import { AbsenceScale } from './types';
+import { useAbsenceCalendarContext } from './use-absence-calendar';
 
-export interface AbsenceAgendaProps extends HTMLVelcureProps<'div'> {
-  scale: AbsenceScale;
-  setScale: React.Dispatch<React.SetStateAction<AbsenceScale>>;
-  translateFn: AbsenceTranslateFn;
-}
+export interface AbsenceAgendaProps extends HTMLVelcureProps<'div'> {}
 
 export const AbsenceAgenda = forwardRef<HTMLDivElement, AbsenceAgendaProps>(
   (props, ref) => {
-    const { className, scale, setScale, translateFn, ...restProps } = props;
+    const { className, ...restProps } = props;
+
+    const { agenda, scale, setScale, translateFn } =
+      useAbsenceCalendarContext();
+
+    if (!agenda) return null;
+
     return (
       <velcure.div
         className={cn('p-3 justify-between flex  w-full', className)}
@@ -39,7 +42,6 @@ export const AbsenceAgenda = forwardRef<HTMLDivElement, AbsenceAgendaProps>(
               value={scale}
               defaultValue={scale}
               onChange={(value) => {
-                console.log(value);
                 setScale(value as AbsenceScale);
               }}
             >

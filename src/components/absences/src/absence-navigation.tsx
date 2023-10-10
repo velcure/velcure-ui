@@ -3,53 +3,24 @@ import { HTMLVelcureProps, velcure } from '#/components/factory';
 import { ChevronLeftIcon, ChevronRightIcon } from '#/components/icons/src';
 import { cn, getWeekNumber } from '#/utilities';
 import { forwardRef } from 'react';
-import { AbsenceScale } from './types';
+import { useAbsenceCalendarContext } from './use-absence-calendar';
 
-export interface AbsenceNavigationProps extends HTMLVelcureProps<'div'> {
-  date: Date;
-  setDate: React.Dispatch<React.SetStateAction<Date>>;
-  scale: AbsenceScale;
-}
+export interface AbsenceNavigationProps extends HTMLVelcureProps<'div'> {}
 
 export const AbsenceNavigation = forwardRef<
   HTMLDivElement,
   AbsenceNavigationProps
 >((props, ref) => {
-  const { date, className, scale, setDate, children, ...restProps } = props;
+  const { className, children, ...restProps } = props;
 
-  const handlePrevious = () => {
-    switch (scale) {
-      case 'week': {
-        setDate((prev) => new Date(prev.setDate(prev.getDate() - 7)));
-        break;
-      }
-      case 'month': {
-        setDate((prev) => new Date(prev.setMonth(prev.getMonth() - 1)));
-        break;
-      }
-      case 'year': {
-        setDate((prev) => new Date(prev.setFullYear(prev.getFullYear() - 1)));
-        break;
-      }
-    }
-  };
-
-  const handleNext = () => {
-    switch (scale) {
-      case 'week': {
-        setDate((prev) => new Date(prev.setDate(prev.getDate() + 7)));
-        break;
-      }
-      case 'month': {
-        setDate((prev) => new Date(prev.setMonth(prev.getMonth() + 1)));
-        break;
-      }
-      case 'year': {
-        setDate((prev) => new Date(prev.setFullYear(prev.getFullYear() + 1)));
-        break;
-      }
-    }
-  };
+  const {
+    getNavigationPreviousButtonProps,
+    getNavigationNextButtonProps,
+    translateFn,
+    date,
+    setDate,
+    scale,
+  } = useAbsenceCalendarContext();
 
   return (
     <velcure.div
@@ -63,10 +34,9 @@ export const AbsenceNavigation = forwardRef<
       <div className="flex-none w-[15%] max-w-[250px] py-4 px-3">
         <velcure.nav className={cn('flex justify-center items-center gap-2')}>
           <IconButton
-            variant="ghost"
-            aria-label="Previous"
+            aria-label={translateFn('previous')}
             icon={<ChevronLeftIcon />}
-            onClick={handlePrevious}
+            {...getNavigationPreviousButtonProps()}
           />
           <strong className="text-center w-full text-sm">
             {date.toLocaleString('de-DE', {
@@ -82,9 +52,9 @@ export const AbsenceNavigation = forwardRef<
           </strong>
           <IconButton
             variant="ghost"
-            aria-label="Previous"
+            aria-label={translateFn('next')}
             icon={<ChevronRightIcon />}
-            onClick={handleNext}
+            {...getNavigationNextButtonProps()}
           />
         </velcure.nav>
         <div className="text-center">

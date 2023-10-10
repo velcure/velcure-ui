@@ -5,27 +5,21 @@ import { cn } from '#/utilities';
 import { forwardRef } from 'react';
 import { AbsenceDay } from './absence-day';
 import { AbsenceItem } from './absence-item';
-import { Absence, AbsenceUser } from './types';
+import { AbsenceUser } from './types';
+import { useAbsenceCalendarContext } from './use-absence-calendar';
 
 export interface AbsenceUserRowProps extends HTMLVelcureProps<'div'> {
   user: AbsenceUser;
-  days: Date[];
-  absences?: Absence[];
-  onAbsenceAddClick?: (user: AbsenceUser, date: Date) => void;
-  onAbsenceClick?: (absence: Absence) => void;
 }
 
 export const AbsenceUserRow = forwardRef<HTMLDivElement, AbsenceUserRowProps>(
   (props, ref) => {
-    const {
-      className,
-      user,
-      days,
-      absences = [],
-      onAbsenceAddClick,
-      onAbsenceClick,
-      ...restProps
-    } = props;
+    const { className, user, ...restProps } = props;
+
+    const { range, onAbsenceAddClick, onAbsenceClick, getUserAbsences } =
+      useAbsenceCalendarContext();
+
+    const absences = getUserAbsences(user);
 
     return (
       <div
@@ -48,7 +42,7 @@ export const AbsenceUserRow = forwardRef<HTMLDivElement, AbsenceUserRowProps>(
           </div>
         </div>
         <div className="flex-1 flex relative">
-          {days.map((day) => (
+          {range.map((day) => (
             <AbsenceDay
               key={day.toISOString()}
               className="border-e border-gray-100 last:border-e-0"
@@ -72,13 +66,13 @@ export const AbsenceUserRow = forwardRef<HTMLDivElement, AbsenceUserRowProps>(
               (a, b) =>
                 new Date(a.startsAt).getTime() - new Date(b.startsAt).getTime()
             )
-            .map((abs) => {
+            .map((current) => {
               return (
                 <AbsenceItem
-                  absence={abs}
-                  key={abs.id}
-                  timeRangeStart={days[0]}
-                  timeRangeEnd={days[days.length - 1]}
+                  absence={current}
+                  key={current.id}
+                  timeRangeStart={range[0]}
+                  timeRangeEnd={range[range.length - 1]}
                   onAbsenceClick={onAbsenceClick}
                 />
               );

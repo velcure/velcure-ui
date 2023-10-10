@@ -2,16 +2,15 @@ import { HTMLVelcureProps, velcure } from '#/components/factory';
 import { cn, getWeekNumber, isFirstDayOfWeek } from '#/utilities';
 import { forwardRef } from 'react';
 import { AbsenceDay } from './absence-day';
-import { AbsenceScale } from './types';
+import { useAbsenceCalendarContext } from './use-absence-calendar';
 
-export interface AbsenceDaysProps extends HTMLVelcureProps<'div'> {
-  days: Date[];
-  scale: AbsenceScale;
-}
+export interface AbsenceDaysProps extends HTMLVelcureProps<'div'> {}
 
 export const AbsenceDays = forwardRef<HTMLDivElement, AbsenceDaysProps>(
   (props, ref) => {
-    const { className, days, scale, ...restProps } = props;
+    const { className, ...restProps } = props;
+
+    const { range, scale } = useAbsenceCalendarContext();
 
     return (
       <velcure.div
@@ -22,7 +21,7 @@ export const AbsenceDays = forwardRef<HTMLDivElement, AbsenceDaysProps>(
         )}
         {...restProps}
       >
-        {days.map((day) => (
+        {range.map((day) => (
           <AbsenceDay key={day.toISOString()}>
             <span className="text-sm">
               {scale === 'week' &&
