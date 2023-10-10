@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.27.0](https://github.com/velcure/velcure-ui/compare/v1.26.0...v1.27.0) (2023-10-10)
+
+
+### Features
+
+* absence hover ([ad19272](https://github.com/velcure/velcure-ui/commit/ad192720c64868c7af8baf4f81c03ed9fbbe66bc))
+* use absence type ([d7606a0](https://github.com/velcure/velcure-ui/commit/d7606a0f4eeb33962d96e3394ad841cda8ce2219))
+
 ## [1.26.0](https://github.com/velcure/velcure-ui/compare/v1.25.2...v1.26.0) (2023-10-09)
 
 
