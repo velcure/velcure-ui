@@ -4,6 +4,7 @@ import {
   PopoverTrigger,
 } from '#/components/popover/src';
 import { cn } from '#/utilities';
+import { Portal } from '@zag-js/react';
 
 export interface HoverCardProps {
   content?: React.ReactNode;
@@ -21,11 +22,11 @@ export const HoverCard: React.FC<HoverCardProps> = (props) => {
   return (
     <Popover trigger="hover">
       <PopoverTrigger>{children}</PopoverTrigger>
-      <PopoverContent>
+      <Portal>
         <PopoverContent className={cn('p-5 flex-1 max-w-sm', className)}>
           {content}
         </PopoverContent>
-      </PopoverContent>
+      </Portal>
     </Popover>
   );
 };

@@ -74,6 +74,7 @@ export const AbsenceUserRow = forwardRef<HTMLDivElement, AbsenceUserRowProps>(
                   timeRangeStart={range[0]}
                   timeRangeEnd={range[range.length - 1]}
                   onAbsenceClick={onAbsenceClick}
+                  user={user}
                 />
               );
             })}

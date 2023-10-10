@@ -1,3 +1,4 @@
+export { CalendarDaysIcon } from './calendar-days-icon';
 export { CheckIcon } from './check-icon';
 export { ChevronDownIcon } from './chevron-down-icon';
 export { ChevronLeftIcon } from './chevron-left-icon';
