@@ -27,6 +27,7 @@ export * from './popper/src';
 export * from './portal/src';
 export * from './property/src';
 export * from './radio/src';
+export * from './schedule-list/src';
 export * from './scheduler/src';
 export * from './select/src';
 export * from './spinner/src';
