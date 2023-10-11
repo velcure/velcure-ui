@@ -30,6 +30,7 @@ export const MenuIcon = forwardRef<HTMLSpanElement, MenuIconProps>(
           'inline-flex justify-center items-center shrink-0',
           className
         )}
+        {...rest}
       >
         {clone}
       </span>
