@@ -27,6 +27,7 @@ export const config: Partial<Config> = {
         check: 'check 200ms linear',
         interminate:
           'indeterminate-opacity 20ms linear, indeterminate-scale 200ms linear',
+        'circle-spin': 'circle-spin 1.4s ease-in-out infinite',
       },
 
       keyframes: {
@@ -38,6 +39,20 @@ export const config: Partial<Config> = {
           '100%': {
             transform: 'scale(4)',
             opacity: '0',
+          },
+        },
+        'circle-spin': {
+          '0%': {
+            strokeDasharray: '1, 400',
+            strokeDashoffset: '0',
+          },
+          '50%': {
+            strokeDasharray: '400, 400',
+            strokeDashoffset: '-100',
+          },
+          '100%': {
+            strokeDasharray: '400, 400',
+            strokeDashoffset: '-260',
           },
         },
         check: {

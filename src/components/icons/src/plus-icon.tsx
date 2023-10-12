@@ -1,11 +1,12 @@
-import { forwardRef } from '#/utilities';
+import { cn, forwardRef } from '#/utilities';
 import { Icon, IconProps } from './icon';
 
 export const PlusIcon = forwardRef<IconProps, 'svg'>((props, ref) => {
+  const { className, ...restProps } = props;
   return (
     <Icon
-      {...props}
-      className="stroke-current"
+      {...restProps}
+      className={cn('stroke-current', className)}
       stroke="currentColor"
       strokeWidth="1.5"
       fill="none"

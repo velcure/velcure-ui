@@ -1,3 +1,4 @@
+import { Avatar } from '#/components/avatar/src';
 import { HTMLVelcureProps, velcure } from '#/components/factory';
 import { mergeRefs } from '#/hooks';
 import { cn } from '#/utilities';
@@ -5,6 +6,7 @@ import { useDroppable } from '@dnd-kit/core';
 import dayjs from 'dayjs';
 import { forwardRef } from 'react';
 import { Shift } from './types';
+import { useSchedulerContext } from './use-scheduler';
 
 export interface ShiftItemProps extends HTMLVelcureProps<'div'> {
   shift: Shift;
@@ -13,6 +15,8 @@ export interface ShiftItemProps extends HTMLVelcureProps<'div'> {
 export const ShiftItem = forwardRef<HTMLDivElement, ShiftItemProps>(
   (props, ref) => {
     const { className, shift, ...restProps } = props;
+
+    const { users } = useSchedulerContext();
 
     const { setNodeRef, active } = useDroppable({
       id: `shift-${shift.id}`,
@@ -40,6 +44,24 @@ export const ShiftItem = forwardRef<HTMLDivElement, ShiftItemProps>(
           </div>
           <small>0/{shift.desiredCoverage}</small>
         </div>
+        {shift.userIds && shift.userIds.length > 0 && (
+          <ul>
+            {shift.userIds.map((userId) => {
+              const user = users?.find((user) => user.id === userId);
+
+              if (!user) {
+                return null;
+              }
+
+              return (
+                <li key={userId} className="flex gap-1 items-center text-xs">
+                  <Avatar size="xs" name={user.name} />
+                  <span className="truncate">{user.name}</span>
+                </li>
+              );
+            })}
+          </ul>
+        )}
       </velcure.div>
     );
   }

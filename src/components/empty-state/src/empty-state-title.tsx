@@ -8,7 +8,7 @@ export const EmptyStateTitle: React.FC<EmptyStateTitleProps> = (props) => {
   return (
     <div
       className={cn(
-        'text-2xl font-semibold tracking-tight scroll-m-20',
+        'text-2xl font-semibold tracking-tight scroll-m-20 text-center',
         className
       )}
       {...rest}

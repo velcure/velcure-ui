@@ -25,6 +25,7 @@ export * from './password-input/src';
 export * from './popover/src';
 export * from './popper/src';
 export * from './portal/src';
+export * from './progress/src';
 export * from './property/src';
 export * from './radio/src';
 export * from './schedule-list/src';
