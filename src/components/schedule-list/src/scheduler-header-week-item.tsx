@@ -15,8 +15,7 @@ export interface SchedulerHeaderWeekItemProps
 }
 
 const getCalendarWeekStartEndRange = (week: number, currentDate: Date) => {
-  const year = dayjs(currentDate).isoWeekYear();
-  const date = dayjs(`${year}-01-01`).isoWeek(week);
+  const date = dayjs(currentDate).isoWeek(week);
 
   return `${date.startOf('isoWeek').format('DD.')} - ${date
     .endOf('isoWeek')
