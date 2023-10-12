@@ -1,4 +1,5 @@
 export * from './absences/src';
+export * from './accordion/src';
 export * from './alert/src';
 export * from './avatar/src';
 export * from './button/src';
