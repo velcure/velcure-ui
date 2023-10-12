@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.30.0](https://github.com/velcure/velcure-ui/compare/v1.29.0...v1.30.0) (2023-10-12)
+
+
+### Features
+
+* accordion ([df8ade7](https://github.com/velcure/velcure-ui/commit/df8ade7281bb8e9754c5f97803e62783cfafac04))
+
+
+### Bug Fixes
+
+* dayjs isoweek ([276668a](https://github.com/velcure/velcure-ui/commit/276668a74b7711dc59b77a3147dca3c1a663300b))
+
 ## [1.29.0](https://github.com/velcure/velcure-ui/compare/v1.28.0...v1.29.0) (2023-10-12)
 
 
