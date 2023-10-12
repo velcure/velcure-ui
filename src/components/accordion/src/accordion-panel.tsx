@@ -34,7 +34,7 @@ export const AccordionPanel = React.forwardRef<
   }
 
   const child = (
-    <velcure.div {...panelProps} className={cn('mt-2 px-4 py-2', className)} />
+    <velcure.div {...panelProps} className={cn('px-4 py-2', className)} />
   );
 
   if (!reduceMotion) {
