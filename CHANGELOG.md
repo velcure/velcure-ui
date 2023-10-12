@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.29.0](https://github.com/velcure/velcure-ui/compare/v1.28.0...v1.29.0) (2023-10-12)
+
+
+### Features
+
+* **alpha:** employee scheduler ([f2ca41a](https://github.com/velcure/velcure-ui/commit/f2ca41ae85511b543b9acf0ca66cff024c25710c))
+* export schedule list ([08ef2fe](https://github.com/velcure/velcure-ui/commit/08ef2fef963f59c65fd5afc78d6ad0c93729c6b8))
+
+
+### Bug Fixes
+
+* missing rest param ([206c11b](https://github.com/velcure/velcure-ui/commit/206c11b69e56e06f4ba12291be110b2d5d84b1a0))
+
 ## [1.28.0](https://github.com/velcure/velcure-ui/compare/v1.27.0...v1.28.0) (2023-10-10)
 
 
