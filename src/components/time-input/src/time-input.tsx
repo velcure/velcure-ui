@@ -62,6 +62,7 @@ export const TimeInput = forwardRef<HTMLInputElement, TimeInputProps>(
                 />
               }
               {...getToggleButtonProps({
+                disabled: props.isDisabled,
                 variant: 'ghost',
                 'aria-label': 'Open time picker',
               })}
