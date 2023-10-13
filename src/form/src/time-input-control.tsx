@@ -21,6 +21,7 @@ export const TimeInputControl = forwardRef<
     <FormControl name={name} label={label} {...rest}>
       <TimeInput
         {...field}
+        onValueChange={field.onChange}
         id={name}
         isDisabled={formState.isSubmitting}
         {...inputProps}
