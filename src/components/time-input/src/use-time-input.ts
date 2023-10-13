@@ -161,6 +161,16 @@ export const useTimeInput = (options: TimeInputOptions = {}) => {
     return nearestItem;
   }, [filteredTimes, value]);
 
+  function parseInputTime(inputValue: string) {
+    const time = dayjs(inputValue, 'HH:mm');
+
+    if (time.isValid()) {
+      return time;
+    }
+
+    return undefined;
+  }
+
   const {
     isOpen,
     selectedItem,
@@ -174,6 +184,14 @@ export const useTimeInput = (options: TimeInputOptions = {}) => {
     defaultSelectedItem: getDefaultSelectedItem(),
     onInputValueChange: ({ inputValue }) => {
       setInputValue(inputValue || '');
+
+      if (inputValue) {
+        const time = parseInputTime(inputValue);
+
+        if (time) {
+          setValue(time.toDate());
+        }
+      }
     },
     items: filteredTimes,
     itemToString: (item) => (item ? item.label : ''),
