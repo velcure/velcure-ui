@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.31.0](https://github.com/velcure/velcure-ui/compare/v1.30.0...v1.31.0) (2023-10-13)
+
+
+### Features
+
+* **forms:** improved the time input, using a combobox ([a6852ae](https://github.com/velcure/velcure-ui/commit/a6852aef6412427c20866f35531d71a92ffa0217))
+* **timepicker:** parse input value ([e41e4ad](https://github.com/velcure/velcure-ui/commit/e41e4ade2ec0bd0f9b24153a76988d996dae2cf9))
+
+
+### Bug Fixes
+
+* removed mt-2 from accordion ([a7f4194](https://github.com/velcure/velcure-ui/commit/a7f41949b1541c89f602adc7fd346430d9938ca5))
+* **timepicker:** disble toggle button ([458ac9d](https://github.com/velcure/velcure-ui/commit/458ac9d560f1bbf9ded7638f4f784d9cf6b6f534))
+
 ## [1.30.0](https://github.com/velcure/velcure-ui/compare/v1.29.0...v1.30.0) (2023-10-12)
 
 
