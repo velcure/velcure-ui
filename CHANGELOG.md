@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.31.1](https://github.com/velcure/velcure-ui/compare/v1.31.0...v1.31.1) (2023-10-14)
+
+
+### Bug Fixes
+
+* **timepicker:** with and portal ([06f19ef](https://github.com/velcure/velcure-ui/commit/06f19eff8a0f39d7ea44e23eeac44e6bc4b93d3d))
+
 ## [1.31.0](https://github.com/velcure/velcure-ui/compare/v1.30.0...v1.31.0) (2023-10-13)
 
 
