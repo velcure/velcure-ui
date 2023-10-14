@@ -7,6 +7,7 @@ import {
   InputRightElement,
 } from '#/components/input/src';
 import { usePopper } from '#/components/popper/src';
+import { Portal } from '#/components/portal/src';
 import { cn, createSplitProps } from '#/utilities';
 import { forwardRef } from 'react';
 import { TimeInputOptions, useTimeInput } from './use-time-input';
@@ -44,6 +45,7 @@ export const TimeInput = forwardRef<HTMLInputElement, TimeInputProps>(
     const { referenceRef, getPopperProps } = usePopper({
       enabled: isOpen,
       gutter: 2,
+      matchWidth: true,
     });
 
     return (
@@ -69,36 +71,38 @@ export const TimeInput = forwardRef<HTMLInputElement, TimeInputProps>(
             />
           </InputRightElement>
         </InputGroup>
-        <div
-          className={cn('z-popover w-full', isOpen ? 'visible' : 'invisible')}
-          {...getPopperProps()}
-        >
-          <ul
-            className={cn(
-              'relative rounded-md bg-popover text-popover-foreground shadow-md',
-              'z-inherit outline-none',
-              'text-sm text-inherit pt-2 pb-2  max-h-80 overflow-auto'
-            )}
-            {...getMenuProps()}
+        <Portal>
+          <div
+            className={cn('z-popover w-36', isOpen ? 'visible' : 'invisible')}
+            {...getPopperProps()}
           >
-            {isOpen &&
-              times.map((item, index) => (
-                <li
-                  className={cn(
-                    'cursor-pointer text-popover-foreground text-sm select-none',
-                    highlightedIndex === index &&
-                      'bg-accent text-accent-foreground',
-                    selectedItem === item && 'font-bold',
-                    'py-2 px-3 shadow-sm flex flex-col'
-                  )}
-                  key={index}
-                  {...getItemProps({ item, index })}
-                >
-                  <span>{item.label}</span>
-                </li>
-              ))}
-          </ul>
-        </div>
+            <ul
+              className={cn(
+                'relative rounded-md bg-popover text-popover-foreground shadow-md',
+                'z-inherit outline-none',
+                'text-sm text-inherit pt-2 pb-2  max-h-80 overflow-auto'
+              )}
+              {...getMenuProps()}
+            >
+              {isOpen &&
+                times.map((item, index) => (
+                  <li
+                    className={cn(
+                      'cursor-pointer text-popover-foreground text-sm select-none',
+                      highlightedIndex === index &&
+                        'bg-accent text-accent-foreground',
+                      selectedItem === item && 'font-bold',
+                      'py-2 px-3 shadow-sm flex flex-col'
+                    )}
+                    key={index}
+                    {...getItemProps({ item, index })}
+                  >
+                    <span>{item.label}</span>
+                  </li>
+                ))}
+            </ul>
+          </div>
+        </Portal>
       </div>
     );
   }
