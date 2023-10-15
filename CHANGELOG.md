@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.32.0](https://github.com/velcure/velcure-ui/compare/v1.31.1...v1.32.0) (2023-10-15)
+
+
+### Features
+
+* **forms:** introducing a weekday picker ([c7357cb](https://github.com/velcure/velcure-ui/commit/c7357cb72b0d7d02a98e2e8804af92289c60139a))
+* **forms:** weekdaypicker control ([43ce634](https://github.com/velcure/velcure-ui/commit/43ce63421b0ec7cd6ace0f725a21cc1dda22133f))
+
 ## [1.31.1](https://github.com/velcure/velcure-ui/compare/v1.31.0...v1.31.1) (2023-10-14)
 
 
