@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.32.1](https://github.com/velcure/velcure-ui/compare/v1.32.0...v1.32.1) (2023-10-15)
+
+
+### Bug Fixes
+
+* **forms:** export ([95fdf5d](https://github.com/velcure/velcure-ui/commit/95fdf5d86e55ef57bff95b67f3b6f4e88af640cb))
+
 ## [1.32.0](https://github.com/velcure/velcure-ui/compare/v1.31.1...v1.32.0) (2023-10-15)
 
 
