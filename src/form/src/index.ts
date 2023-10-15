@@ -18,6 +18,8 @@ export { TextareaControl } from './textarea-control';
 export type { TextareaControlProps } from './textarea-control';
 export { TimeInputControl } from './time-input-control';
 export type { TimeInputControlProps } from './time-input-control';
+export { WeekdayPickerControl } from './weekday-picker-control';
+export type { WeekdayPickerControlProps } from './weekday-picker-control';
 
 export {
   Controller,

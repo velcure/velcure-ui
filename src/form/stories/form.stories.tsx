@@ -14,7 +14,7 @@ import {
   TimeInputControl,
   useForm,
 } from '../src';
-import { WeekdayPickerControl } from '../src/weedaypicker-control';
+import { WeekdayPickerControl } from '../src/weekday-picker-control';
 
 const meta: Meta<typeof Form> = {
   title: 'React Hook Form / Form',
