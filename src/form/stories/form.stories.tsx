@@ -1,6 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Meta } from '@storybook/react';
+import dayjs from 'dayjs';
 import * as yup from 'yup';
 import { z } from 'zod';
 import {
@@ -13,6 +14,7 @@ import {
   TimeInputControl,
   useForm,
 } from '../src';
+import { WeekdayPickerControl } from '../src/weedaypicker-control';
 
 const meta: Meta<typeof Form> = {
   title: 'React Hook Form / Form',
@@ -32,6 +34,8 @@ export const Basic = () => {
       description: 'A basic layout',
       isPublic: false,
       password: '',
+      weekdays: [],
+      time: dayjs().set('hour', 12).set('minute', 0).set('second', 0).toDate(),
     },
   });
 
@@ -43,6 +47,7 @@ export const Basic = () => {
     >
       <InputControl name="title" label="Title" />
       <TextareaControl name="description" label="Description" />
+      <WeekdayPickerControl name="weekdays" label="Weekdays" />
       <SwitchControl
         name="isPublic"
         label="Public"

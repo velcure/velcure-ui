@@ -28,6 +28,12 @@ export interface WeekdayPickerProps
    * The value of the checkbox group
    */
   value?: ISOWeekday[];
+  /**
+   * If `true`, all wrapped checkbox inputs will be disabled
+   *
+   * @default false
+   */
+  isDisabled?: boolean;
 }
 
 const defaultDays: ISOWeekday[] = [1, 2, 3, 4, 5, 6, 7];
@@ -43,6 +49,7 @@ export const WeekdayPicker = React.forwardRef<
     defaultValue,
     onChange,
     days = defaultDays,
+    isDisabled,
     ...restProps
   } = props;
 
@@ -53,6 +60,7 @@ export const WeekdayPicker = React.forwardRef<
       // ensure that the value  is a number and is sorted
       onChange?.(value.map((v) => Number(v) as ISOWeekday).sort());
     },
+    isDisabled,
   });
 
   return (
