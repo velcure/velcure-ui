@@ -41,3 +41,4 @@ export * from './toast/src';
 export * from './tooltip/src';
 export * from './transition/src';
 export * from './typography/src';
+export * from './weekday-picker/src';

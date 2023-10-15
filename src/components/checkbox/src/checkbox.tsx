@@ -61,7 +61,7 @@ const iconStyles = cva('transition-transform', {
 
 const controlStyles = cva(
   [
-    'inline-flkex items-center justify-center align-top select-none shrink-0',
+    'inline-flex items-center justify-center align-top select-none shrink-0',
     'transition-shadow',
     'rounded-md border border-input',
     'bg-background ring-1 ring-input',

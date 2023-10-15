@@ -3,12 +3,14 @@ import dayjs, { Dayjs } from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import isBetween from 'dayjs/plugin/isBetween';
 import isoWeek from 'dayjs/plugin/isoWeek';
+import localeData from 'dayjs/plugin/localeData';
 import weekOfYear from 'dayjs/plugin/weekOfYear';
 
 dayjs.extend(isoWeek);
 dayjs.extend(customParseFormat);
 dayjs.extend(isBetween);
 dayjs.extend(weekOfYear);
+dayjs.extend(localeData);
 
 export type DateValue = Date | null | undefined;
 export type DatesRangeValue = [DateValue, DateValue];
