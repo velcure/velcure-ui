@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.33.0](https://github.com/velcure/velcure-ui/compare/v1.32.2...v1.33.0) (2023-10-16)
+
+
+### Features
+
+* radio group control ([1c86301](https://github.com/velcure/velcure-ui/commit/1c86301bdd9d1914fc6196c7325806b469e9ed55))
+
+
+### Bug Fixes
+
+* number input ([ddcf43b](https://github.com/velcure/velcure-ui/commit/ddcf43b65b91625c05bd9551b2cd0179f751a765))
+
 ## [1.32.2](https://github.com/velcure/velcure-ui/compare/v1.32.1...v1.32.2) (2023-10-16)
 
 
