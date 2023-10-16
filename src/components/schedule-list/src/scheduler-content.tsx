@@ -13,7 +13,10 @@ export const SchedulerContent = React.forwardRef<
   return (
     <velcure.div
       ref={ref}
-      className={cn('grid grid-cols-12 gap-6 flex-1', className)}
+      className={cn(
+        'absolute inset-0 grid grid-cols-12 gap-y-4 gap-x-2 flex-1',
+        className
+      )}
       {...restProps}
     />
   );

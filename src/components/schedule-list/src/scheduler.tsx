@@ -35,7 +35,7 @@ export const Scheduler = React.forwardRef<HTMLDivElement, SchedulerProps>(
           <velcure.div
             ref={ref}
             {...restProps}
-            className={cn('flex flex-col flex-1')}
+            className={cn('flex flex-col flex-1 relative')}
           >
             {children}
           </velcure.div>

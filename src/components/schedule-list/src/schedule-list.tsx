@@ -52,7 +52,7 @@ export const ScheduleList = forwardRef<HTMLDivElement, ScheduleListProps>(
           />
         )}
         {currentSchedule && (
-          <div className="flex-1 ms-4 flex flex-col overflow-hidden border border-border">
+          <div className="flex-1 flex flex-col overflow-hidden border border-border">
             <div
               id="schedule-list-body"
               className="overflow-y-scroll overflow-x-hidden relative flex-col flex flex-1"

@@ -40,22 +40,22 @@ const departments = [
   },
 ];
 
-const availableUsers: ScheduleUser[] = [
-  {
-    id: '1',
-    name: 'Tom Cook',
-  },
-  {
-    id: '2',
-    name: 'John Doe',
-  },
-  {
-    id: '3',
-    name: 'Jane Doe',
-    maxDurationPerWeek: 40 * 60 * 60, // 144000
-    maxDurationPerMonth: 160 * 60 * 60, // 576000
-  },
-];
+const generateUsers = (count: number): ScheduleUser[] => {
+  const users: ScheduleUser[] = [];
+
+  for (let i = 0; i < count; i++) {
+    users.push({
+      id: generateRandomString(),
+      name: `User ${i + 1}`,
+      maxDurationPerWeek: 40 * 60 * 60, // 144000
+      maxDurationPerMonth: 160 * 60 * 60, // 576000
+    });
+  }
+
+  return users;
+};
+
+const availableUsers: ScheduleUser[] = generateUsers(40);
 
 export const PersonalWeekPlan = () => {
   const [date, setDate] = useState<Date>(new Date('2023-10-11T08:00:00.000Z'));
@@ -163,8 +163,8 @@ export const PersonalWeekPlan = () => {
               ]);
             }}
           >
-            <SchedulerHeader />
             <SchedulerContent>
+              <SchedulerHeader />
               <SchedulerSidebar>
                 <SchedulerUserList />
               </SchedulerSidebar>

@@ -24,10 +24,12 @@ export const SchedulerSidebar = React.forwardRef<
   return (
     <velcure.aside
       ref={ref}
-      className={cn('col-span-2 w-full flex flex-col', className)}
+      className={cn('col-span-2 grow w-full flex flex-col min-h-0', className)}
       {...restProps}
     >
-      <div className="flex-1 overflow-y-auto text-sm ps-2">{children}</div>
+      <div className="grow min-h-0 overflow-y-auto text-sm ps-2">
+        {children}
+      </div>
     </velcure.aside>
   );
 });

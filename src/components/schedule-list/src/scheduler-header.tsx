@@ -43,7 +43,10 @@ export const SchedulerHeader = React.forwardRef<
   return (
     <velcure.div
       ref={ref}
-      className={cn('flex items-center justify-between mb-4', className)}
+      className={cn(
+        'flex items-center justify-between mb-4 col-span-full',
+        className
+      )}
       {...restProps}
     >
       <div className="flex items-center justify-start gap-3">
