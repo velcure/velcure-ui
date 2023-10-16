@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.32.2](https://github.com/velcure/velcure-ui/compare/v1.32.1...v1.32.2) (2023-10-16)
+
+
+### Bug Fixes
+
+* move departments to context ([ec04397](https://github.com/velcure/velcure-ui/commit/ec0439727cde4ab443c6f5b36e59414dd23c7963))
+* remove irrelevant typing ([4ef00c5](https://github.com/velcure/velcure-ui/commit/4ef00c5e9c21bdbe42872f929d9de40c9ca0d9e7))
+* rename hex to color ([94d3b50](https://github.com/velcure/velcure-ui/commit/94d3b5082be444cb449deb7b3d7f5692d24b5857))
+
 ## [1.32.1](https://github.com/velcure/velcure-ui/compare/v1.32.0...v1.32.1) (2023-10-15)
 
 
