@@ -1,3 +1,4 @@
+import { Radio } from '#/components';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Meta } from '@storybook/react';
@@ -14,6 +15,7 @@ import {
   TimeInputControl,
   useForm,
 } from '../src';
+import { RadioGroupControl } from '../src/radio-group-control';
 import { WeekdayPickerControl } from '../src/weekday-picker-control';
 
 const meta: Meta<typeof Form> = {
@@ -36,6 +38,7 @@ export const Basic = () => {
       password: '',
       weekdays: [],
       time: dayjs().set('hour', 12).set('minute', 0).set('second', 0).toDate(),
+      favoriteColor: '#ff0000',
     },
   });
 
@@ -58,6 +61,12 @@ export const Basic = () => {
       </SwitchControl>
 
       <TimeInputControl name="time" />
+
+      <RadioGroupControl name="favoriteColor" label="Favorite Color">
+        <Radio value="#ff0000">Red</Radio>
+        <Radio value="#00ff00">Green</Radio>
+        <Radio value="#0000ff">Blue</Radio>
+      </RadioGroupControl>
 
       <SubmitButton>
         <span>Submit</span>
