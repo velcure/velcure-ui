@@ -113,6 +113,7 @@ export const PersonalWeekPlan = () => {
             shifts={shifts}
             users={availableUsers}
             schedules={schedule}
+            departments={departments}
             onUserAssign={(userId, shiftId) => {
               // this is where we would normally use a mutation to update the
               // shift with the new user
@@ -167,7 +168,7 @@ export const PersonalWeekPlan = () => {
               <SchedulerSidebar>
                 <SchedulerUserList />
               </SchedulerSidebar>
-              <ShiftScheduleList departments={departments} />
+              <ShiftScheduleList />
             </SchedulerContent>
           </Scheduler>
         </PageBody>

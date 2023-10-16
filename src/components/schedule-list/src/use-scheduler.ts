@@ -2,7 +2,7 @@ import { createContext, useControllableState } from '#/hooks';
 import { PropGetter, generateWeekDates } from '#/utilities';
 import dayjs from 'dayjs';
 import React, { useCallback, useMemo } from 'react';
-import { Schedule, ScheduleUser, Shift } from './types';
+import { Department, Schedule, ScheduleUser, Shift } from './types';
 
 export interface SchedulerOptions {
   shifts?: Shift[];
@@ -10,6 +10,7 @@ export interface SchedulerOptions {
   onDateChange?: (date: Date) => void;
   users?: ScheduleUser[];
   schedules?: Schedule[];
+  departments?: Department[];
   onCreateSchedule?: (date: Date) => void;
   onCreateShift?: (departmentId: string, date: Date) => void;
   onUserAssign?: (userId: string, shiftId: string) => void;
@@ -32,6 +33,7 @@ export const useScheduler = (options: SchedulerOptions) => {
     onDateChange,
     users = [],
     schedules = [],
+    departments = [],
     onCreateSchedule = noop,
     onCreateShift = noop,
     onUserAssign = noop,
@@ -95,5 +97,6 @@ export const useScheduler = (options: SchedulerOptions) => {
     onCreateSchedule,
     onCreateShift,
     onUserAssign,
+    departments,
   };
 };

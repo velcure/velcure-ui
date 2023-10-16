@@ -7,26 +7,24 @@ import { HTMLMotionProps } from 'framer-motion';
 import { forwardRef } from 'react';
 import { ScheduleDepartment } from './schedule-department-item';
 import { ScheduleListHeader } from './schedule-list-header';
-import { Department } from './types';
-import { SchedulerOptions, useSchedulerContext } from './use-scheduler';
-
-interface ScheduleListOptions {
-  departments?: Department[];
-}
+import { useSchedulerContext } from './use-scheduler';
 
 export interface ScheduleListProps
-  extends Omit<HTMLVelcureProps<'div'>, keyof HTMLMotionProps<'div'>>,
-    ScheduleListOptions,
-    SchedulerOptions {
+  extends Omit<HTMLVelcureProps<'div'>, keyof HTMLMotionProps<'div'>> {
   className?: string;
 }
 
 export const ScheduleList = forwardRef<HTMLDivElement, ScheduleListProps>(
   (props, ref) => {
-    const { departments, className, ...restProps } = props;
+    const { className, ...restProps } = props;
 
-    const { sidebarMounted, currentSchedule, onCreateSchedule, date } =
-      useSchedulerContext();
+    const {
+      sidebarMounted,
+      currentSchedule,
+      onCreateSchedule,
+      date,
+      departments,
+    } = useSchedulerContext();
 
     return (
       <velcure.div

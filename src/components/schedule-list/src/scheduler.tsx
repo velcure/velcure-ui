@@ -24,6 +24,7 @@ export const Scheduler = React.forwardRef<HTMLDivElement, SchedulerProps>(
         'onCreateSchedule',
         'onCreateShift',
         'onUserAssign',
+        'departments',
       ]);
 
     const ctx = useScheduler(schedulerOptions);
