@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.35.0](https://github.com/velcure/velcure-ui/compare/v1.34.0...v1.35.0) (2023-10-16)
+
+
+### Features
+
+* exporting number utils toNumber ([3db9362](https://github.com/velcure/velcure-ui/commit/3db93622878cfe46c3d292ec1534bc47cf5a5b10))
+* scrollable userlist ([3a7e030](https://github.com/velcure/velcure-ui/commit/3a7e03004bebf19252161a16882f47b373997b4b))
+
 ## [1.34.0](https://github.com/velcure/velcure-ui/compare/v1.33.0...v1.34.0) (2023-10-16)
 
 
