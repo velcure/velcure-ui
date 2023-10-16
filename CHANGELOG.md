@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.34.0](https://github.com/velcure/velcure-ui/compare/v1.33.0...v1.34.0) (2023-10-16)
+
+
+### Features
+
+* numberinput now available ([2e1cb41](https://github.com/velcure/velcure-ui/commit/2e1cb41f98657d23da7e15a6ceae12ea530bf40c))
+
 ## [1.33.0](https://github.com/velcure/velcure-ui/compare/v1.32.2...v1.33.0) (2023-10-16)
 
 
