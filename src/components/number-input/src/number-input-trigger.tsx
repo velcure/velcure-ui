@@ -1,6 +1,5 @@
 import { MinusIcon, PlusIcon } from '#/components/icons/src';
 import { cn } from '#/utilities';
-import { mergeProps } from '@zag-js/react';
 import { cva } from 'class-variance-authority';
 import { forwardRef } from 'react';
 import { velcure, type HTMLVelcureProps } from '../../factory';
@@ -37,17 +36,15 @@ export const NumberInputIncrementTrigger = forwardRef<
   HTMLButtonElement,
   NumberInputIncrementTriggerProps
 >((props, ref) => {
-  const { size, incrementTriggerProps } = useNumberInputContext();
+  const { className, ...restProps } = props;
 
-  const mergedProps = mergeProps(incrementTriggerProps, props);
-
-  const { className, ...restProps } = mergedProps;
+  const { getIncrementButtonProps, size } = useNumberInputContext();
+  const increment = getIncrementButtonProps(restProps, ref);
 
   return (
     <velcure.button
-      {...restProps}
+      {...increment}
       className={cn(triggerClass({ size }), className)}
-      ref={ref}
     >
       <PlusIcon className="h-4 w-4" />
     </velcure.button>
@@ -63,16 +60,15 @@ export const NumberInputDecrementTrigger = forwardRef<
   HTMLButtonElement,
   NumberInputDecrementTriggerProps
 >((props, ref) => {
-  const { size, decrementTriggerProps } = useNumberInputContext();
-  const mergedProps = mergeProps(decrementTriggerProps, props);
+  const { className, ...restProps } = props;
 
-  const { className, ...restProps } = mergedProps;
+  const { getDecrementButtonProps, size } = useNumberInputContext();
+  const decrement = getDecrementButtonProps(restProps, ref);
 
   return (
     <velcure.button
-      {...restProps}
+      {...decrement}
       className={cn(triggerClass({ size }), className)}
-      ref={ref}
     >
       <MinusIcon className="h-4 w-4" />
     </velcure.button>

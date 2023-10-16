@@ -1,6 +1,4 @@
-import { useFormControl } from '#/components/form-control/src';
 import { cn } from '#/utilities';
-import { mergeProps } from '@zag-js/react';
 import { cva } from 'class-variance-authority';
 import { forwardRef } from 'react';
 import { velcure, type HTMLVelcureProps } from '../../factory';
@@ -23,25 +21,14 @@ export const NumberInputField = forwardRef<
   HTMLInputElement,
   NumberInputFieldProps
 >((props, ref) => {
-  const { size, isInvalid, isReadOnly, isRequired, isDisabled, inputProps } =
-    useNumberInputContext();
-  const mergedProps = mergeProps(inputProps, props);
-  const { className, ...restProps } = mergedProps;
+  const { className, ...restProps } = props;
+  const { getInputProps, size } = useNumberInputContext();
 
-  const form = useFormControl({
-    ...restProps,
-    isInvalid,
-    isReadOnly,
-    isRequired,
-    isDisabled,
-  });
+  const input = getInputProps(restProps, ref);
 
   return (
     <velcure.input
-      {...form}
-      disabled={form.disabled || isDisabled}
-      readOnly={form.readOnly || isReadOnly}
-      ref={ref}
+      {...input}
       className={cn(
         classes({
           size,

@@ -17,11 +17,7 @@ export const Basic = () => <NumberInput min={0} max={5} />;
 export const MouseWheel = () => <NumberInput allowMouseWheel />;
 
 export const FractionDigits = () => (
-  <NumberInput
-    allowMouseWheel
-    formatOptions={{ minimumFractionDigits: 2, maximumFractionDigits: 4 }}
-    defaultValue="1.00"
-  />
+  <NumberInput allowMouseWheel defaultValue="1.00" />
 );
 
 export const WithStates = () => (

@@ -1,90 +1,33 @@
-import { velcure } from '#/components/factory';
-import { FormControlOptions } from '#/components/form-control/src';
-import { Assign, cn, createSplitProps } from '#/utilities';
-import { mergeProps } from '@zag-js/react';
-import { ComponentPropsWithoutRef, forwardRef } from 'react';
+import { HTMLVelcureProps, velcure } from '#/components/factory';
+import { cn } from '#/utilities';
+import React from 'react';
 import { NumberInputControl } from './number-input-control';
 import { NumberInputField } from './number-input-field';
-import { NumberInputScrubber } from './number-input-scrubber';
 import {
   NumberInputDecrementTrigger,
   NumberInputIncrementTrigger,
 } from './number-input-trigger';
 import {
   NumberInputProvider,
-  UseNumberInputOptions,
   UseNumberInputProps,
   useNumberInput,
 } from './use-number-input';
 
 export interface NumberInputProps
-  extends Assign<ComponentPropsWithoutRef<'div'>, UseNumberInputProps>,
-    UseNumberInputOptions,
-    FormControlOptions {}
+  extends Omit<HTMLVelcureProps<'div'>, keyof UseNumberInputProps>,
+    UseNumberInputProps {}
 
-export const NumberInput = forwardRef<HTMLDivElement, NumberInputProps>(
+export const NumberInput = React.forwardRef<HTMLDivElement, NumberInputProps>(
   (props, ref) => {
-    const {
-      size = 'md',
-      isInvalid,
-      isRequired,
-      isReadOnly,
-      isDisabled,
-      placeholder,
-      ...restProps
-    } = props;
+    const { className, children, ...restProps } = props;
 
-    const [useNumberInputProps, divProps] =
-      createSplitProps<UseNumberInputProps>()(restProps, [
-        'allowMouseWheel',
-        'allowOverflow',
-        'clampValueOnBlur',
-        'defaultValue',
-        'dir',
-        'disabled',
-        'focusInputOnChange',
-        'form',
-        'formatOptions',
-        'getRootNode',
-        'id',
-        'ids',
-        'inputMode',
-        'invalid',
-        'locale',
-        'max',
-        'min',
-        'name',
-        'onFocusChange',
-        'onValueChange',
-        'onValueInvalid',
-        'pattern',
-        'readOnly',
-        'spinOnPress',
-        'step',
-        'translations',
-        'value',
-      ]);
-
-    const { children, className, ...rest } = divProps;
-
-    const api = useNumberInput({
-      ...useNumberInputProps,
-    });
-    const mergedProps = mergeProps(api.rootProps, rest);
+    const { htmlProps, ...context } = useNumberInput(restProps);
+    const ctx = React.useMemo(() => context, [context]);
 
     return (
-      <NumberInputProvider
-        value={{
-          size,
-          isDisabled: isDisabled,
-          isRequired: isRequired,
-          isReadOnly: isReadOnly,
-          ...api,
-          isInvalid: isInvalid || api.isInvalid,
-        }}
-      >
+      <NumberInputProvider value={ctx}>
         <velcure.div
-          {...mergedProps}
+          {...htmlProps}
           ref={ref}
           className={cn('flex flex-col gap-1', className)}
         >
@@ -92,13 +35,12 @@ export const NumberInput = forwardRef<HTMLDivElement, NumberInputProps>(
             children
           ) : (
             <>
-              <NumberInputScrubber />
               <NumberInputControl>
-                <NumberInputField placeholder={placeholder} />
+                <NumberInputField />
                 <div
                   className={cn(
                     'flex items-center justify-center py-1 pe-px',
-                    (isReadOnly || isDisabled) && 'pointer-events-none'
+                    (ctx.isReadOnly || ctx.isDisabled) && 'pointer-events-none'
                   )}
                 >
                   <NumberInputIncrementTrigger />

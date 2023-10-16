@@ -15,6 +15,7 @@ import {
   TimeInputControl,
   useForm,
 } from '../src';
+import { NumberInputControl } from '../src/number-input-control';
 import { RadioGroupControl } from '../src/radio-group-control';
 import { WeekdayPickerControl } from '../src/weekday-picker-control';
 
@@ -39,6 +40,7 @@ export const Basic = () => {
       weekdays: [],
       time: dayjs().set('hour', 12).set('minute', 0).set('second', 0).toDate(),
       favoriteColor: '#ff0000',
+      age: 5,
     },
   });
 
@@ -67,6 +69,8 @@ export const Basic = () => {
         <Radio value="#00ff00">Green</Radio>
         <Radio value="#0000ff">Blue</Radio>
       </RadioGroupControl>
+
+      <NumberInputControl name="age" label="Number" />
 
       <SubmitButton>
         <span>Submit</span>
