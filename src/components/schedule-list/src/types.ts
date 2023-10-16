@@ -43,20 +43,4 @@ export interface Schedule {
   coveragePercentage: number;
   endOfPeriod: string | Date;
   startOfPeriod: string | Date;
-
-  /**
-   * Seconds elapsed since the start of the period.
-   * @example 28800 // 8:00 AM
-   */
-  shiftDefaultStartsAtDuration: number;
-  /**
-   * Pause within a shift.
-   * @example 3600 // 1 hour
-   */
-  shiftDefaultPauseDuration: number;
-  /**
-   * Seconds elapsed since the start of the period.
-   * @example 59400 // 4:30 PM
-   */
-  shiftDefaultEndsAtDuration: number;
 }

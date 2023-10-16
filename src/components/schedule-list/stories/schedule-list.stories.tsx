@@ -66,18 +66,12 @@ export const PersonalWeekPlan = () => {
       startOfPeriod: '2023-09-30T22:00:00.000Z',
       endOfPeriod: '2023-10-07T21:59:59.999Z',
       coveragePercentage: 0,
-      shiftDefaultStartsAtDuration: 28800,
-      shiftDefaultPauseDuration: 3600,
-      shiftDefaultEndsAtDuration: 59400,
     },
     {
       id: 'PJSEc7ePik',
       startOfPeriod: '2023-10-08T22:00:00.000Z',
       endOfPeriod: '2023-10-15T21:59:59.999Z',
       coveragePercentage: 50,
-      shiftDefaultStartsAtDuration: 28800,
-      shiftDefaultPauseDuration: 3600,
-      shiftDefaultEndsAtDuration: 59400,
     },
   ]);
 
