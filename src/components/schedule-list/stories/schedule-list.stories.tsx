@@ -26,17 +26,17 @@ const departments = [
   {
     id: '1',
     name: 'Fahrer',
-    hexColor: '#FF0000',
+    color: '#FF0000',
   },
   {
     id: '2',
     name: 'Krankenpfleger',
-    hexColor: '#00FF00',
+    color: '#00FF00',
   },
   {
     id: '3',
     name: 'Disponent',
-    hexColor: '#0000FF',
+    color: '#0000FF',
   },
 ];
 

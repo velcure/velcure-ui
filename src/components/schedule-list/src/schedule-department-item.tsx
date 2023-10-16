@@ -39,7 +39,7 @@ export const ScheduleDepartment = React.forwardRef<
           <Circle
             className="w-4 h-4"
             style={{
-              backgroundColor: department.hexColor,
+              backgroundColor: department.color,
             }}
           />
           <span className="text-xs leading-5">{department.name}</span>

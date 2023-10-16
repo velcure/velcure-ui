@@ -1,7 +1,7 @@
 export interface Department {
   id: string;
   name: string;
-  hexColor: string;
+  color: string;
 }
 
 export interface Shift {
