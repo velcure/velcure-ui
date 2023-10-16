@@ -109,7 +109,6 @@
     "@zag-js/color-utils": "^0.22.0",
     "@zag-js/element-size": "^0.21.0",
     "@zag-js/focus-visible": "^0.21.0",
-    "@zag-js/number-input": "^0.22.0",
     "@zag-js/react": "^0.22.0",
     "@zag-js/select": "^0.22.0",
     "@zag-js/splitter": "^0.22.0",
